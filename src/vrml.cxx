@@ -43,7 +43,7 @@
 #include "vrml97/VrmlNodeIFaceSet.h"
 #include "vrml97/VrmlNodeShape.h"
 #include "vrml97/VrmlScene.h"
-#endif
+#endif // WITH_LIBVRML97
 
 #if 0 // openvrml
 #include "openVRML/vrml97node.h"
@@ -56,7 +56,7 @@
 static Sppd* vrmlSceneToPpd( VrmlScene* );
 static Sppd* ShapeToPpd( VrmlNodeShape* );
 static void traverse( VrmlNode* );
-#endif
+#endif // WITH_LIBVRML97
 
 Sppd* open_vrml( char* fname )
 {
@@ -70,7 +70,7 @@ Sppd* open_vrml( char* fname )
 
   return ppd;
   
-#endif
+#endif // WITH_LIBVRML97
   return NULL;
 }
 

@@ -76,7 +76,7 @@
       <AdditionalDependencies>ws2_32.lib;opengl32.lib;glu32.lib;jpeg.lib;zlibstat.lib;libpng16.lib;libvrml97core.lib;libvrml97js32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/MeshToSS.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\libvrml97\zlib;..\libvrml97\libpng;..\libvrml97\libvrml97core\win32\Release;..\libvrml97\libvrml97js\win32\Release;..\qslim-2.0\Release;..\lib\jpeg-9a\Release;..\lib\libpng-1.6.16\lib;..\lib\zlib-1.2.8\contrib\vstudio\vc11\x86\ZlibStatRelease;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\libvrml97\libvrml97core\win32\Release;..\libvrml97\libvrml97js\win32\Release;..\lib\jpeg-9a\Release;..\lib\libpng-1.6.16\lib;..\lib\zlib-1.2.8\contrib\vstudio\vc11\x86\ZlibStatRelease;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcp.lib;libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ProgramDatabaseFile>.\Release/MeshToSS.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
