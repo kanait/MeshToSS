@@ -1,4 +1,4 @@
-// OpenGL.cpp : ƒAƒvƒŠƒP[ƒVƒ‡ƒ“—pƒNƒ‰ƒX‚Ì‹@”\’è‹`‚ðs‚¢‚Ü‚·B
+ï»¿// OpenGL.cpp : ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã‚¯ãƒ©ã‚¹ã®æ©Ÿèƒ½å®šç¾©ã‚’è¡Œã„ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -28,66 +28,66 @@ BEGIN_MESSAGE_MAP(CMeshToSSApp, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT, OnAppAbout)
 	ON_COMMAND(ID_APP_EXIT, OnAppExit)
 	//}}AFX_MSG_MAP
-	// •W€‚Ìƒtƒ@ƒCƒ‹Šî–{ƒhƒLƒ…ƒƒ“ƒg ƒRƒ}ƒ“ƒh
+	// æ¨™æº–ã®ãƒ•ã‚¡ã‚¤ãƒ«åŸºæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ ã‚³ãƒžãƒ³ãƒ‰
 	ON_COMMAND(ID_FILE_NEW, CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, CWinApp::OnFileOpen)
-	// •W€‚ÌˆóüƒZƒbƒgƒAƒbƒv ƒRƒ}ƒ“ƒh
+	// æ¨™æº–ã®å°åˆ·ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ— ã‚³ãƒžãƒ³ãƒ‰
 	ON_COMMAND(ID_FILE_PRINT_SETUP, CWinApp::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSApp ƒNƒ‰ƒX‚Ì\’z
+// CMeshToSSApp ã‚¯ãƒ©ã‚¹ã®æ§‹ç¯‰
 
 CMeshToSSApp::CMeshToSSApp()
 {
-	// TODO: ‚±‚ÌˆÊ’u‚É\’z—pƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
-	// ‚±‚±‚É InitInstance ’†‚Ìd—v‚È‰Šú‰»ˆ—‚ð‚·‚×‚Ä‹Lq‚µ‚Ä‚­‚¾‚³‚¢B
+	// TODO: ã“ã®ä½ç½®ã«æ§‹ç¯‰ç”¨ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„ã€‚
+	// ã“ã“ã« InitInstance ä¸­ã®é‡è¦ãªåˆæœŸåŒ–å‡¦ç†ã‚’ã™ã¹ã¦è¨˜è¿°ã—ã¦ãã ã•ã„ã€‚
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// —Bˆê‚Ì CMeshToSSApp ƒIƒuƒWƒFƒNƒg
+// å”¯ä¸€ã® CMeshToSSApp ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
 CMeshToSSApp theApp;
 
 Swin *swin;
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSApp ƒNƒ‰ƒX‚Ì‰Šú‰»
+// CMeshToSSApp ã‚¯ãƒ©ã‚¹ã®åˆæœŸåŒ–
 
 BOOL CMeshToSSApp::InitInstance()
 {
-	// •W€“I‚È‰Šú‰»ˆ—
-	// ‚à‚µ‚±‚ê‚ç‚Ì‹@”\‚ðŽg—p‚¹‚¸AŽÀsƒtƒ@ƒCƒ‹‚ÌƒTƒCƒY‚ð¬‚³‚­
-	//  ‚µ‚½‚¯‚ê‚ÎˆÈ‰º‚Ì“Á’è‚Ì‰Šú‰»ƒ‹[ƒ`ƒ“‚Ì’†‚©‚ç•s•K—v‚È‚à‚Ì
-	//  ‚ðíœ‚µ‚Ä‚­‚¾‚³‚¢B
+	// æ¨™æº–çš„ãªåˆæœŸåŒ–å‡¦ç†
+	// ã‚‚ã—ã“ã‚Œã‚‰ã®æ©Ÿèƒ½ã‚’ä½¿ç”¨ã›ãšã€å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã‚’å°ã•ã
+	//  ã—ãŸã‘ã‚Œã°ä»¥ä¸‹ã®ç‰¹å®šã®åˆæœŸåŒ–ãƒ«ãƒ¼ãƒãƒ³ã®ä¸­ã‹ã‚‰ä¸å¿…è¦ãªã‚‚ã®
+	//  ã‚’å‰Šé™¤ã—ã¦ãã ã•ã„ã€‚
 
-	// Ý’è‚ª•Û‘¶‚³‚ê‚é‰º‚ÌƒŒƒWƒXƒgƒŠ ƒL[‚ð•ÏX‚µ‚Ü‚·B
-	// ‰ïŽÐ–¼‚Ü‚½‚ÍŠ‘®‚È‚ÇA“KØ‚È•¶Žš—ñ‚É
-	// •ÏX‚µ‚Ä‚­‚¾‚³‚¢B
+	// è¨­å®šãŒä¿å­˜ã•ã‚Œã‚‹ä¸‹ã®ãƒ¬ã‚¸ã‚¹ãƒˆãƒª ã‚­ãƒ¼ã‚’å¤‰æ›´ã—ã¾ã™ã€‚
+	// ä¼šç¤¾åã¾ãŸã¯æ‰€å±žãªã©ã€é©åˆ‡ãªæ–‡å­—åˆ—ã«
+	// å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	LoadStdProfileSettings();  // •W€‚Ì INI ƒtƒ@ƒCƒ‹‚ÌƒIƒvƒVƒ‡ƒ“‚ðƒ[ÄÞ‚µ‚Ü‚· (MRU ‚ðŠÜ‚Þ)
+	LoadStdProfileSettings();  // æ¨™æº–ã® INI ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ (MRU ã‚’å«ã‚€)
 
-	// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“—p‚ÌƒhƒLƒ…ƒƒ“ƒg ƒeƒ“ƒvƒŒ[ƒg‚ð“o˜^‚µ‚Ü‚·BƒhƒLƒ…ƒƒ“ƒg ƒeƒ“ƒvƒŒ[ƒg
-	//  ‚ÍƒhƒLƒ…ƒƒ“ƒgAƒtƒŒ[ƒ€ ƒEƒBƒ“ƒhƒE‚Æƒrƒ…[‚ðŒ‹‡‚·‚é‚½‚ß‚É‹@”\‚µ‚Ü‚·B
+	// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ç”¨ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ç™»éŒ²ã—ã¾ã™ã€‚ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
+	//  ã¯ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã€ãƒ•ãƒ¬ãƒ¼ãƒ  ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¨ãƒ“ãƒ¥ãƒ¼ã‚’çµåˆã™ã‚‹ãŸã‚ã«æ©Ÿèƒ½ã—ã¾ã™ã€‚
 
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
 		RUNTIME_CLASS(CMeshToSSDoc),
-		RUNTIME_CLASS(CMainFrame),       // ƒƒCƒ“ SDI ƒtƒŒ[ƒ€ ƒEƒBƒ“ƒhƒE
+		RUNTIME_CLASS(CMainFrame),       // ãƒ¡ã‚¤ãƒ³ SDI ãƒ•ãƒ¬ãƒ¼ãƒ  ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 		RUNTIME_CLASS(CMeshToSSView)
 		);
 	AddDocTemplate(pDocTemplate);
 
-	// DDEAfile open ‚È‚Ç•W€‚ÌƒVƒFƒ‹ ƒRƒ}ƒ“ƒh‚ÌƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚ð‰ðÍ‚µ‚Ü‚·B
+	// DDEã€file open ãªã©æ¨™æº–ã®ã‚·ã‚§ãƒ« ã‚³ãƒžãƒ³ãƒ‰ã®ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚’è§£æžã—ã¾ã™ã€‚
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
-	// ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚ÅƒfƒBƒXƒpƒbƒ` ƒRƒ}ƒ“ƒh‚ðŽw’è‚µ‚Ü‚·B
+	// ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã§ãƒ‡ã‚£ã‚¹ãƒ‘ãƒƒãƒ ã‚³ãƒžãƒ³ãƒ‰ã‚’æŒ‡å®šã—ã¾ã™ã€‚
 	if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
-	// ƒƒCƒ“ ƒEƒBƒ“ƒhƒE‚ª‰Šú‰»‚³‚ê‚½‚Ì‚ÅA•\Ž¦‚ÆXV‚ðs‚¢‚Ü‚·B
+	// ãƒ¡ã‚¤ãƒ³ ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒåˆæœŸåŒ–ã•ã‚ŒãŸã®ã§ã€è¡¨ç¤ºã¨æ›´æ–°ã‚’è¡Œã„ã¾ã™ã€‚
 	CString strTitle = _T("MeshToSS Version 1.0.3");
 	m_pMainWnd ->SetWindowText( strTitle );
 	m_pMainWnd->ShowWindow( SW_SHOW );
@@ -97,28 +97,28 @@ BOOL CMeshToSSApp::InitInstance()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ÅŽg‚í‚ê‚é CAboutDlg ƒ_ƒCƒAƒƒO
+// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã§ä½¿ã‚ã‚Œã‚‹ CAboutDlg ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// ƒ_ƒCƒAƒƒO ƒf[ƒ^
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚° ãƒ‡ãƒ¼ã‚¿
 	//{{AFX_DATA(CAboutDlg)
 	enum { IDD = IDD_ABOUTBOX };
 	//}}AFX_DATA
 
-	// ClassWizard ‰¼‘zŠÖ”‚ÌƒI[ƒo[ƒ‰ƒCƒh‚ð¶¬‚µ‚Ü‚·B
+	// ClassWizard ä»®æƒ³é–¢æ•°ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ç”Ÿæˆã—ã¾ã™ã€‚
 	//{{AFX_VIRTUAL(CAboutDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // // DDX/DDV ‚ÌƒTƒ|[ƒg
+	virtual void DoDataExchange(CDataExchange* pDX);    // // DDX/DDV ã®ã‚µãƒãƒ¼ãƒˆ
 	//}}AFX_VIRTUAL
 
-// ƒCƒ“ƒvƒŠƒƒ“ƒe[ƒVƒ‡ƒ“
+// ã‚¤ãƒ³ãƒ—ãƒªãƒ¡ãƒ³ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³
 protected:
 	//{{AFX_MSG(CAboutDlg)
-		// ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰‚Í‚ ‚è‚Ü‚¹‚ñB
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
@@ -138,11 +138,11 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 	//{{AFX_MSG_MAP(CAboutDlg)
-		// ƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰‚Í‚ ‚è‚Ü‚¹‚ñB
+		// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ ãƒãƒ³ãƒ‰ãƒ©ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-// ƒ_ƒCƒAƒƒO‚ðŽÀs‚·‚é‚½‚ß‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“ ƒRƒ}ƒ“ƒh
+// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ ã‚³ãƒžãƒ³ãƒ‰
 void CMeshToSSApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
@@ -150,13 +150,13 @@ void CMeshToSSApp::OnAppAbout()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSApp ƒRƒ}ƒ“ƒh
+// CMeshToSSApp ã‚³ãƒžãƒ³ãƒ‰
 
 #include "QuitDialog.h"
 
 void CMeshToSSApp::OnAppExit() 
 {
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒRƒ}ƒ“ƒh ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: ã“ã®ä½ç½®ã«ã‚³ãƒžãƒ³ãƒ‰ ãƒãƒ³ãƒ‰ãƒ©ç”¨ã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¦ãã ã•ã„
   CQuitDialog ced;
 
   if ( ced.DoModal() == IDOK ) {

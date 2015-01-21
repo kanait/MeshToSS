@@ -74,17 +74,17 @@ BOOL CConvSubdiv::OnInitDialog()
   CString string;
   // n_vert
   if ( swin->screenatr.org_ppd != NULL )
-    string.Format( (LPCTSTR)"%d", swin->screenatr.org_ppd->vn );
+    string.Format( _T("%d"), swin->screenatr.org_ppd->vn );
   else
-    string.Format( (LPCTSTR)"%d", swin->screenatr.current_ppd->vn );
+    string.Format( _T("%d"), swin->screenatr.current_ppd->vn );
   m_cur_nvertex.SetWindowText( string );
   m_simp_nvertex.SetWindowText( string );
 
   // dis
   if ( swin->screenatr.org_ppd != NULL )
-    string.Format( (LPCTSTR)"%d", swin->screenatr.org_ppd->dis );
+    string.Format( _T("%d"), swin->screenatr.org_ppd->dis );
   else
-    string.Format( (LPCTSTR)"%d", swin->screenatr.current_ppd->dis );
+    string.Format( _T("%d"), swin->screenatr.current_ppd->dis );
   m_cur_l2norm.SetWindowText( string );
   m_simp_l2norm.SetWindowText( string );
   
@@ -143,9 +143,9 @@ void CConvSubdiv::OnOK()
   
   simpmesh( ppd, nvertex );
 
-  AfxMessageBox( (LPTSTR)"Conversion successfully finished.");
+  AfxMessageBox( _T("Conversion successfully finished."));
 
-  string.Format( (LPCTSTR)"%g", ppd->err );
+  string.Format( _T("%g"), ppd->err );
   m_simp_l2norm.SetWindowText( string );
   
   ppd->file_type = FILE_EVRML_SUBDIV;
@@ -230,11 +230,11 @@ void CConvSubdiv::OnConvReset()
 
   // テキストフォームのリセット
   CString string;
-  string.Format( (LPCTSTR)"%d", swin->screenatr.current_ppd->vn );
+  string.Format( _T("%d"), swin->screenatr.current_ppd->vn );
   m_cur_nvertex.SetWindowText( string );
   m_simp_nvertex.SetWindowText( string );
 
-  string.Format((LPCTSTR)"0");
+  string.Format(_T("0"));
   m_cur_l2norm.SetWindowText( string );
   m_simp_l2norm.SetWindowText( string );
   
