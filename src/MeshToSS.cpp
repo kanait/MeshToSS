@@ -88,7 +88,7 @@ BOOL CMeshToSSApp::InitInstance()
 	if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
 	// メイン ウィンドウが初期化されたので、表示と更新を行います。
-	CString strTitle = _T("MeshToSS Version 1.0.3");
+	CString strTitle = _T("MeshToSS Version 1.0.4");
 	m_pMainWnd ->SetWindowText( strTitle );
 	m_pMainWnd->ShowWindow( SW_SHOW );
 	m_pMainWnd->UpdateWindow();
