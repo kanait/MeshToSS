@@ -1,0 +1,92 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# åxçê: Ç±ÇÃ‹∞∏ΩÕﬂ∞Ω Ãß≤Ÿ Çï“èWÇ‹ÇΩÇÕçÌèúÇµÇ»Ç¢Ç≈Ç≠ÇæÇ≥Ç¢!
+
+###############################################################################
+
+Project: "MeshToSS"=.\MeshToSS.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name optmesh
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name fdlibm
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name libvrml97core
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name libvrml97js
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "fdlibm"=..\libvrml97\libvrml97js\win32\fdlibm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "libvrml97core"=..\libvrml97\libvrml97core\win32\libvrml97core.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "libvrml97js"=..\libvrml97\libvrml97js\win32\libvrml97js.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name fdlibm
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "optmesh"=..\optmesh\optmesh.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

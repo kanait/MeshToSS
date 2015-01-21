@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName />
+    <SccLocalPath />
+    <Keyword>MFCProj</Keyword>
+    <ProjectGuid>{05AC795A-54B8-4AB9-A113-05E1E065A9DE}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>
+    </UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\glut;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;DEBUG;_WINDOWS;WIN32;XP_PC;JSFILE;EXPORT_JS_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Debug/libvrml97js.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>.\Debug\libvrml97js32.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/libvrml97js32.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>.\Debug/libvrml97js32.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/libvrml97js.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_AFXDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;WIN32;XP_PC;JSFILE;EXPORT_JS_API;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <PrecompiledHeaderOutputFile>.\Release/libvrml97js.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>.\Release\libvrml97js32.dll</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/libvrml97js32.pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>.\Release/libvrml97js32.lib</ImportLibrary>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/libvrml97js.tlb</TypeLibraryName>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_AFXDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\vrml97js\jsapi.c" />
+    <ClCompile Include="..\src\vrml97js\jsarena.c" />
+    <ClCompile Include="..\src\vrml97js\jsarray.c" />
+    <ClCompile Include="..\src\vrml97js\jsatom.c" />
+    <ClCompile Include="..\src\vrml97js\jsbool.c" />
+    <ClCompile Include="..\src\vrml97js\jscntxt.c" />
+    <ClCompile Include="..\src\vrml97js\jsdate.c" />
+    <ClCompile Include="..\src\vrml97js\jsdbgapi.c" />
+    <ClCompile Include="..\src\vrml97js\jsdtoa.c" />
+    <ClCompile Include="..\src\vrml97js\jsemit.c" />
+    <ClCompile Include="..\src\vrml97js\jsexn.c" />
+    <ClCompile Include="..\src\vrml97js\jsfun.c" />
+    <ClCompile Include="..\src\vrml97js\jsgc.c" />
+    <ClCompile Include="..\src\vrml97js\jshash.c" />
+    <ClCompile Include="..\src\vrml97js\jsinterp.c" />
+    <ClCompile Include="..\src\vrml97js\jslock.c" />
+    <ClCompile Include="..\src\vrml97js\jslog2.c" />
+    <ClCompile Include="..\src\vrml97js\jslong.c" />
+    <ClCompile Include="..\src\vrml97js\jsmath.c" />
+    <ClCompile Include="..\src\vrml97js\jsnum.c" />
+    <ClCompile Include="..\src\vrml97js\jsobj.c" />
+    <ClCompile Include="..\src\vrml97js\jsopcode.c" />
+    <ClCompile Include="..\src\vrml97js\jsparse.c" />
+    <ClCompile Include="..\src\vrml97js\jsprf.c" />
+    <ClCompile Include="..\src\vrml97js\jsregexp.c" />
+    <ClCompile Include="..\src\vrml97js\jsscan.c" />
+    <ClCompile Include="..\src\vrml97js\jsscope.c" />
+    <ClCompile Include="..\src\vrml97js\jsscript.c" />
+    <ClCompile Include="..\src\vrml97js\jsstr.c" />
+    <ClCompile Include="..\src\vrml97js\jsutil.c" />
+    <ClCompile Include="..\src\vrml97js\jsxdrapi.c" />
+    <ClCompile Include="..\src\vrml97js\prmjtime.c" />
+    <ClCompile Include="jsinitarrayapi.c">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\..\glut;..\src\vrml97js</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\src\vrml97js</AdditionalIncludeDirectories>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Default</CompileAs>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\vrml97js\jsapi.h" />
+    <ClInclude Include="..\src\vrml97js\jsarena.h" />
+    <ClInclude Include="..\src\vrml97js\jsarray.h" />
+    <ClInclude Include="..\src\vrml97js\jsatom.h" />
+    <ClInclude Include="..\src\vrml97js\jsbit.h" />
+    <ClInclude Include="..\src\vrml97js\jsbool.h" />
+    <ClInclude Include="..\src\vrml97js\jsclist.h" />
+    <ClInclude Include="..\src\vrml97js\jscntxt.h" />
+    <ClInclude Include="..\src\vrml97js\jscompat.h" />
+    <ClInclude Include="..\src\vrml97js\jsconfig.h" />
+    <ClInclude Include="..\src\vrml97js\jscpucfg.h" />
+    <ClInclude Include="..\src\vrml97js\jsdate.h" />
+    <ClInclude Include="..\src\vrml97js\jsdbgapi.h" />
+    <ClInclude Include="..\src\vrml97js\jsdtoa.h" />
+    <ClInclude Include="..\src\vrml97js\jsemit.h" />
+    <ClInclude Include="..\src\vrml97js\jsexn.h" />
+    <ClInclude Include="..\src\vrml97js\jsfile.h" />
+    <ClInclude Include="..\src\vrml97js\jsfun.h" />
+    <ClInclude Include="..\src\vrml97js\jsgc.h" />
+    <ClInclude Include="..\src\vrml97js\jshash.h" />
+    <ClInclude Include="..\src\vrml97js\jsinterp.h" />
+    <ClInclude Include="..\src\vrml97js\jslibmath.h" />
+    <ClInclude Include="..\src\vrml97js\jslock.h" />
+    <ClInclude Include="..\src\vrml97js\jslong.h" />
+    <ClInclude Include="..\src\vrml97js\jsmath.h" />
+    <ClInclude Include="..\src\vrml97js\jsnum.h" />
+    <ClInclude Include="..\src\vrml97js\jsobj.h" />
+    <ClInclude Include="..\src\vrml97js\jsopcode.h" />
+    <ClInclude Include="..\src\vrml97js\jsosdep.h" />
+    <ClInclude Include="..\src\vrml97js\jsotypes.h" />
+    <ClInclude Include="..\src\vrml97js\jsparse.h" />
+    <ClInclude Include="..\src\vrml97js\jsprf.h" />
+    <ClInclude Include="..\src\vrml97js\jsprvtd.h" />
+    <ClInclude Include="..\src\vrml97js\jspubtd.h" />
+    <ClInclude Include="..\src\vrml97js\jsregexp.h" />
+    <ClInclude Include="..\src\vrml97js\jsscan.h" />
+    <ClInclude Include="..\src\vrml97js\jsscope.h" />
+    <ClInclude Include="..\src\vrml97js\jsscript.h" />
+    <ClInclude Include="..\src\vrml97js\jsstddef.h" />
+    <ClInclude Include="..\src\vrml97js\jsstr.h" />
+    <ClInclude Include="..\src\vrml97js\jstypes.h" />
+    <ClInclude Include="..\src\vrml97js\jsutil.h" />
+    <ClInclude Include="..\src\vrml97js\jsxdrapi.h" />
+    <ClInclude Include="..\src\vrml97js\prmjtime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\vrml97js\js.msg" />
+    <None Include="..\src\vrml97js\jsopcode.tbl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="fdlibm.vcxproj">
+      <Project>{2b366702-c046-42b8-9dd1-ddce6eea498d}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

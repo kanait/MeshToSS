@@ -1,0 +1,136 @@
+<html>
+<body>
+<pre>
+<h1>ﾋﾞﾙﾄﾞのﾛｸﾞ</h1>
+<h3>
+--------------------構成: libvrml97js - Win32 Debug--------------------
+</h3>
+<h3>ｺﾏﾝﾄﾞ ﾗｲﾝ</h3>
+一時ﾌｧｲﾙ "C:\Temp\RSP52.tmp" を作成し、次の内容を記録します
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "_DEBUG" /D "DEBUG" /D "_WINDOWS" /D "WIN32" /D "XP_PC" /D "JSFILE" /D "EXPORT_JS_API" /Fp".\Debug/libvrml97js.pch" /YX /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsapi.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsarena.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsarray.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsatom.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsbool.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jscntxt.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsdate.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsdbgapi.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsdtoa.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsemit.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsexn.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsfun.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsgc.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jshash.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsinterp.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jslock.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jslog2.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jslong.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsmath.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsnum.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsobj.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsopcode.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsparse.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsprf.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsregexp.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsscan.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsscope.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsscript.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsstr.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsutil.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\jsxdrapi.c"
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\src\vrml97js\prmjtime.c"
+]
+Creating command line "cl.exe @C:\Temp\RSP52.tmp" 
+一時ﾌｧｲﾙ "C:\Temp\RSP53.tmp" を作成し、次の内容を記録します
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\src\vrml97js" /D "_DEBUG" /D "DEBUG" /D "_WINDOWS" /D "WIN32" /D "XP_PC" /D "JSFILE" /D "EXPORT_JS_API" /Fp".\Debug/libvrml97js.pch" /YX /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\home\kanai\work\MeshToSS\contrib\libvrml97-0.8.2\libvrml97js\win32\jsinitarrayapi.c"
+]
+Creating command line "cl.exe @C:\Temp\RSP53.tmp" 
+一時ﾌｧｲﾙ "C:\Temp\RSP54.tmp" を作成し、次の内容を記録します
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:".\Debug/libvrml97js32.pdb" /debug /machine:I386 /out:".\Debug\libvrml97js32.dll" /implib:".\Debug/libvrml97js32.lib" 
+".\Debug\jsapi.obj"
+".\Debug\jsarena.obj"
+".\Debug\jsarray.obj"
+".\Debug\jsatom.obj"
+".\Debug\jsbool.obj"
+".\Debug\jscntxt.obj"
+".\Debug\jsdate.obj"
+".\Debug\jsdbgapi.obj"
+".\Debug\jsdtoa.obj"
+".\Debug\jsemit.obj"
+".\Debug\jsexn.obj"
+".\Debug\jsfun.obj"
+".\Debug\jsgc.obj"
+".\Debug\jshash.obj"
+".\Debug\jsinitarrayapi.obj"
+".\Debug\jsinterp.obj"
+".\Debug\jslock.obj"
+".\Debug\jslog2.obj"
+".\Debug\jslong.obj"
+".\Debug\jsmath.obj"
+".\Debug\jsnum.obj"
+".\Debug\jsobj.obj"
+".\Debug\jsopcode.obj"
+".\Debug\jsparse.obj"
+".\Debug\jsprf.obj"
+".\Debug\jsregexp.obj"
+".\Debug\jsscan.obj"
+".\Debug\jsscope.obj"
+".\Debug\jsscript.obj"
+".\Debug\jsstr.obj"
+".\Debug\jsutil.obj"
+".\Debug\jsxdrapi.obj"
+".\Debug\prmjtime.obj"
+".\Debug\fdlibm.lib"
+]
+ｺﾏﾝﾄﾞ ﾗｲﾝ "link.exe @C:\Temp\RSP54.tmp" の作成中
+<h3>ｱｳﾄﾌﾟｯﾄ ｳｨﾝﾄﾞｳ</h3>
+ｺﾝﾊﾟｲﾙ中...
+jsapi.c
+jsarena.c
+jsarray.c
+jsatom.c
+jsbool.c
+jscntxt.c
+jsdate.c
+jsdbgapi.c
+jsdtoa.c
+jsemit.c
+jsexn.c
+jsfun.c
+jsgc.c
+jshash.c
+jsinterp.c
+jslock.c
+jslog2.c
+jslong.c
+jsmath.c
+jsnum.c
+jsobj.c
+jsopcode.c
+jsparse.c
+jsprf.c
+jsregexp.c
+jsscan.c
+jsscope.c
+jsscript.c
+jsstr.c
+jsutil.c
+jsxdrapi.c
+prmjtime.c
+ｺﾝﾊﾟｲﾙ中...
+jsinitarrayapi.c
+ﾘﾝｸ中...
+   ﾗｲﾌﾞﾗﾘ .\Debug/libvrml97js32.lib とｵﾌﾞｼﾞｪｸﾄ .\Debug/libvrml97js32.exp を作成中
+
+
+
+<h3>結果</h3>
+libvrml97js32.dll - ｴﾗｰ 0、警告 0
+</pre>
+</body>
+</html>
