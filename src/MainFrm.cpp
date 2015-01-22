@@ -102,7 +102,7 @@ CMainFrame::CMainFrame()
   swin = create_swin();
 }
 
-CMainFrame::~CMainFrame()
+CMainFrame::~CMainFrame() 
 {
   void free_swin( Swin * );
 
@@ -113,11 +113,11 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
   if (CFrameWnd::OnCreate(lpCreateStruct) == -1)
     return -1;
-	
+
   // StatusBar
   if (!m_wndStatusBar.Create(this) ||
       !m_wndStatusBar.SetIndicators(indicators,
-				    sizeof(indicators)/sizeof(UINT)) )
+                                    sizeof(indicators)/sizeof(UINT)) )
     {
       TRACE0("Failed to create status bar\n");
       return -1;      // 作成に失敗
@@ -183,8 +183,8 @@ void CMainFrame::OnFileOpen()
   // 第一引数は OPEN のとき TRUE
   // 第二、三引数はファイルの種類
   CFileDialog filedlg( TRUE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szppdFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szppdFilter, NULL );
 
   if( filedlg.DoModal() == IDOK ) {
     //		CWaitCursor wait;
@@ -197,7 +197,7 @@ void CMainFrame::OnFileOpen()
 
     char f[BUFSIZ];
     WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
-    
+
     Sppd *ppd;
     //if ( (ppd = open_ppd( (char*)lp, TRUE )) == NULL )
     if ( (ppd = open_ppd( f )) == NULL )
@@ -243,8 +243,8 @@ void CMainFrame::OnFileSaveSrc()
   if ( swin->screenatr.current_ppd == (Sppd *) NULL ) return;
 
   CFileDialog filedlg( FALSE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szppdFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szppdFilter, NULL );
 
   if( filedlg.DoModal() != IDOK) return;
   
@@ -254,8 +254,13 @@ void CMainFrame::OnFileSaveSrc()
   //filenameに選択したファイルのフルパスが入る
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
-  write_ppd_file( (char*)lp, swin->screenatr.current_ppd );
-  _tcscpy( (LPTSTR) swin->screenatr.current_ppd->filename, lp );
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
+  write_ppd_file( f, swin->screenatr.current_ppd );
+  strcpy_s( swin->screenatr.current_ppd->filename,
+            _countof(swin->screenatr.current_ppd->filename), f );
 }
 
 void CMainFrame::OnFileSavePpdPoly()
@@ -264,8 +269,8 @@ void CMainFrame::OnFileSavePpdPoly()
   
   // TODO: この位置にコマンド ハンドラ用のコードを追加してください
   CFileDialog filedlg( FALSE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szppdFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szppdFilter, NULL );
 
   if( filedlg.DoModal() != IDOK) return;
   
@@ -275,9 +280,13 @@ void CMainFrame::OnFileSavePpdPoly()
   //filenameに選択したファイルのフルパスが入る
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
-  write_ppd_file( (char*)lp, swin->screenatr.view_ppd );
-  _tcscpy( (LPTSTR) swin->screenatr.view_ppd->filename, lp );
-  
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
+  write_ppd_file( f, swin->screenatr.view_ppd );
+  strcpy_s( swin->screenatr.view_ppd->filename,
+            _countof(swin->screenatr.view_ppd->filename), f );
 }
 
 static TCHAR BASED_CODE szwrlFilter[] = _T("VRML Files (*.wrl)|*.wrl|All Files (*.*)|*.*||");
@@ -292,28 +301,31 @@ void CMainFrame::OnFileOpenVrml()
   }
   
   CFileDialog filedlg( TRUE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szwrlFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szwrlFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
   // filename に選択したファイルのフルパスが入る
   CString filename = filedlg.GetPathName();
-  
+
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
 
   // check VRML
   int file_type;
-  if ( (file_type = check_vrml( (char*)lp )) != FILE_VRML )
+  if ( (file_type = check_vrml( f )) != FILE_VRML )
     {
       AfxMessageBox( _T("This file is not a VRML file."));
       return;
     }
 
   Sppd *ppd;
-  if ( (ppd = open_vrml( (char*) lp )) == NULL ) {
+  if ( (ppd = open_vrml( f )) == NULL ) {
     char string[BUFSIZ];
-    sprintf( string, "Can't open %s.", lp );
+    sprintf( string, "Can't open %s.", f );
     AfxMessageBox( (LPTSTR) (string) );
     return;
   }
@@ -321,11 +333,11 @@ void CMainFrame::OnFileOpenVrml()
   
   // set material (default)
   copy_material( &(ppd->matl), 0, (float *) mtlall );
-		
+
   swin->screenatr.current_ppd = ppd;
   swin->screenatr.view_ppd = ppd;
   //    swin->screenatr.org_ppd = ppd;
-			
+
   // normalization
   // enhanced
   swin->screenatr.rad_sph *= ppd->scale;
@@ -333,7 +345,7 @@ void CMainFrame::OnFileOpenVrml()
 
   // for setting subdivision boundary flag
   set_subdiv_boundary( ppd );
-  
+
   InvalidateRect( NULL, FALSE );  
 }
 
@@ -345,38 +357,41 @@ void CMainFrame::OnFileOpenEvrmlPoly()
     AfxMessageBox( _T("A file has already opened."));
     return;
   }
-  
+
   CFileDialog filedlg( TRUE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szwrlFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szwrlFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
   // filename に選択したファイルのフルパスが入る
   CString filename = filedlg.GetPathName();
-  
+
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
 
   // check VRML
   int file_type;
-  if ( (file_type = check_vrml( (char*)lp )) != FILE_EVRML_POLY )
+  if ( (file_type = check_vrml( f )) != FILE_EVRML_POLY )
     {
       AfxMessageBox( _T("This file is not a Extended VRML Polygon file."));
       return;
     }
-    
+
   Sppd *ppd;
-  if ( (ppd = open_vrml( (char*) lp )) == NULL ) {
+  if ( (ppd = open_vrml( f )) == NULL ) {
     char string[BUFSIZ];
     sprintf( string, "Can't open %s.", lp );
     AfxMessageBox( (LPTSTR) string );
     return;
   }
   ppd->file_type = file_type;
-  
+
   // set material (default)
   copy_material( &(ppd->matl), 0, (float *) mtlall );
-		
+
   //    if ( swin->screenatr.current_ppd != NULL ) {
   //      swin->screenatr.view_ppd = NULL;
   //      free_ppd( swin->screenatr.current_ppd );
@@ -385,7 +400,7 @@ void CMainFrame::OnFileOpenEvrmlPoly()
   swin->screenatr.current_ppd = ppd;
   swin->screenatr.view_ppd = ppd;
   //    swin->screenatr.org_ppd = ppd;
-			
+
   // normalization
   // enhanced
   swin->screenatr.rad_sph *= ppd->scale;
@@ -407,28 +422,31 @@ void CMainFrame::OnFileOpenEvrmlSs()
     AfxMessageBox( _T("A file has already opened."));
     return;
   }
-  
+
   CFileDialog filedlg( TRUE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szwrlFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szwrlFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
   // filename に選択したファイルのフルパスが入る
   CString filename = filedlg.GetPathName();
-  
+
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
 
   // check VRML
   int file_type;
-  if ( (file_type = check_vrml( (char*)lp )) != FILE_EVRML_SUBDIV )
+  if ( (file_type = check_vrml( f )) != FILE_EVRML_SUBDIV )
     {
       AfxMessageBox( _T("This file is not a Extended VRML Subdiv. file."));
       return;
     }
-    
+
   Sppd *ppd;
-  if ( (ppd = open_vrml( (char*) lp )) == NULL ) {
+  if ( (ppd = open_vrml( f )) == NULL ) {
     char string[BUFSIZ];
     sprintf( string, "Can't open %s.", lp );
     AfxMessageBox( (LPTSTR) string );
@@ -465,8 +483,8 @@ void CMainFrame::OnFileSaveVrmlSub()
   if ( swin->screenatr.current_ppd == NULL ) return;
   
   CFileDialog filedlg( FALSE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szwrlFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szwrlFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
@@ -476,8 +494,13 @@ void CMainFrame::OnFileSaveVrmlSub()
   filename = filedlg.GetPathName();
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
-  write_vrml( (char*)lp, swin->screenatr.current_ppd, SAVE_VRML_SUBDIV );
-  _tcscpy( (LPTSTR) swin->screenatr.current_ppd->filename, lp );
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
+  write_vrml( f, swin->screenatr.current_ppd, SAVE_VRML_SUBDIV );
+  strcpy_s( swin->screenatr.current_ppd->filename,
+            _countof(swin->screenatr.current_ppd->filename), f );
 }
 
 void CMainFrame::OnFileSaveVrmlPoly()
@@ -487,8 +510,8 @@ void CMainFrame::OnFileSaveVrmlPoly()
   
   // TODO: この位置にコマンド ハンドラ用のコードを追加してください
   CFileDialog filedlg( FALSE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szwrlFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szwrlFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
@@ -498,8 +521,13 @@ void CMainFrame::OnFileSaveVrmlPoly()
   //filenameに選択したファイルのフルパスが入る
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
-  write_vrml( (char*)lp, swin->screenatr.view_ppd, SAVE_VRML_POLY );
-  _tcscpy( (LPTSTR) swin->screenatr.view_ppd->filename, lp );
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+  
+  write_vrml( f, swin->screenatr.view_ppd, SAVE_VRML_POLY );
+  strcpy_s( swin->screenatr.view_ppd->filename,
+            _countof(swin->screenatr.view_ppd->filename), f );
 }
 
 static TCHAR BASED_CODE szsmfFilter[] = _T("SMF Files (*.smf)|*.smf|All Files (*.*)|*.*||");
@@ -567,12 +595,12 @@ void CMainFrame::OnFileOpenSmf()
     swin->screenatr.current_ppd = ppd;
     swin->screenatr.view_ppd = ppd;
     //      swin->screenatr.org_ppd = ppd;
-			
+
     // normalization
     // enhanced
     swin->screenatr.rad_sph *= ppd->scale;
     swin->screenatr.rad_cyl *= ppd->scale;
-    
+
     // for setting subdivision boundary flag
     set_subdiv_boundary( ppd );
     
@@ -589,8 +617,8 @@ void CMainFrame::OnFileSaveSmf()
   if ( swin->screenatr.current_ppd == (Sppd *) NULL ) return;
   
   CFileDialog filedlg( FALSE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szsmfFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szsmfFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
@@ -600,8 +628,13 @@ void CMainFrame::OnFileSaveSmf()
   //filenameに選択したファイルのフルパスが入る
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
-  write_smf( (char*)lp, swin->screenatr.current_ppd );
-  _tcscpy( (LPTSTR) swin->screenatr.current_ppd->filename, lp );
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
+  write_smf( f, swin->screenatr.current_ppd );
+  strcpy_s( swin->screenatr.current_ppd->filename,
+            _countof(swin->screenatr.current_ppd->filename), f );
 }
 
 void CMainFrame::OnFileSaveSmfPoly()
@@ -610,8 +643,8 @@ void CMainFrame::OnFileSaveSmfPoly()
   if ( swin->screenatr.view_ppd == (Sppd *) NULL ) return;
   
   CFileDialog filedlg( FALSE, NULL, NULL,
-		       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
-		       szsmfFilter, NULL );
+                       OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
+                       szsmfFilter, NULL );
 
   if( filedlg.DoModal() != IDOK ) return;
 
@@ -621,8 +654,13 @@ void CMainFrame::OnFileSaveSmfPoly()
   //filenameに選択したファイルのフルパスが入る
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
-  write_smf( (char*)lp, swin->screenatr.view_ppd );
-  _tcscpy( (LPTSTR) swin->screenatr.view_ppd->filename, lp );
+
+  char f[BUFSIZ];
+  WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
+  write_smf( f, swin->screenatr.view_ppd );
+  strcpy_s( swin->screenatr.view_ppd->filename,
+            _countof(swin->screenatr.view_ppd->filename), f );
 }
 
 static TCHAR BASED_CODE szvwFilter[] = _T("VW Files (*.vw)|*.vw||");
@@ -646,8 +684,11 @@ void CMainFrame::OnFileOpenVw()
     TCHAR *lp;
     lp = filename.GetBuffer( BUFSIZ );
 
+    char f[BUFSIZ];
+    WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
     double mmat[16], pmat[16];
-    open_vw( (char*)lp, (double *) mmat, (double *) pmat );
+    open_vw( f, (double *) mmat, (double *) pmat );
 
     InvalidateRect( NULL, FALSE );
   }
@@ -672,8 +713,11 @@ void CMainFrame::OnFileSaveVw()
     TCHAR *lp;
     lp = filename.GetBuffer( BUFSIZ );
 
+    char f[BUFSIZ];
+    WideCharToMultiByte(CP_ACP,0,lp,-1,f,sizeof(f),NULL,NULL);
+
     InvalidateRect( NULL, FALSE );
-    write_vw_file( (char*)lp );
+    write_vw_file( f );
 
     //		write_gmh_file( lp, swin->hppd );
   }
