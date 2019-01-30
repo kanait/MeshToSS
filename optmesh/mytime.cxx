@@ -14,7 +14,8 @@ static char THIS_FILE[] = __FILE__;
 #include <stdio.h>
 #include <sys/types.h>
 
-#ifndef WIN32
+#if defined(_WIN32) || defined(_WIN64)
+#else
 #include <unistd.h>
 #include <limits.h>
 #include <time.h>
@@ -49,7 +50,7 @@ void time_start(void)
 
 // stop timer 
 void time_stop( void )
-{				
+{
 #if !defined(WIN32)
   struct tms tbuf2;
   long  real2;
@@ -57,7 +58,8 @@ void time_stop( void )
 
   real2 = times(&tbuf2);
 
-  double ct = (double) CLK_TCK;
+  //  double ct = (double) CLK_TCK;
+  double ct = (double) CLOCKS_PER_SEC;
   
   realtime = (real2 - real1) / ct;
   usertime = (tbuf2.tms_utime - tbuf1.tms_utime) / ct;
@@ -76,7 +78,8 @@ void time_stop_value( double *realtime, double *usertime, double *systime )
   struct tms tbuf2;
   long  real2;
 
-  double ct = (double) CLK_TCK;
+  // double ct = (double) CLK_TCK;
+  double ct = (double) CLOCKS_PER_SEC;
   
   real2 = times(&tbuf2);
   *realtime = (real2 - real1) / ct;
