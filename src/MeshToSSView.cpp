@@ -498,25 +498,27 @@ void CMeshToSSView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
       if ( swin->screenatr.view_ppd == NULL ) return;
 
       Sppd* ppd = swin->screenatr.view_ppd;
-      
+
+#if 0
       Sppd* tppd = subdiv_top( ppd );
       if ( tppd->file_type != FILE_EVRML_SUBDIV )
-	{
-	  AfxMessageBox( (LPTSTR)"Subdivision can be executed only for a Extended VRML Subdiv. File");
-	  return;
-	}
-    
+        {
+          AfxMessageBox(_T("Subdivision can be executed only for a Extended VRML Subdiv. File"));
+          return;
+        }
+#endif
+
       // level 3 ˆÈã‚Í‚¢‚©‚È‚¢‚æ‚¤‚ÉÝ’è
       if ( ppd->sub_level >= 3 ) return;
-  
+
       Sppd* child;
       if ( (child = ppd->child) == NULL ) {
-	child = ppdsubdiv( ppd, SUBDIV_LOOP );
-	copy_material( &(child->matl), 0, (float *) mtlall );
+        child = ppdsubdiv( ppd, SUBDIV_LOOP );
+        copy_material( &(child->matl), 0, (float *) mtlall );
       }
-  
+
       swin->screenatr.view_ppd = child;
-  
+
     }
     break;
   case 'm': // subdivision level up
@@ -525,13 +527,15 @@ void CMeshToSSView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 
       Sppd* ppd = swin->screenatr.view_ppd;
 
+#if 0
       Sppd* tppd = subdiv_top( ppd );
       if ( tppd->file_type != FILE_EVRML_SUBDIV )
-	{
-	  AfxMessageBox( (LPTSTR)"Subdivision can be executed only for a Extended VRML Subdiv. File");
-	  return;
-	}
-    
+        {
+          AfxMessageBox(_T("Subdivision can be executed only for a Extended VRML Subdiv. File"));
+          return;
+        }
+#endif
+
       if ( ppd->parent == NULL ) return;
       swin->screenatr.view_ppd = ppd->parent;
     }
@@ -539,7 +543,7 @@ void CMeshToSSView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
   default:
     break;
   }
-  
+
   InvalidateRect( NULL, FALSE );
 }
 

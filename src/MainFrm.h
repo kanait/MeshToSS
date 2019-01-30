@@ -127,18 +127,18 @@ protected:
 	afx_msg void OnFileSaveSmf();
 	afx_msg void OnMenuScreenHidden();
 	afx_msg void OnUpdateMenuScreenHidden(CCmdUI* pCmdUI);
-	afx_msg void OnFileOpenVrml();
+  //	afx_msg void OnFileOpenVrml();
 	afx_msg void OnMenuEditSubdivUp();
 	afx_msg void OnMenuEditSubdivDown();
 	afx_msg void OnMenuEditConv();
 	afx_msg void OnMenuScreenSubbown();
 	afx_msg void OnUpdateMenuScreenSubbown(CCmdUI* pCmdUI);
-	afx_msg void OnFileSaveVrmlSub();
-	afx_msg void OnFileSaveVrmlPoly();
+  //	afx_msg void OnFileSaveVrmlSub();
+  //	afx_msg void OnFileSaveVrmlPoly();
 	afx_msg void OnMenuScreenOrgppd();
 	afx_msg void OnUpdateMenuScreenOrgppd(CCmdUI* pCmdUI);
-	afx_msg void OnFileOpenEvrmlPoly();
-	afx_msg void OnFileOpenEvrmlSs();
+  //	afx_msg void OnFileOpenEvrmlPoly();
+  //	afx_msg void OnFileOpenEvrmlSs();
 	afx_msg void OnFileSavePpdPoly();
 	afx_msg void OnFileSaveSmfPoly();
 	//}}AFX_MSG

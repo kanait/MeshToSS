@@ -75,9 +75,6 @@
     <ClCompile Include="..\src\texture.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\vrml.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\vw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -160,9 +157,6 @@
     <ClInclude Include="..\src\texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\vrml.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\vw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -200,8 +194,5 @@
     <None Include="res\MeshToSS.rc2">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="ReadMe.txt" />
   </ItemGroup>
 </Project>

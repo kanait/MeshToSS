@@ -1,14 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeshToSS", "MeshToSS.vcxproj", "{60B98282-748C-4AAA-B55D-56FD178C8D9A}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fdlibm", "..\libvrml97\libvrml97js\win32\fdlibm.vcxproj", "{2B366702-C046-42B8-9DD1-DDCE6EEA498D}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libvrml97core", "..\libvrml97\libvrml97core\win32\libvrml97core.vcxproj", "{9E8DE2BB-1123-4932-8257-9EF5C1C3F3E0}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libvrml97js", "..\libvrml97\libvrml97js\win32\libvrml97js.vcxproj", "{05AC795A-54B8-4AB9-A113-05E1E065A9DE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "optmesh", "..\optmesh\optmesh.vcxproj", "{6E45EA87-FCDC-4CB4-9708-2E538A62B217}"
 EndProject
@@ -22,18 +16,6 @@ Global
 		{60B98282-748C-4AAA-B55D-56FD178C8D9A}.Debug|Win32.Build.0 = Debug|Win32
 		{60B98282-748C-4AAA-B55D-56FD178C8D9A}.Release|Win32.ActiveCfg = Release|Win32
 		{60B98282-748C-4AAA-B55D-56FD178C8D9A}.Release|Win32.Build.0 = Release|Win32
-		{2B366702-C046-42B8-9DD1-DDCE6EEA498D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{2B366702-C046-42B8-9DD1-DDCE6EEA498D}.Debug|Win32.Build.0 = Debug|Win32
-		{2B366702-C046-42B8-9DD1-DDCE6EEA498D}.Release|Win32.ActiveCfg = Release|Win32
-		{2B366702-C046-42B8-9DD1-DDCE6EEA498D}.Release|Win32.Build.0 = Release|Win32
-		{9E8DE2BB-1123-4932-8257-9EF5C1C3F3E0}.Debug|Win32.ActiveCfg = Debug|Win32
-		{9E8DE2BB-1123-4932-8257-9EF5C1C3F3E0}.Debug|Win32.Build.0 = Debug|Win32
-		{9E8DE2BB-1123-4932-8257-9EF5C1C3F3E0}.Release|Win32.ActiveCfg = Release|Win32
-		{9E8DE2BB-1123-4932-8257-9EF5C1C3F3E0}.Release|Win32.Build.0 = Release|Win32
-		{05AC795A-54B8-4AB9-A113-05E1E065A9DE}.Debug|Win32.ActiveCfg = Debug|Win32
-		{05AC795A-54B8-4AB9-A113-05E1E065A9DE}.Debug|Win32.Build.0 = Debug|Win32
-		{05AC795A-54B8-4AB9-A113-05E1E065A9DE}.Release|Win32.ActiveCfg = Release|Win32
-		{05AC795A-54B8-4AB9-A113-05E1E065A9DE}.Release|Win32.Build.0 = Release|Win32
 		{6E45EA87-FCDC-4CB4-9708-2E538A62B217}.Debug|Win32.ActiveCfg = Debug|Win32
 		{6E45EA87-FCDC-4CB4-9708-2E538A62B217}.Debug|Win32.Build.0 = Debug|Win32
 		{6E45EA87-FCDC-4CB4-9708-2E538A62B217}.Release|Win32.ActiveCfg = Release|Win32

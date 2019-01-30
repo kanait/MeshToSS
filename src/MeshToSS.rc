@@ -106,10 +106,10 @@ BEGIN
     BEGIN
         POPUP "Open..."
         BEGIN
-            MENUITEM "VRML(wrl)\tCtrl+F",           ID_FILE_OPEN_VRML
-            MENUITEM "Ext. VRML Poly.(wrl)",        ID_FILE_OPEN_EVRML_POLY
-            MENUITEM "Ext. VRML Sub. Surf.(wrl)",   ID_FILE_OPEN_EVRML_SS
-            MENUITEM SEPARATOR
+//            MENUITEM "VRML(wrl)\tCtrl+F",           ID_FILE_OPEN_VRML
+//            MENUITEM "Ext. VRML Poly.(wrl)",        ID_FILE_OPEN_EVRML_POLY
+//            MENUITEM "Ext. VRML Sub. Surf.(wrl)",   ID_FILE_OPEN_EVRML_SS
+//            MENUITEM SEPARATOR
             MENUITEM "PPD (.ppd)\tCtrl+O",          ID_FILE_OPEN
             MENUITEM "SMF (smf)",                   ID_FILE_OPEN_SMF
             MENUITEM SEPARATOR
@@ -117,9 +117,9 @@ BEGIN
         END
         POPUP "Save..."
         BEGIN
-            MENUITEM "Ext. VRML Poly.(wrl)",        ID_FILE_SAVE_VRML_POLY
-            MENUITEM "Ext. VRML Sub. Surf. (wrl)",  ID_FILE_SAVE_VRML_SUB
-            MENUITEM SEPARATOR
+//            MENUITEM "Ext. VRML Poly.(wrl)",        ID_FILE_SAVE_VRML_POLY
+//            MENUITEM "Ext. VRML Sub. Surf. (wrl)",  ID_FILE_SAVE_VRML_SUB
+//            MENUITEM SEPARATOR
             MENUITEM "PPD Poly (ppd)",              ID_FILE_SAVE_PPD_POLY
             MENUITEM "PPD Sub. Surf (.ppd)",        ID_FILE_SAVE_SRC
             MENUITEM "SMF Poly (smf)",              ID_FILE_SAVE_SMF_POLY
@@ -184,7 +184,7 @@ CAPTION "Version Information"
 FONT 9, "‚l‚r ‚oƒSƒVƒbƒN", 0, 0, 0x0
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,12,10,18,21
-    CONTROL         "MeshToSS Version 1.0.3",IDC_STATIC,"Static",SS_SIMPLE | 
+    CONTROL         "MeshToSS Version 1.1",IDC_STATIC,"Static",SS_SIMPLE | 
                     SS_NOPREFIX | WS_GROUP,40,12,83,8
     LTEXT           "Copyright (C) 2000-2005 by Keio SFC Lab. && IPA",
                     IDC_STATIC,40,31,160,8

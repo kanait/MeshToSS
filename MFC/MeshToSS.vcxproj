@@ -55,8 +55,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>..\libvrml97\libvrml97core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;WITH_LIBVRML97;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -73,10 +73,10 @@
     </ClCompile>
     <Link>
       <AdditionalOptions>/MACHINE:I386 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalDependencies>ws2_32.lib;opengl32.lib;glu32.lib;jpeg.lib;zlib.lib;libpng16.lib;libvrml97core.lib;libvrml97js32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\Release/MeshToSS.exe</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\libvrml97\libvrml97core\win32\Release;..\libvrml97\libvrml97js\win32\Release;..\lib\jpeg-9a\Release;..\lib\lpng1618\projects\vstudio\Release Library;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcp.lib;libc.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <ProgramDatabaseFile>.\Release/MeshToSS.pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
@@ -156,7 +156,6 @@
     <ClCompile Include="..\src\StdAfx.cpp" />
     <ClCompile Include="..\src\swin.cpp" />
     <ClCompile Include="..\src\texture.cxx" />
-    <ClCompile Include="..\src\vrml.cxx" />
     <ClCompile Include="..\src\vw.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +189,6 @@
     <ClInclude Include="..\src\StdAfx.h" />
     <ClInclude Include="..\src\swin.h" />
     <ClInclude Include="..\src\texture.h" />
-    <ClInclude Include="..\src\vrml.h" />
     <ClInclude Include="..\src\vw.h" />
   </ItemGroup>
   <ItemGroup>
@@ -208,21 +206,6 @@
     <None Include="res\MeshToSS.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\libvrml97\libvrml97core\win32\libvrml97core.vcxproj">
-      <Project>{9e8de2bb-1123-4932-8257-9ef5c1c3f3e0}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\libvrml97\libvrml97js\win32\fdlibm.vcxproj">
-      <Project>{2b366702-c046-42b8-9dd1-ddce6eea498d}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="..\libvrml97\libvrml97js\win32\libvrml97js.vcxproj">
-      <Project>{05ac795a-54b8-4ab9-a113-05e1e065a9de}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
     <ProjectReference Include="..\optmesh\optmesh.vcxproj">
       <Project>{6e45ea87-fcdc-4cb4-9708-2e538a62b217}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

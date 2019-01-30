@@ -66,18 +66,18 @@ ON_COMMAND(ID_FILE_OPEN_SMF, OnFileOpenSmf)
 ON_COMMAND(ID_FILE_SAVE_SMF, OnFileSaveSmf)
 ON_COMMAND(ID_MENU_SCREEN_HIDDEN, OnMenuScreenHidden)
 ON_UPDATE_COMMAND_UI(ID_MENU_SCREEN_HIDDEN, OnUpdateMenuScreenHidden)
-ON_COMMAND(ID_FILE_OPEN_VRML, OnFileOpenVrml)
+//ON_COMMAND(ID_FILE_OPEN_VRML, OnFileOpenVrml)
 ON_COMMAND(ID_MENU_EDIT_SUBDIV_UP, OnMenuEditSubdivUp)
 ON_COMMAND(ID_MENU_EDIT_SUBDIV_DOWN, OnMenuEditSubdivDown)
 ON_COMMAND(ID_MENU_EDIT_CONV, OnMenuEditConv)
 ON_COMMAND(ID_MENU_SCREEN_SUBBOWN, OnMenuScreenSubbown)
 ON_UPDATE_COMMAND_UI(ID_MENU_SCREEN_SUBBOWN, OnUpdateMenuScreenSubbown)
-ON_COMMAND(ID_FILE_SAVE_VRML_SUB, OnFileSaveVrmlSub)
-ON_COMMAND(ID_FILE_SAVE_VRML_POLY, OnFileSaveVrmlPoly)
+//ON_COMMAND(ID_FILE_SAVE_VRML_SUB, OnFileSaveVrmlSub)
+//ON_COMMAND(ID_FILE_SAVE_VRML_POLY, OnFileSaveVrmlPoly)
 ON_COMMAND(ID_MENU_SCREEN_ORGPPD, OnMenuScreenOrgppd)
 ON_UPDATE_COMMAND_UI(ID_MENU_SCREEN_ORGPPD, OnUpdateMenuScreenOrgppd)
-ON_COMMAND(ID_FILE_OPEN_EVRML_POLY, OnFileOpenEvrmlPoly)
-ON_COMMAND(ID_FILE_OPEN_EVRML_SS, OnFileOpenEvrmlSs)
+//ON_COMMAND(ID_FILE_OPEN_EVRML_POLY, OnFileOpenEvrmlPoly)
+//ON_COMMAND(ID_FILE_OPEN_EVRML_SS, OnFileOpenEvrmlSs)
 ON_COMMAND(ID_FILE_SAVE_PPD_POLY, OnFileSavePpdPoly)
 ON_COMMAND(ID_FILE_SAVE_SMF_POLY, OnFileSaveSmfPoly)
 //}}AFX_MSG_MAP
@@ -289,6 +289,7 @@ void CMainFrame::OnFileSavePpdPoly()
             _countof(swin->screenatr.view_ppd->filename), f );
 }
 
+#if 0
 static TCHAR BASED_CODE szwrlFilter[] = _T("VRML Files (*.wrl)|*.wrl|All Files (*.*)|*.*||");
 
 void CMainFrame::OnFileOpenVrml()
@@ -530,8 +531,6 @@ void CMainFrame::OnFileSaveVrmlPoly()
             _countof(swin->screenatr.view_ppd->filename), f );
 }
 
-static TCHAR BASED_CODE szsmfFilter[] = _T("SMF Files (*.smf)|*.smf|All Files (*.*)|*.*||");
-
 #include <string>
 
 void ConvertCS2CHAR(char pchStr[], CString csStr)
@@ -551,6 +550,9 @@ void ConvertCS2CHAR(char pchStr[], CString csStr)
 
         delete ptcStr;
 }
+#endif
+
+static TCHAR BASED_CODE szsmfFilter[] = _T("SMF Files (*.smf)|*.smf|All Files (*.*)|*.*||");
 
 //
 // open SMF file
@@ -1212,18 +1214,20 @@ void CMainFrame::OnMenuEditSubdivUp()
   if ( swin->screenatr.view_ppd == NULL ) return;
 
   Sppd* ppd = swin->screenatr.view_ppd;
-  
+
   //
+#if 0
   Sppd* tppd = subdiv_top( ppd );
   if ( tppd->file_type != FILE_EVRML_SUBDIV )
     {
       AfxMessageBox( _T("Subdivision can be executed only for a Extended VRML Subdiv. File"));
       return;
     }
-    
+#endif
+
   if ( ppd->parent == NULL ) return;
   swin->screenatr.view_ppd = ppd->parent;
-  
+
   InvalidateRect( NULL, FALSE );
 }
 
@@ -1235,13 +1239,14 @@ void CMainFrame::OnMenuEditSubdivDown()
   Sppd* ppd = swin->screenatr.view_ppd;
 
   //
+#if 0
   Sppd* tppd = subdiv_top( ppd );
   if ( tppd->file_type != FILE_EVRML_SUBDIV )
     {
       AfxMessageBox( _T("Subdivision can be executed only for a Extended VRML Subdiv. File"));
       return;
     }
-    
+#endif
   // level 3 以上はいかないように設定
   if ( ppd->sub_level >= 3 ) return;
   
