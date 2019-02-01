@@ -101,7 +101,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="file.cxx" />
-    <ClCompile Include="linbcg.cxx" />
     <ClCompile Include="lodprique.cxx" />
     <ClCompile Include="matlib.cxx" />
     <ClCompile Include="meshtoss.cxx" />
@@ -118,14 +117,12 @@
     <ClCompile Include="ps.cxx" />
     <ClCompile Include="qem.cxx" />
     <ClCompile Include="simpmesh.cxx" />
-    <ClCompile Include="slpopt.cxx" />
     <ClCompile Include="star.cxx" />
     <ClCompile Include="subdiv.cxx" />
     <ClCompile Include="veclib.cxx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="file.h" />
-    <ClInclude Include="linbcg.h" />
     <ClInclude Include="lodprique.h" />
     <ClInclude Include="matlib.h" />
     <ClInclude Include="mytime.h" />
@@ -142,7 +139,6 @@
     <ClInclude Include="ps.h" />
     <ClInclude Include="qem.h" />
     <ClInclude Include="simpmesh.h" />
-    <ClInclude Include="slpopt.h" />
     <ClInclude Include="smd.h" />
     <ClInclude Include="star.h" />
     <ClInclude Include="subdiv.h" />

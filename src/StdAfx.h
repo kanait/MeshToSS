@@ -1,3 +1,11 @@
+//
+// StdAfx.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
 // stdafx.h : 標準のシステム インクルード ファイル、
 //            または参照回数が多く、かつあまり変更されない
 //            プロジェクト専用のインクルード ファイルを記述します。

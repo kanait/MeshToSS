@@ -1,5 +1,11 @@
-// Material.cpp 
-// created by T.Kanai 1998.08.02
+//
+// Material.cpp
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
 
 #include "stdafx.h"
 

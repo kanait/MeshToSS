@@ -1,11 +1,18 @@
+//
+// ConvSubdiv.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
+
 #if !defined(AFX_CONVSUBDIV_H__1950D551_5A59_4AFB_A577_53F4E33DAF96__INCLUDED_)
 #define AFX_CONVSUBDIV_H__1950D551_5A59_4AFB_A577_53F4E33DAF96__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// ConvSubdiv.h : ヘッダー ファイル
-//
 
 /////////////////////////////////////////////////////////////////////////////
 // CConvSubdiv ダイアログ

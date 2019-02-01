@@ -1,3 +1,12 @@
+//
+// SRDialog.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
+
 #if !defined(AFX_SRDIALOG_H__A20A96A2_496A_11D2_AB68_00E029217E15__INCLUDED_)
 #define AFX_SRDIALOG_H__A20A96A2_496A_11D2_AB68_00E029217E15__INCLUDED_
 

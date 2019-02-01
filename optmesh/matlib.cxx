@@ -1,7 +1,11 @@
 //
 // matlib.cxx
-//  
-// Copyright (c) 1997-2000 by Takashi Kanai; All rights researved.
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
 
 // #include "StdAfx.h"
 

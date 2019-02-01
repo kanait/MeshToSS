@@ -1,4 +1,10 @@
-// OpenGL.h : OPENGL アプリケーションのメイン ヘッダー ファイル
+//
+// MeshToSS.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
 //
 
 #if !defined(AFX_OPENGL_H__11D0ECD4_2844_11D2_AB51_00E029217E15__INCLUDED_)

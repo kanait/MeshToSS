@@ -1,8 +1,11 @@
 //
 // simpmesh.cxx
 // simplifying mesh functions
-// 
-// Copyright (c) 1999-2000 Takashi Kanai; All rights reserved. 
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
 //
 
 #ifdef _DEBUG
@@ -35,7 +38,6 @@ static char THIS_FILE[] = __FILE__;
 #include "simpmesh.h"
 
 //
-//。。エハホャイス 。ハトコナタソ砲茲襦// 
 void simpmesh( Sppd *ppd, int npoint )
 {
   // 初期化
@@ -50,10 +52,12 @@ void simpmesh( Sppd *ppd, int npoint )
     ppd_calc_eqem( ppd );
   }
 
+#if 0
   // 前処理 (必要ならば)
   if ( params.pre_optimize == TRUE ) {
     ppdslpopt( ppd );
   }
+#endif
 
 #if 0  
     fprintf(stdout, "aaaaaaaaaaa\n");
@@ -96,16 +100,16 @@ void simpmesh( Sppd *ppd, int npoint )
   for ( vt = ppd->spvt; vt != NULL; vt = vt->nxt )
     {
       fprintf(stdout, "v %d qem %g %g %g %g %g\n",
-	      vt->no, vt->mat[0], vt->mat[1], vt->mat[2], vt->mat[3],
-	      vt->mat[4] );
+              vt->no, vt->mat[0], vt->mat[1], vt->mat[2], vt->mat[3],
+              vt->mat[4] );
       sum += vt->mat[0];
     }
   
   for ( ed = ppd->sped; ed != NULL; ed = ed->nxt )
     {
       fprintf(stdout, "e %d qem %g %g %g %g %g\n",
-	      ed->no, ed->mat[0], ed->mat[1], ed->mat[2], ed->mat[3],
-	      ed->mat[4] );
+              ed->no, ed->mat[0], ed->mat[1], ed->mat[2], ed->mat[3],
+              ed->mat[4] );
       sum += ed->mat[0];
     }
   fprintf(stdout, "sum %g\n", sum );
@@ -116,7 +120,7 @@ void simpmesh( Sppd *ppd, int npoint )
 }
 
 //
-//　簡略化 （平均自乗誤差による）
+// 簡略化（平均自乗誤差による）
 // 
 void simpmesh_l2norm( Sppd *ppd, double l2norm )
 {
@@ -131,11 +135,13 @@ void simpmesh_l2norm( Sppd *ppd, double l2norm )
     // 各エッジに対する quadric error metric の計算
     ppd_calc_eqem( ppd );
   }
-  
+
+#if 0
   // 前処理 (必要ならば)
   if ( params.pre_optimize == TRUE ) {
     ppdslpopt( ppd );
   }
+#endif
   
   //qem2submatrix_test( ppd );
   

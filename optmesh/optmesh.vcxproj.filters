@@ -14,9 +14,6 @@
     <ClCompile Include="file.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="linbcg.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lodprique.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,9 +62,6 @@
     <ClCompile Include="simpmesh.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="slpopt.cxx">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="star.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -80,9 +74,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="file.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="linbcg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="lodprique.h">
@@ -131,9 +122,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="simpmesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="slpopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="smd.h">

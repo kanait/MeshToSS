@@ -1,7 +1,16 @@
+//
+// resoure.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
 // Used by MeshToSS.rc
 //
+
 #define IDOK2                           3
 #define IDCANCEL2                       4
 #define IDD_ABOUTBOX                    100

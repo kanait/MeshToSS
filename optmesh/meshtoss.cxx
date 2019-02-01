@@ -1,8 +1,11 @@
 //
 // meshtoss.cxx
 // meshtoss main function
-// 
-// Copyright (c) 1999-2000 Takashi Kanai; All rights reserved. 
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
 //
 
 #include <math.h>
@@ -116,7 +119,7 @@ int main( int argc, char *argv[] )
     } else {
       
       if ( j < 2 ) {
-	strcpy( params.filename[j], argv[i] );
+        strcpy( params.filename[j], argv[i] );
       }
       ++j;
       ++(params.nfile);

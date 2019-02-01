@@ -1,9 +1,13 @@
 //
+// qem.cxx
 // Quadric Error Metric (QEM) functions
 // from Garland and Heckbert's SIGGRAPH 97 paper:
 // "Surface simplification using quadric error metrics"
 //
-// Copyright (c) 1999-2000 Takashi Kanai; All rights reserved.
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
 //
 
 #ifdef _DEBUG

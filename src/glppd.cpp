@@ -1,7 +1,10 @@
 //
 // glppd.cpp
-//  
-// Copyright (c) 1997-1999 by Takashi Kanai; All rights researved.
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
 //
 
 #include "stdafx.h"
@@ -87,7 +90,7 @@ static Material edge_mat[] = {
 void drawppd_vertex( Sppd *ppd, ScreenAtr *screen )
 {
   if ( ppd == NULL ) return;
-	
+
   glPointSize( 2.5 );
   for ( Spvt *v = ppd->spvt; v != (Spvt *) NULL; v = v->nxt ) {
 
@@ -103,13 +106,13 @@ void drawppd_vertex( Sppd *ppd, ScreenAtr *screen )
 #if 0
     if ( v->isSubdivType == SUBDIV_EVEN )
       {
-	glColor3dv( blackvec );
+        glColor3dv( blackvec );
       }
     else
       {
-	glColor3dv( redvec );
+        glColor3dv( redvec );
       }
-#endif    
+#endif
 
     glBegin( GL_POINTS );
     Vec *vec = &(v->vec);

@@ -1,11 +1,18 @@
+//
+// MeshInfoDialog.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
+//
+
 #if !defined(AFX_MESHINFODIALOG_H__DD826CC0_BDCA_11D3_98FC_0000F45A89CD__INCLUDED_)
 #define AFX_MESHINFODIALOG_H__DD826CC0_BDCA_11D3_98FC_0000F45A89CD__INCLUDED_
 
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-// MeshInfoDialog.h : ヘッダー ファイル
-//
 
 /////////////////////////////////////////////////////////////////////////////
 // CMeshInfoDialog ダイアログ

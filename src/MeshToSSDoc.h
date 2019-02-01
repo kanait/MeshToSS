@@ -1,4 +1,10 @@
-// OpenGLDoc.h : CMeshToSSDoc クラスの宣言およびインターフェイスの定義をします。
+//
+// MeshToSSDoc.h
+//
+// Copyright (c) 2000 IPA and Keio University SFC Research Institution
+//
+// This software is released under the MIT License.
+// http://opensource.org/licenses/mit-license.php
 //
 /////////////////////////////////////////////////////////////////////////////
 
