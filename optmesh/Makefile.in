@@ -137,18 +137,16 @@ am__v_AR_1 =
 libmesh_a_AR = $(AR) $(ARFLAGS)
 libmesh_a_LIBADD =
 am_libmesh_a_OBJECTS = file.$(OBJEXT) intsec.$(OBJEXT) \
-	tricube.$(OBJEXT) linbcg.$(OBJEXT) matlib.$(OBJEXT) \
-	octree.$(OBJEXT) oppd.$(OBJEXT) ppd.$(OBJEXT) \
-	ppdedge.$(OBJEXT) ppdface.$(OBJEXT) ppdlist.$(OBJEXT) \
-	ppdnormal.$(OBJEXT) ppdpart.$(OBJEXT) ppdsolid.$(OBJEXT) \
-	ppdvertex.$(OBJEXT) ps.$(OBJEXT) mytime.$(OBJEXT) \
-	veclib.$(OBJEXT)
+	tricube.$(OBJEXT) matlib.$(OBJEXT) octree.$(OBJEXT) \
+	oppd.$(OBJEXT) ppd.$(OBJEXT) ppdedge.$(OBJEXT) \
+	ppdface.$(OBJEXT) ppdlist.$(OBJEXT) ppdnormal.$(OBJEXT) \
+	ppdpart.$(OBJEXT) ppdsolid.$(OBJEXT) ppdvertex.$(OBJEXT) \
+	ps.$(OBJEXT) mytime.$(OBJEXT) veclib.$(OBJEXT)
 libmesh_a_OBJECTS = $(am_libmesh_a_OBJECTS)
 libsimp_a_AR = $(AR) $(ARFLAGS)
 libsimp_a_LIBADD =
 am_libsimp_a_OBJECTS = qem.$(OBJEXT) lodprique.$(OBJEXT) \
-	slpopt.$(OBJEXT) star.$(OBJEXT) simpmesh.$(OBJEXT) \
-	subdiv.$(OBJEXT)
+	star.$(OBJEXT) simpmesh.$(OBJEXT) subdiv.$(OBJEXT)
 libsimp_a_OBJECTS = $(am_libsimp_a_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am_meshtoss_OBJECTS = meshtoss.$(OBJEXT)
@@ -332,7 +330,6 @@ lib_LIBRARIES = libmesh.a libsimp.a
 libmesh_a_SOURCES = file.cxx file.h \
 				intsec.cxx intsec.h \
 				tricube.cxx tricube.h \
-				linbcg.cxx linbcg.h \
 				matlib.cxx matlib.h \
 				octree.cxx octree.h \
 				oppd.cxx oppd.h \
@@ -352,7 +349,6 @@ libmesh_a_SOURCES = file.cxx file.h \
 
 libsimp_a_SOURCES = qem.cxx qem.h \
 				lodprique.cxx lodprique.h \
-				slpopt.cxx slpopt.h \
 				star.cxx star.h \
 				simpmesh.cxx simpmesh.h \
 				subdiv.cxx subdiv.h
@@ -500,7 +496,6 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/file.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/intsec.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/linbcg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lodprique.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/matlib.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/meshtoss.Po@am__quote@
@@ -520,7 +515,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simpcheck.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simperror.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/simpmesh.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slpopt.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/star.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/subdiv.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/tricube.Po@am__quote@

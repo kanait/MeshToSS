@@ -27,7 +27,6 @@ lib_LIBRARIES		= libmesh.a libsimp.a
 libmesh_a_SOURCES	= file.cxx file.h \
 				intsec.cxx intsec.h \
 				tricube.cxx tricube.h \
-				linbcg.cxx linbcg.h \
 				matlib.cxx matlib.h \
 				octree.cxx octree.h \
 				oppd.cxx oppd.h \
@@ -47,7 +46,6 @@ libmesh_a_SOURCES	= file.cxx file.h \
 
 libsimp_a_SOURCES	= qem.cxx qem.h \
 				lodprique.cxx lodprique.h \
-				slpopt.cxx slpopt.h \
 				star.cxx star.h \
 				simpmesh.cxx simpmesh.h \
 				subdiv.cxx subdiv.h

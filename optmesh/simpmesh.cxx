@@ -33,7 +33,7 @@ static char THIS_FILE[] = __FILE__;
 #include "qem.h"
 #include "lodprique.h"
 #include "star.h"
-#include "slpopt.h"
+//#include "slpopt.h"
 
 #include "simpmesh.h"
 
