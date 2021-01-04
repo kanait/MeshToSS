@@ -35,7 +35,7 @@ static char THIS_FILE[] = __FILE__;
 #include "vw.h"
 #include "smf.h"
 #include "mtl.h"
-#include "vrml.h"
+//#include "vrml.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // CMainFrame
