@@ -43,14 +43,14 @@ Sppd* ppdsubdiv( Sppd* ppd, int subdiv_type )
   
   int i;
   
-  // even vertex の生成 (id は ppd vertex に対応)
+  // even vertex create (id  ppd vertex  maps to )
   Spvt** even = (Spvt**) malloc( ppd->vn * sizeof(Spvt*) );
   for ( i = 0; i < ppd->vn; ++i )
     {
       even[i] = create_ppdvertex( subppd );
       even[i]->bpso = subppd->spso;
     }
-  // odd vertex  の生成 (id は ppd edge に対応)
+  // odd vertex  create (id  ppd edge  maps to )
   Spvt** odd = (Spvt**) malloc( ppd->en * sizeof(Spvt*) );
   for ( i = 0; i < ppd->en; ++i )
     {
@@ -58,7 +58,7 @@ Sppd* ppdsubdiv( Sppd* ppd, int subdiv_type )
       odd[i]->bpso = subppd->spso;
     }
 
-  // エッジに境界をつけるためのフラッグ
+  // mark boundary on edge
 //    int en = 0;
 //    for ( Spfc* efc = ppd->spfc; efc != NULL; efc = efc->nxt )
 //      {
@@ -66,7 +66,7 @@ Sppd* ppdsubdiv( Sppd* ppd, int subdiv_type )
 //      }
   
 //    BOOL* edflag = (BOOL*) malloc( 12 * ppd->fn * sizeof(BOOL) );
-  // 分割面の生成 ( 4-to-1 subdivision )
+  // create subdivision faces ( 4-to-1 subdivision )
 //    i = 0;
   for ( Spfc* fc = ppd->spfc; fc != NULL; fc = fc->nxt )
     {
@@ -166,7 +166,7 @@ Sppd* ppdsubdiv( Sppd* ppd, int subdiv_type )
     }
 //    display("i %d\n", i );
 
-  // 頂点座標の計算
+  // vertex position
 
   switch ( subdiv_type )
     {
@@ -177,14 +177,14 @@ Sppd* ppdsubdiv( Sppd* ppd, int subdiv_type )
       break;
     }
 
-  // エッジ
+  // Edge 
   ppd_make_edges( subppd );
 
   calc_ppd_boundary( subppd );
 
   reattach_ppdvertex_halfedge( subppd );
 
-  // 法線, 境界フラッグをつける
+  // normal , set boundary flags
   i = 0;
   for ( Spfc* sfc = subppd->spfc; sfc != NULL; sfc = sfc->nxt )
     {
@@ -198,7 +198,7 @@ Sppd* ppdsubdiv( Sppd* ppd, int subdiv_type )
 
 //    free( edflag );
 
-  // 境界フラッグをつける
+  // set boundary flags
   for ( Sped* ed = subppd->sped; ed != NULL; ed = ed->nxt )
     {
       Spvt* sv = ed->sv;
@@ -236,11 +236,11 @@ void ppdsubdiv_initialize( Sppd* ppd )
 }
 
 //
-// loop's subdivision の頂点座標の計算
+// loop's subdivision vertex position computation
 //
 void loop_calculation( Sppd* subppd, Spvt** even, Spvt** odd, Sppd* ppd )
 {
-  // odd vertex の座標計算
+  // odd vertex position computation
   for ( Spvt* vt = ppd->spvt; vt != NULL; vt = vt->nxt )
     {
       if ( vt->isBoundary == FALSE )
@@ -253,7 +253,7 @@ void loop_calculation( Sppd* subppd, Spvt** even, Spvt** odd, Sppd* ppd )
 	}
     }
 
-  // even vertex の座標計算
+  // even vertex position computation
   for ( Sped* ed = ppd->sped; ed != NULL; ed = ed->nxt )
     {
       if ( ed->isBoundary == FALSE )
@@ -279,7 +279,7 @@ void loop_even_internal( Spvt* vt, Vec* vec )
 
     Spvt* vi = another_vt( ed, vt );
 
-    // eps0 への値の格納
+    // eps0 store into 
     sum.x += vi->vec.x;
     sum.y += vi->vec.y;
     sum.z += vi->vec.z;
@@ -289,12 +289,12 @@ void loop_even_internal( Spvt* vt, Vec* vec )
   } while ( (ed != NULL) && (ed != fed) ); 
   
   //
-  // k0, beta0 の計算 (v0 に関する値)
+  // k0, beta0  computation (v0  value for )
   //
   double beta = calc_beta( k );
 
   //
-  // alpha の計算
+  // alpha  computation
   //
   double dk = (double) k;
   double alpha = 1.0 - dk * beta;
@@ -337,7 +337,7 @@ void loop_odd_boundary( Sped* ed, Vec* vec )
 }
 
 //
-// valence の beta を求める関数
+// valence  of  beta function to compute 
 //
 double calc_beta( int valence )
 {

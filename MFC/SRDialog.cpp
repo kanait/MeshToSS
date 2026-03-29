@@ -23,7 +23,7 @@ static char THIS_FILE[] = __FILE__;
 #include "SRDialog.h"
 
 /////////////////////////////////////////////////////////////////////////////
-// CSRDialog ダイアログ
+// CSRDialog dialog
 
 
 CSRDialog::CSRDialog(CWnd* pParent /*=NULL*/)
@@ -42,14 +42,14 @@ BOOL CSRDialog::OnInitDialog()
 {
   CDialog::OnInitDialog();
   
-  // TODO: この位置に初期化の補足処理を追加してください
+  // TODO: Add extra initialization here
   ScreenAtr *screen = &(swin->screenatr);
   m_radius_cyl = screen->rad_cyl;
   m_radius_sph = screen->rad_sph;
   
   return TRUE;
-  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
-  // 例外: OCX プロパティ ページの戻り値は FALSE となります
+  // Return TRUE unless you set the focus to a control
+  // NOTE: OCX property pages should return FALSE.
 }
 
 void CSRDialog::DoDataExchange(CDataExchange* pDX)
@@ -68,11 +68,11 @@ BEGIN_MESSAGE_MAP(CSRDialog, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CSRDialog メッセージ ハンドラ
+// CSRDialog message handlers
 
 void CSRDialog::OnOK() 
 {
-  // TODO: この位置にその他の検証用のコードを追加してください
+  // TODO: Add validation code here.
 	
   //	CDialog::OnOK();
   UpdateData(TRUE);
@@ -88,7 +88,7 @@ void CSRDialog::OnOK()
 
 void CSRDialog::OnCancel() 
 {
-  // TODO: この位置に特別な後処理を追加してください。
+  // TODO: Add special cleanup code here.
 	
   //	CDialog::OnCancel();
   DestroyWindow();
@@ -96,7 +96,7 @@ void CSRDialog::OnCancel()
 
 void CSRDialog::PostNcDestroy() 
 {
-  // TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
+  // TODO: Add specialized code here and/or call the base class.
 	
   //	CDialog::PostNcDestroy();
   delete this;

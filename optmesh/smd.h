@@ -309,9 +309,9 @@ struct _spvt {
   double *lambda;
   
   // QEM matrix
-  // mat[0] - mat[5]: ケヤホ の要素
-  // mat[6] - mat[8]: ベクトル B の要素
-  // mat[9]         : 定数 C の要素
+  // mat[0] - mat[5]:  elements of 
+  // mat[6] - mat[8]: vector  B elements of 
+  // mat[9]         : constant  C elements of 
   double mat[10];
   
   // for making QEM Infinity Matrix
@@ -349,9 +349,9 @@ struct _sped {
   double length;
   
   // Edge-based QEM matrix
-  // mat[0] - mat[5]: 行列A の要素
-  // mat[6] - mat[8]: ベクトル B の要素
-  // mat[9]         : 定数 C の要素
+  // mat[0] - mat[5]: matrix A elements of 
+  // mat[6] - mat[8]: vector  B elements of 
+  // mat[9]         : constant  C elements of 
   double mat[10];
   
   // for star

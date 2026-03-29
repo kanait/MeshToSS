@@ -25,17 +25,17 @@ IMPLEMENT_DYNCREATE(CMeshToSSDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CMeshToSSDoc, CDocument)
 	//{{AFX_MSG_MAP(CMeshToSSDoc)
-		// メモ - ClassWizard はこの位置にマッピング用のマクロを追加または削除します。
-		//        この位置に生成されるコードを編集しないでください。
+		// NOTE: ClassWizard adds or removes mapping macros here.
+		//        Do not edit code generated in this section.
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSDoc クラスの構築/消滅
+// CMeshToSSDoc construction/destruction
 
 CMeshToSSDoc::CMeshToSSDoc()
 {
-	// TODO: この位置に１度だけ呼ばれる構築用のコードを追加してください。
+	// TODO: Add one-time construction code here.
 
 }
 
@@ -48,11 +48,11 @@ BOOL CMeshToSSDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-// タイトルをつける場所
-// ここよりも　**App::InitInstance の方が良い．
+// Where to set the document title
+// **App::InitInstance is usually a better place.
 //	CString strTitle = _T("Gmorph Ver2.1a1 (Win32 Version)");
-//	SetTitle(strTitle);// ←CDocumentクラスのメンバ関数	// TODO: この位置に再初期化処理を追加してください。
-	// (SDI ドキュメントはこのドキュメントを再利用します。)
+//	SetTitle(strTitle);  // CDocument member  // TODO: Add reinitialization code here.
+	// (SDI reuses this document.)
 
 	return TRUE;
 }
@@ -60,22 +60,22 @@ BOOL CMeshToSSDoc::OnNewDocument()
 
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSDoc シリアライゼーション
+// CMeshToSSDoc serialization
 
 void CMeshToSSDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
-		// TODO: この位置に保存用のコードを追加してください。
+		// TODO: Add saving code here.
 	}
 	else
 	{
-		// TODO: この位置に読み込み用のコードを追加してください。
+		// TODO: Add loading code here.
 	}
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSDoc クラスの診断
+// CMeshToSSDoc diagnostics
 
 #ifdef _DEBUG
 void CMeshToSSDoc::AssertValid() const
@@ -90,4 +90,4 @@ void CMeshToSSDoc::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSDoc コマンド
+// CMeshToSSDoc commands

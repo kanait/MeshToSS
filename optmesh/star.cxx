@@ -24,8 +24,8 @@ Star *create_star( Sped *ed )
   Star *star = init_star();
 
   //
-  // star vertex 、ヒ、ェ、、、ニ
-  // ed->sv 、0 ネヨフワ。、ed->ev 、1 ネヨフワ、ヒウハヌシ
+  // star vertex 
+  // ed->sv 0 ed->ev 1 
   //
   // ed->sv
   Starvt *starvt = NULL;

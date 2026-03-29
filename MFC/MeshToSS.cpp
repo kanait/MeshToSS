@@ -34,66 +34,61 @@ BEGIN_MESSAGE_MAP(CMeshToSSApp, CWinApp)
 	ON_COMMAND(ID_APP_ABOUT, OnAppAbout)
 	ON_COMMAND(ID_APP_EXIT, OnAppExit)
 	//}}AFX_MSG_MAP
-	// 標準のファイル基本ドキュメント コマンド
+	// Standard file-based document commands
 	ON_COMMAND(ID_FILE_NEW, CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, CWinApp::OnFileOpen)
-	// 標準の印刷セットアップ コマンド
+	// Standard print setup command
 	ON_COMMAND(ID_FILE_PRINT_SETUP, CWinApp::OnFilePrintSetup)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSApp クラスの構築
+// CMeshToSSApp construction
 
 CMeshToSSApp::CMeshToSSApp()
 {
-	// TODO: この位置に構築用コードを追加してください。
-	// ここに InitInstance 中の重要な初期化処理をすべて記述してください。
+	// TODO: Add construction code here.
+	// Place important InitInstance initialization here.
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// 唯一の CMeshToSSApp オブジェクト
+// The one and only CMeshToSSApp object
 
 CMeshToSSApp theApp;
 
 Swin *swin;
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSApp クラスの初期化
+// CMeshToSSApp initialization
 
 BOOL CMeshToSSApp::InitInstance()
 {
-	// 標準的な初期化処理
-	// もしこれらの機能を使用せず、実行ファイルのサイズを小さく
-	//  したければ以下の特定の初期化ルーチンの中から不必要なもの
-	//  を削除してください。
+	// Standard MFC initialization
+	// To reduce executable size, remove any of the following init routines you do not need.
 
-	// 設定が保存される下のレジストリ キーを変更します。
-	// 会社名または所属など、適切な文字列に
-	// 変更してください。
+	// Change the registry key below where settings are stored (company or organization string).
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
-	LoadStdProfileSettings();  // 標準の INI ファイルのオプションをロードします (MRU を含む)
+	LoadStdProfileSettings();  // Load standard INI options (including MRU)
 
-	// アプリケーション用のドキュメント テンプレートを登録します。ドキュメント テンプレート
-	//  はドキュメント、フレーム ウィンドウとビューを結合するために機能します。
+	// Register the document template (binds document, frame window, and view).
 
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
 		RUNTIME_CLASS(CMeshToSSDoc),
-		RUNTIME_CLASS(CMainFrame),       // メイン SDI フレーム ウィンドウ
+		RUNTIME_CLASS(CMainFrame),       // main SDI frame window
 		RUNTIME_CLASS(CMeshToSSView)
 		);
 	AddDocTemplate(pDocTemplate);
 
-	// DDE、file open など標準のシェル コマンドのコマンドラインを解析します。
+	// Parse command line for standard shell commands (DDE, File Open, etc.).
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
 
-	// コマンドラインでディスパッチ コマンドを指定します。
+	// Dispatch commands specified on the command line.
 	if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
-	// メイン ウィンドウが初期化されたので、表示と更新を行います。
+	// Show and update the main window.
 	CString strTitle = _T("MeshToSS Version 1.1");
 	m_pMainWnd ->SetWindowText( strTitle );
 	m_pMainWnd->ShowWindow( SW_SHOW );
@@ -103,28 +98,28 @@ BOOL CMeshToSSApp::InitInstance()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// アプリケーションのバージョン情報で使われる CAboutDlg ダイアログ
+// CAboutDlg dialog used for application version information
 
 class CAboutDlg : public CDialog
 {
 public:
 	CAboutDlg();
 
-// ダイアログ データ
+// Dialog data
 	//{{AFX_DATA(CAboutDlg)
 	enum { IDD = IDD_ABOUTBOX };
 	//}}AFX_DATA
 
-	// ClassWizard 仮想関数のオーバーライドを生成します。
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CAboutDlg)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // // DDX/DDV のサポート
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 protected:
 	//{{AFX_MSG(CAboutDlg)
-		// メッセージ ハンドラはありません。
+		// No message handlers
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
@@ -144,11 +139,11 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 	//{{AFX_MSG_MAP(CAboutDlg)
-		// メッセージ ハンドラはありません。
+		// No message handlers
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
-// ダイアログを実行するためのアプリケーション コマンド
+// App command to run the dialog
 void CMeshToSSApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
@@ -156,13 +151,13 @@ void CMeshToSSApp::OnAppAbout()
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSApp コマンド
+// CMeshToSSApp commands
 
 #include "QuitDialog.h"
 
 void CMeshToSSApp::OnAppExit() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   CQuitDialog ced;
 
   if ( ced.DoModal() == IDOK ) {

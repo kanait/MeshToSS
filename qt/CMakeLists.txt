@@ -3,6 +3,7 @@
 #   cmake -B build -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)"
 #   cmake --build build
 # Run (macOS): build/qt/mesh_to_ss_qt.app/Contents/MacOS/mesh_to_ss_qt
+#   (use the binary path above if you want stderr in Terminal; `open *.app` has no terminal)
 # Run (Linux etc.): build/qt/mesh_to_ss_qt
 
 find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Widgets OpenGL OpenGLWidgets)

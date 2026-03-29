@@ -127,7 +127,7 @@ Sppd *open_smf( char *fname )
   }
 #endif
 
-  // 読み込み 1 回目
+  // First pass: count vertices and faces
   //
   // open ppd elements
   //
@@ -175,7 +175,7 @@ Sppd *open_smf( char *fname )
     fc->bppt = ppd->sppt;
   }
   
-  // 二回目
+  // Second pass: fill geometry
   if ( (fp = fopen(fname, "r")) == NULL ) {
     return NULL;
   }
@@ -222,7 +222,7 @@ Sppd *open_smf( char *fname )
       }
       Spfc *fc = ofc[nf].fc; ++nf;
 
-      // halfedge の生成
+      // create halfedges
       Sphe *he;
       for ( i = 0; i < n; ++i ) {
 	he = create_ppdhalfedge( fc );
@@ -249,7 +249,7 @@ Sppd *open_smf( char *fname )
 	  // edge - vertex
 	  ed->sv = sv;
 	  ed->ev = ev;
-	  // ここではあとで計算するのでいらない
+	  // edge length computed later
 	  //ed->length = V3DistanceBetween2Points( &(sv->vec), &(ev->vec) );
 	  // vertex - edge
 	  (void) create_vtxed( sv, ed );

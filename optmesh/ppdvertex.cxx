@@ -221,7 +221,7 @@ double calc_angle(Spvt *v1, Spvt *v2, Spvt *v3)
     return 180.0;
   }
   
-  /* + 、ォ - 、ォ、ホネスト熙ホ、゜ */
+  /* +  -  */
   i = V2Signi(&(sub1), &(sub2));
 /*   sn = V2Sign(&(sub1), &(sub2)); */
 
@@ -451,7 +451,7 @@ Sped *ppdvertex_next_edge( Sped *ed, Spvt *vt )
 
   if ( he == NULL ) return NULL;
   
-  // おそらくこれはこんなに複雑でなくてよい
+  // this can likely be simpler
   if ( he->prv != NULL ) return he->prv->ed;
   else return NULL;
 }
@@ -474,14 +474,14 @@ Sped *ppdvertex_prev_edge( Sped *ed, Spvt *vt )
 
   if ( he == NULL ) return NULL;
   
-  // おそらくこれはこんなに複雑でなくてよい
+  // this can likely be simpler
   if ( he->nxt != NULL ) return he->nxt->ed;
   else return NULL;
 }
 
 
 //
-// vt のまわりの v0 とは違う境界頂点を探す
+// vt around  v0 find boundary vertices other than v0
 //
 Spvt *ppdvertex_another_boundaryvertex( Spvt *vt, Spvt *v0 )
 {

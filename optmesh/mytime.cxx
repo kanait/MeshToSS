@@ -20,14 +20,24 @@ static char THIS_FILE[] = __FILE__;
 #if defined(_WIN32) || defined(_WIN64)
 #else
 #include <unistd.h>
-#include <limits.h>
-#include <time.h>
-#include <sys/times.h>
+#include <sys/time.h>
+#include <sys/resource.h>
 #endif
 
 #include "smd.h"
 
 #include "mytime.h"
+
+static double g_last_real;
+static double g_last_user;
+static double g_last_sys;
+
+void mytime_get_last( double *realtime, double *usertime, double *systime )
+{
+  *realtime = g_last_real;
+  *usertime = g_last_user;
+  *systime = g_last_sys;
+}
 
 #ifdef WIN32
 struct tms {
@@ -38,60 +48,72 @@ struct tms {
 };
 #endif
 
-#ifndef WIN32
-static struct tms tbuf1;
-static long real1;
+#if !defined(_WIN32) && !defined(_WIN64)
+
+static struct timeval wall_start;
+static struct rusage ru_start;
+
+static double timeval_diff_sec( const struct timeval *later, const struct timeval *earlier )
+{
+  return (double)( later->tv_sec - earlier->tv_sec )
+         + (double)( later->tv_usec - earlier->tv_usec ) * 1.0e-6;
+}
+
 #endif
 
 // start timer
 void time_start(void)
-{				
-#if !defined(WIN32)
-  real1 = times(&tbuf1);
+{
+#if !defined(_WIN32) && !defined(_WIN64)
+  (void) gettimeofday( &wall_start, NULL );
+  (void) getrusage( RUSAGE_SELF, &ru_start );
 #endif
 }
 
-// stop timer 
+// stop timer
 void time_stop( void )
 {
-#if !defined(WIN32)
-  struct tms tbuf2;
-  long  real2;
+#if !defined(_WIN32) && !defined(_WIN64)
+  struct timeval wall_end;
+  struct rusage ru_end;
   double realtime, usertime, systime;
 
-  real2 = times(&tbuf2);
+  (void) gettimeofday( &wall_end, NULL );
+  (void) getrusage( RUSAGE_SELF, &ru_end );
 
-  //  double ct = (double) CLK_TCK;
-  double ct = (double) CLOCKS_PER_SEC;
-  
-  realtime = (real2 - real1) / ct;
-  usertime = (tbuf2.tms_utime - tbuf1.tms_utime) / ct;
-  systime  = (tbuf2.tms_stime - tbuf1.tms_stime) / ct;
-  fprintf(stdout,"processed time: \n");
-  fprintf(stdout,"\treal:\t%.2f (s)\n", realtime);
-  fprintf(stdout,"\tuser:\t%.2f (s)\n", usertime);
-  fprintf(stdout,"\tsys: \t%.2f (s)\n", systime);
+  realtime = timeval_diff_sec( &wall_end, &wall_start );
+  usertime = timeval_diff_sec( &ru_end.ru_utime, &ru_start.ru_utime );
+  systime  = timeval_diff_sec( &ru_end.ru_stime, &ru_start.ru_stime );
+
+  g_last_real = realtime;
+  g_last_user = usertime;
+  g_last_sys = systime;
+
+  /* stderr: visible when the binary is run attached to a terminal (not with `open *.app`). */
+  fprintf( stderr, "processed time: \n" );
+  fprintf( stderr, "\treal:\t%.2f (s)\n", realtime );
+  fprintf( stderr, "\tuser:\t%.2f (s)\n", usertime );
+  fprintf( stderr, "\tsys: \t%.2f (s)\n", systime );
+  (void) fflush( stderr );
 #endif
 }
 
-// stop timer 
+// stop timer (values only)
 void time_stop_value( double *realtime, double *usertime, double *systime )
-{				
-#ifndef WIN32
-  struct tms tbuf2;
-  long  real2;
+{
+#if !defined(_WIN32) && !defined(_WIN64)
+  struct timeval wall_end;
+  struct rusage ru_end;
 
-  // double ct = (double) CLK_TCK;
-  double ct = (double) CLOCKS_PER_SEC;
-  
-  real2 = times(&tbuf2);
-  *realtime = (real2 - real1) / ct;
-  *usertime = (tbuf2.tms_utime - tbuf1.tms_utime) / ct;
-  *systime  = (tbuf2.tms_stime - tbuf1.tms_stime) / ct;
-//   fprintf(stdout,"processed time: \n");
-//   fprintf(stdout,"\treal:\t%.2f (s)\n", *realtime);
-//   fprintf(stdout,"\tuser:\t%.2f (s)\n", *usertime);
-//   fprintf(stdout,"\tsys: \t%.2f (s)\n", *systime);
+  (void) gettimeofday( &wall_end, NULL );
+  (void) getrusage( RUSAGE_SELF, &ru_end );
+
+  *realtime = timeval_diff_sec( &wall_end, &wall_start );
+  *usertime = timeval_diff_sec( &ru_end.ru_utime, &ru_start.ru_utime );
+  *systime  = timeval_diff_sec( &ru_end.ru_stime, &ru_start.ru_stime );
+
+  g_last_real = *realtime;
+  g_last_user = *usertime;
+  g_last_sys = *systime;
 #endif
 }
-

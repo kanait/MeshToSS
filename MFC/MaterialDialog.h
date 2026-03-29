@@ -15,15 +15,15 @@
 #endif // _MSC_VER > 1000
 
 /////////////////////////////////////////////////////////////////////////////
-// CMaterialDialog ダイアログ
+// CMaterialDialog dialog
 
 class CMaterialDialog : public CDialog
 {
-// コンストラクション
+// Construction
 public:
-	CMaterialDialog(CWnd* pParent = NULL);   // 標準のコンストラクタ
+	CMaterialDialog(CWnd* pParent = NULL);   // standard constructor
 
-// ダイアログ データ
+// Dialog data
 	//{{AFX_DATA(CMaterialDialog)
 	enum { IDD = IDD_MATERIAL_DIALOG };
 	CListBox	m_material_list;
@@ -31,20 +31,20 @@ public:
 	//}}AFX_DATA
 
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CMaterialDialog)
 	public:
 	virtual BOOL Create();
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual void PostNcDestroy();
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 protected:
 
-	// 生成されたメッセージ マップ関数
+	// Generated message map functions
 	//{{AFX_MSG(CMaterialDialog)
 	afx_msg void OnMatlPpdCheck();
 	afx_msg void OnDblclkMaterialList();
@@ -55,6 +55,6 @@ protected:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ は前行の直前に追加の宣言を挿入します。
+// Microsoft Visual C++ inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_MATERIALDIALOG_H__0F8F5B21_9FFB_11D3_98D2_0000F45A89CD__INCLUDED_)

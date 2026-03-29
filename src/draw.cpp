@@ -517,7 +517,7 @@ static void drawtile( Tile *tile, ScreenAtr *screen )
     }
 
   //
-  // 選択用
+  // for selection
   //
   draw_tile_tface_boundary( tile, screen );
 }

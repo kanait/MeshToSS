@@ -15,40 +15,40 @@
 #endif // _MSC_VER >= 1000
 
 /////////////////////////////////////////////////////////////////////////////
-// CQuitDialog ダイアログ
+// CQuitDialog dialog
 
 class CQuitDialog : public CDialog
 {
-// コンストラクション
+// Construction
 public:
-	CQuitDialog(CWnd* pParent = NULL);   // 標準のコンストラクタ
+	CQuitDialog(CWnd* pParent = NULL);   // standard constructor
 
-// ダイアログ データ
+// Dialog data
 	//{{AFX_DATA(CQuitDialog)
 	enum { IDD = IDD_QUIT_DIALOG };
-		// メモ: ClassWizard はこの位置にデータ メンバを追加します。
+		// NOTE: ClassWizard adds data members here.
 	//}}AFX_DATA
 
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 
 	//{{AFX_VIRTUAL(CQuitDialog)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 protected:
 
-	// 生成されたメッセージ マップ関数
+	// Generated message map functions
 	//{{AFX_MSG(CQuitDialog)
-		// メモ: ClassWizard はこの位置にメンバ関数を追加します。
+		// NOTE: ClassWizard adds member functions here.
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_QUITDIALOG_H__AC3B06D0_3282_11D2_AB58_00E029217E15__INCLUDED_)

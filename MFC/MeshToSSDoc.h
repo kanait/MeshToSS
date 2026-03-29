@@ -18,27 +18,27 @@
 
 class CMeshToSSDoc : public CDocument
 {
-protected: // シリアライズ機能のみから作成します。
+protected: // Create from serialization only.
 	CMeshToSSDoc();
 	DECLARE_DYNCREATE(CMeshToSSDoc)
 
-// アトリビュート
+// Attributes
 public:
 	CRectTracker m_tracker;
 	BOOL m_bAllowInvert;
 
-// オペレーション
+// Operations
 public:
 
-//オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CMeshToSSDoc)
 	public:
 	virtual BOOL OnNewDocument();
 	virtual void Serialize(CArchive& ar);
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 public:
 	virtual ~CMeshToSSDoc();
 #ifdef _DEBUG
@@ -48,11 +48,11 @@ public:
 
 protected:
 
-// 生成されたメッセージ マップ関数
+// Generated message map functions
 protected:
 	//{{AFX_MSG(CMeshToSSDoc)
-		// メモ - ClassWizard はこの位置にメンバ関数を追加または削除します。
-		//        この位置に生成されるコードを編集しないでください。
+		// NOTE: ClassWizard adds or removes member functions here.
+		//        Do not edit code generated in this section.
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
@@ -60,6 +60,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_OPENGLDOC_H__11D0ECDA_2844_11D2_AB51_00E029217E15__INCLUDED_)

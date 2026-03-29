@@ -66,12 +66,12 @@ IMPLEMENT_DYNCREATE(CMeshToSSView, CView)
   END_MESSAGE_MAP()
 
   /////////////////////////////////////////////////////////////////////////////
-  // CMeshToSSView ƒNƒ‰ƒX‚Ì\’z/Á–Å
+  // CMeshToSSView construction/destruction
 
   CMeshToSSView::CMeshToSSView() :
     m_hRC(0), m_pDC(0), m_ErrorString(_ErrorStrings[0])
 {
-  // TODO: ‚±‚ÌêŠ‚É\’z—p‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
+  // TODO: Add construction code here.
 
   //	swin->screenatr[SCREEN_SRC].wnd = GetTopLevelParent();
 }
@@ -82,8 +82,7 @@ CMeshToSSView::~CMeshToSSView()
 
 BOOL CMeshToSSView::PreCreateWindow(CREATESTRUCT& cs)
 {
-  // TODO: ‚±‚ÌˆÊ’u‚Å CREATESTRUCT cs ‚ðC³‚µ‚Ä Window ƒNƒ‰ƒX‚Ü‚½‚ÍƒXƒ^ƒCƒ‹‚ð
-  //  C³‚µ‚Ä‚­‚¾‚³‚¢B
+  // TODO: Modify CREATESTRUCT cs to change the window class or styles.
 
   cs.style |= WS_CLIPSIBLINGS | WS_CLIPCHILDREN;
 
@@ -99,7 +98,7 @@ BOOL CMeshToSSView::PreCreateWindow(CREATESTRUCT& cs)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSView ƒNƒ‰ƒX‚Ì•`‰æ
+// CMeshToSSView drawing
 
 void CMeshToSSView::OnDraw(CDC* pDC)
 {
@@ -111,7 +110,7 @@ void CMeshToSSView::OnDraw(CDC* pDC)
     return;
   }
 
-  // TODO: ‚±‚ÌêŠ‚ÉƒlƒCƒeƒBƒu ƒf[ƒ^—p‚Ì•`‰æƒR[ƒh‚ð’Ç‰Á‚µ‚Ü‚·B
+  // TODO: Add drawing code for native data here.
 
   redraw();
 
@@ -122,26 +121,26 @@ void CMeshToSSView::OnDraw(CDC* pDC)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSView ƒNƒ‰ƒX‚Ìˆóü
+// CMeshToSSView printing
 
 BOOL CMeshToSSView::OnPreparePrinting(CPrintInfo* pInfo)
 {
-  // ƒfƒtƒHƒ‹ƒg‚Ìˆóü€”õ
+  // default print preparation
   return DoPreparePrinting(pInfo);
 }
 
 void CMeshToSSView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-  // TODO: ˆóü‘O‚Ì“Á•Ê‚È‰Šú‰»ˆ—‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
+  // TODO: Add special initialization before printing.
 }
 
 void CMeshToSSView::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
 {
-  // TODO: ˆóüŒã‚ÌŒãˆ—‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢B
+  // TODO: Add cleanup after printing.
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSView ƒNƒ‰ƒX‚Ìf’f
+// CMeshToSSView diagnostics
 
 #ifdef _DEBUG
 void CMeshToSSView::AssertValid() const
@@ -154,7 +153,7 @@ void CMeshToSSView::Dump(CDumpContext& dc) const
   CView::Dump(dc);
 }
 
-CMeshToSSDoc* CMeshToSSView::GetDocument() // ”ñƒfƒoƒbƒO ƒo[ƒWƒ‡ƒ“‚ÍƒCƒ“ƒ‰ƒCƒ“‚Å‚·B
+CMeshToSSDoc* CMeshToSSView::GetDocument() // non-debug version is inline
 {
   ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CMeshToSSDoc)));
   return (CMeshToSSDoc*)m_pDocument;
@@ -162,14 +161,14 @@ CMeshToSSDoc* CMeshToSSView::GetDocument() // ”ñƒfƒoƒbƒO ƒo[ƒWƒ‡ƒ“‚ÍƒCƒ“ƒ‰ƒCƒ“‚
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshToSSView ƒNƒ‰ƒX‚ÌƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰
+// CMeshToSSView message handlers
 
 int CMeshToSSView::OnCreate(LPCREATESTRUCT lpCreateStruct) 
 {
   if (CView::OnCreate(lpCreateStruct) == -1)
     return -1;
 	
-  // TODO: ‚±‚ÌˆÊ’u‚ÉŒÅ—L‚Ìì¬—pƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add specialized creation code here
 	
   InitializeOpenGL();
 
@@ -280,7 +279,7 @@ void CMeshToSSView::OnDestroy()
 {
   CView::OnDestroy();
 	
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here
 	
   if ( ::wglMakeCurrent( 0, 0 ) == FALSE ) {
     SetError(2);
@@ -295,7 +294,7 @@ void CMeshToSSView::OnDestroy()
 
 BOOL CMeshToSSView::OnEraseBkgnd(CDC* pDC) 
 {
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚·‚é‚©‚Ü‚½‚ÍƒfƒtƒHƒ‹ƒg‚Ìˆ—‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here or call the default handler.
 	
   // return CView::OnEraseBkgnd(pDC);
   return TRUE; // tell Windows not to erase the Background
@@ -305,7 +304,7 @@ void CMeshToSSView::OnSize(UINT nType, int cx, int cy)
 {
   CView::OnSize(nType, cx, cy);
 	
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here
 
   //	GLdouble aspect_ratio; // width/height ratio
 	
@@ -327,7 +326,7 @@ void CMeshToSSView::OnSize(UINT nType, int cx, int cy)
 
 void CMeshToSSView::OnLButtonDown(UINT nFlags, CPoint point) 
 {
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚·‚é‚©‚Ü‚½‚ÍƒfƒtƒHƒ‹ƒg‚Ìˆ—‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here or call the default handler.
   CView::OnLButtonDown(nFlags, point);
 
   scrn_x = point.x;
@@ -364,7 +363,7 @@ void CMeshToSSView::OnLButtonDown(UINT nFlags, CPoint point)
 
     // just to demonstrate CRectTracker::TrackRubberBand
     CRectTracker tracker;
-    // (8,8) ˆÈã‚ÌƒTƒCƒY‚É‚È‚ç‚È‚¢‚Æƒ‰ƒo[ƒoƒ“ƒh‚É‚È‚ç‚È‚¢
+    // rubber-band selection needs at least an (8,8) rect
 #if 0    
     if (tracker.TrackRubberBand(this, point, pDoc->m_bAllowInvert)) {
 
@@ -416,7 +415,7 @@ void CMeshToSSView::OnLButtonDown(UINT nFlags, CPoint point)
 
 void CMeshToSSView::OnLButtonUp(UINT nFlags, CPoint point) 
 {
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚·‚é‚©‚Ü‚½‚ÍƒfƒtƒHƒ‹ƒg‚Ìˆ—‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here or call the default handler.
 	
   CView::OnLButtonUp(nFlags, point);
 
@@ -427,7 +426,7 @@ void CMeshToSSView::OnLButtonUp(UINT nFlags, CPoint point)
 
 void CMeshToSSView::OnMouseMove(UINT nFlags, CPoint point) 
 {
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚·‚é‚©‚Ü‚½‚ÍƒfƒtƒHƒ‹ƒg‚Ìˆ—‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here or call the default handler.
 	
   CView::OnMouseMove(nFlags, point);
 
@@ -468,11 +467,11 @@ void CMeshToSSView::OnMouseMove(UINT nFlags, CPoint point)
 #include "mtl.h"
 
 //
-// ƒL[ƒ{[ƒh“ü—Í
+// keyboard input
 //
 void CMeshToSSView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
-  // TODO: ‚±‚ÌˆÊ’u‚ÉƒƒbƒZ[ƒW ƒnƒ“ƒhƒ‰—p‚ÌƒR[ƒh‚ð’Ç‰Á‚·‚é‚©‚Ü‚½‚ÍƒfƒtƒHƒ‹ƒg‚Ìˆ—‚ðŒÄ‚Ño‚µ‚Ä‚­‚¾‚³‚¢
+  // TODO: Add message-handler code here or call the default handler.
   CView::OnChar(nChar, nRepCnt, nFlags);
 
   switch (nChar) {
@@ -515,7 +514,7 @@ void CMeshToSSView::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
         }
 #endif
 
-      // level 3 ˆÈã‚Í‚¢‚©‚È‚¢‚æ‚¤‚ÉÝ’è
+      // do not go beyond subdivision level 3
       if ( ppd->sub_level >= 3 ) return;
 
       Sppd* child;

@@ -44,6 +44,7 @@
 #include "../optmesh/qem.h"
 #include "../optmesh/simpmesh.h"
 #include "../optmesh/subdiv.h"
+#include "../optmesh/mytime.h"
 #include "../src/screen.h"
 #include "../src/draw.h"
 #include "../src/meshtoss_gui_prefix.h"
@@ -53,6 +54,27 @@
 #include "../src/vw.h"
 
 namespace {
+
+/* After simpmesh / simpmesh_l2norm, includes processed time (Unix). Windows build has no timers yet. */
+static QString conversionFinishedMessage()
+{
+#if defined(Q_OS_WIN)
+  return QStringLiteral("Conversion successfully finished.");
+#else
+  double r = 0.0;
+  double u = 0.0;
+  double s = 0.0;
+  mytime_get_last(&r, &u, &s);
+  return QStringLiteral("Conversion successfully finished.\n\n"
+                        "processed time:\n"
+                        "\treal:\t%1 (s)\n"
+                        "\tuser:\t%2 (s)\n"
+                        "\tsys:\t%3 (s)")
+      .arg(r, 0, 'f', 2)
+      .arg(u, 0, 'f', 2)
+      .arg(s, 0, 'f', 2);
+#endif
+}
 
 /* Set in main() before QApplication — Qt/macOS often resets CWD to "/" after the GUI starts. */
 QString g_fileDialogBaseDir;
@@ -808,7 +830,7 @@ void showConvertSubdivDialog(QWidget *parent, QWidget *glWidget)
     simpmesh(ppd, nvertex);
 
     QMessageBox::information(&dlg, QStringLiteral("MeshToSS"),
-                             QStringLiteral("Conversion successfully finished."));
+                             conversionFinishedMessage());
     if (swin->screenatr.org_ppd != nullptr) {
       curV->setText(QString::number(swin->screenatr.org_ppd->vn));
       curD->setText(QString::number(swin->screenatr.org_ppd->dis, 'g', 8));
@@ -849,7 +871,7 @@ void showConvertSubdivDialog(QWidget *parent, QWidget *glWidget)
     simpmesh_l2norm(ppd, l2);
 
     QMessageBox::information(&dlg, QStringLiteral("MeshToSS"),
-                             QStringLiteral("Conversion successfully finished."));
+                             conversionFinishedMessage());
     if (swin->screenatr.org_ppd != nullptr) {
       curV->setText(QString::number(swin->screenatr.org_ppd->vn));
       curD->setText(QString::number(swin->screenatr.org_ppd->dis, 'g', 8));

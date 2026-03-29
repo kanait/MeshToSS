@@ -13,20 +13,20 @@
 #if _MSC_VER >= 1000
 #pragma once
 #endif // _MSC_VER >= 1000
-// SRDialog.h : ヘッダー ファイル
+// SRDialog.h : header
 //
 
 /////////////////////////////////////////////////////////////////////////////
-// CSRDialog ダイアログ
+// CSRDialog dialog
 
 class CSRDialog : public CDialog
 {
-// コンストラクション
+// Construction
 public:
-	CSRDialog(CWnd* pParent = NULL);   // 標準のコンストラクタ
+	CSRDialog(CWnd* pParent = NULL);   // standard constructor
 	BOOL Create( void );
 
-// ダイアログ データ
+// Dialog data
 	//{{AFX_DATA(CSRDialog)
 	enum { IDD = IDD_SET_RADIUS };
 	double	m_radius_cyl;
@@ -34,19 +34,19 @@ public:
 	//}}AFX_DATA
 
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 
 	//{{AFX_VIRTUAL(CSRDialog)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual void PostNcDestroy();
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 protected:
 
-	// 生成されたメッセージ マップ関数
+	// Generated message map functions
 	//{{AFX_MSG(CSRDialog)
 	virtual void OnOK();
 	virtual void OnCancel();
@@ -56,6 +56,6 @@ protected:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_SRDIALOG_H__A20A96A2_496A_11D2_AB68_00E029217E15__INCLUDED_)

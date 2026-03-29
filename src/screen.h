@@ -68,10 +68,10 @@ typedef struct _pers {
 #define PATH_EXACT	1
 #define PATH_BOTH	2
 
-// remesh におけるパラメータ補正のタイプ
-#define DIFF_GEODIS   0   // 測地線による補正
-#define DIFF_CHORD    1   // 弦長による補正
-#define DIFF_NO       2   // 補正しない
+// Remesh: parameter correction mode
+#define DIFF_GEODIS   0   // geodesic correction
+#define DIFF_CHORD    1   // chord-length correction
+#define DIFF_NO       2   // no correction
 
 #define TWO_VERTICES  2
 

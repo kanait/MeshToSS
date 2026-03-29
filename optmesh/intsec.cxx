@@ -73,7 +73,7 @@ BOOL isLeftSidePivot( Vec2d *vi, Vec2d *vj, Vec2d *vk )
   if ( val1 != 0.0 ) {
     if ( val1 > 0.0 ) return TRUE; else return FALSE;
   }
-  //	display("taika! ツ犂ス! \n");
+  //	display("taika! ! \n");
   val2 = vj->y - vk->y;
   if ( val2 != 0.0 ) {
     if ( val2 > 0.0 ) return TRUE; else return FALSE;
@@ -97,7 +97,7 @@ BOOL isLeftSidePivot( Vec2d *vi, Vec2d *vj, Vec2d *vk )
 //TRUE     |     FALSE
 //         |
 //         o v1
-// サーシ。クオハソフフニ筅ホトセタ紡个垢襦ず限θ縦
+// 
 BOOL isLeftSide3D( Vec *v1, Vec *v2, Vec *nrm, Vec *v )
 {
   Vec l;
@@ -114,7 +114,7 @@ BOOL isLeftSide3D( Vec *v1, Vec *v2, Vec *nrm, Vec *v )
   } else return FALSE;
 }
 
-// 点が線上にある場合
+// point on line
 BOOL isOnLine3D( Vec *v1, Vec *v2, Vec *nrm, Vec *v )
 {
   Vec l;
@@ -259,9 +259,9 @@ int IntsecLines( Vec2d *v1_s, Vec2d *v1_e, Vec2d *v2_s, Vec2d *v2_e )
 
 //
 // v1_s + t (v1_e - v1_s) = v2_s + s (v2_e - v2_s)
-//                 ↓
+//                 
 // (v1_e - v1_s) t + (v2_s - v2_e) s = v2_s - v1_s
-//                 ↓
+//                 
 // | a    c || t | = | x |
 // | b    d || s |   | y |
 //
@@ -438,7 +438,7 @@ int vertex_line(Vec2d *v, Vec2d *ev1, Vec2d *ev2)
   return OUTSIDE;
 }
 
-// 二つのベクトルが平行かどうかをチェック
+// check two vectors for parallelism
 BOOL isParallelLine( Vec *v1s, Vec *v1e, Vec *v2s, Vec *v2e )
 {
   Vec sub1, sub2, c;

@@ -15,36 +15,36 @@
 #endif // _MSC_VER > 1000
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshInfoDialog ダイアログ
+// CMeshInfoDialog dialog
 
 class CMeshInfoDialog : public CDialog
 {
-// コンストラクション
+// Construction
 public:
-	CMeshInfoDialog(CWnd* pParent = NULL);   // 標準のコンストラクタ
+	CMeshInfoDialog(CWnd* pParent = NULL);   // standard constructor
 
-// ダイアログ データ
+// Dialog data
 	//{{AFX_DATA(CMeshInfoDialog)
 	enum { IDD = IDD_MESHINFO };
 	CEdit	m_mesh_info;
 	//}}AFX_DATA
 
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CMeshInfoDialog)
 	public:
 	virtual BOOL Create( void );
 	
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual void PostNcDestroy();
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 protected:
 
-	// 生成されたメッセージ マップ関数
+	// Generated message map functions
 	//{{AFX_MSG(CMeshInfoDialog)
 	virtual void OnOK();
 	virtual BOOL OnInitDialog();
@@ -53,6 +53,6 @@ protected:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ は前行の直前に追加の宣言を挿入します。
+// Microsoft Visual C++ inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_MESHINFODIALOG_H__DD826CC0_BDCA_11D3_98FC_0000F45A89CD__INCLUDED_)

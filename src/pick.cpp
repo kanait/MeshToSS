@@ -86,7 +86,7 @@ BOOL edit_pick( int x, int y, int edit_mode, ScreenAtr *screen )
 #if 0
   case EDIT_DEL_LINES:
     
-    // tile edge にする
+    // mark as tile edge
     if ( (ted = pick_tedge_screen( x, y, screen, tile )) == NULL ) {
       return FALSE;
     }
@@ -103,7 +103,7 @@ BOOL edit_pick( int x, int y, int edit_mode, ScreenAtr *screen )
 
   case EDIT_MAKE_TILE_FACES:
 
-    // tile edge にする
+    // mark as tile edge
     if ( (ted = pick_tedge_screen( x, y, screen, tile )) == NULL ) {
       return FALSE;
     }
@@ -120,7 +120,7 @@ BOOL edit_pick( int x, int y, int edit_mode, ScreenAtr *screen )
 
   case EDIT_MAKE_TILE_CYL_FACES:
 
-    // tile edge にする
+    // mark as tile edge
     if ( (ted = pick_tedge_screen( x, y, screen, tile )) == NULL ) {
       return FALSE;
     }
@@ -136,12 +136,12 @@ BOOL edit_pick( int x, int y, int edit_mode, ScreenAtr *screen )
 
   case EDIT_REMESH:
 
-//      // 一つだけしか選択できない
+//      // single selection only
 //      if ( screen->isSelected == TRUE ) {
 //        FreeSelectList( screen );
 //      }
 
-    // tile のピック
+    // pick a tile
     if ( (id = pick_tface_ppd_screen( x, y, screen, ppd )) == SMDNULL ) {
       return FALSE;
     }
@@ -151,14 +151,14 @@ BOOL edit_pick( int x, int y, int edit_mode, ScreenAtr *screen )
       return FALSE;
     }
 
-    // すでに選択されている場合は，選択をはずす (トグルボタン形式)
+    // toggle off if already selected
     if ( tf->col == FACEBLUE )
       {
     
 	//display("selected. id %d\n", id );
 	create_selectlist_tface( screen, tf );
 
-	// tface の属性設定
+	// tface attribute setup
 	td->set_selected_tile_txt( id );
 	td->set_remesh_ndiv( tf->ndiv );
 	td->set_remesh_combo_cursel( tf->tptype );
@@ -179,7 +179,7 @@ BOOL edit_pick( int x, int y, int edit_mode, ScreenAtr *screen )
 
   case EDIT_SEL_CVERTEX:
 
-    // 一つだけしか選択できない
+    // single selection only
     if ( (vt = pick_ppdvertex_screen( x, y, screen, ppd )) == NULL ) {
       return FALSE;
     }
@@ -490,7 +490,7 @@ int pick_tface_ppd_screen( int x, int y, ScreenAtr *screen, Sppd *ppd )
     if ( fc->tile_id == SMDNULL ) continue;
     if ( V3Dot( &eye, &(fc->nrm) ) < 0.0 ) continue;
     
-    // 法線方向も評価にいれるようにする
+    // include facing direction in the test
     if( point_in_ppdface( fc, ix, iy, screen ) == TRUE ) {
       return fc->tile_id;
     }
@@ -632,7 +632,7 @@ Spfc *pick_ppdface_screen( int x, int y, ScreenAtr *screen, Sppd *ppd )
   
   for ( fc = ppd->spfc; fc != (Spfc *) NULL; fc = fc->nxt ) {
 		
-    // 法線方向も評価にいれるようにする
+    // include facing direction in the test
     if( point_in_ppdface( fc, ix, iy, screen ) == TRUE ) {
       return fc;
     }

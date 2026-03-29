@@ -6,9 +6,7 @@
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 //
-// stdafx.h : 標準のシステム インクルード ファイル、
-//            または参照回数が多く、かつあまり変更されない
-//            プロジェクト専用のインクルード ファイルを記述します。
+// stdafx.h : standard system and project include files that rarely change.
 //
 
 #if !defined(AFX_STDAFX_H__11D0ECD6_2844_11D2_AB51_00E029217E15__INCLUDED_)
@@ -20,18 +18,18 @@
 #pragma once
 #endif // _MSC_VER >= 1000
 
-#define VC_EXTRALEAN		// Windows ヘッダーから殆ど使用されないスタッフを除外します。
+#define VC_EXTRALEAN		// Exclude rarely-used definitions from Windows headers.
 
 #ifdef _AFXDLL
-#include <afxwin.h>         // MFC のコアおよび標準コンポーネント
-#include <afxext.h>         // MFC の拡張部分
+#include <afxwin.h>         // MFC core and standard components
+#include <afxext.h>         // MFC extensions
 #ifndef _AFX_NO_AFXCMN_SUPPORT
-#include <afxcmn.h>			// MFC の Windows コモン コントロール サポート
+#include <afxcmn.h>			// MFC support for Windows common controls
 #endif // _AFX_NO_AFXCMN_SUPPORT
 #endif
 
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_STDAFX_H__11D0ECD6_2844_11D2_AB51_00E029217E15__INCLUDED_)

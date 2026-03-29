@@ -18,6 +18,8 @@ extern "C" {
 extern void time_start( void );
 extern void time_stop( void );
 extern void time_stop_value( double *, double *, double * );
+/* Values from the last time_stop / time_stop_value (undefined if never called). */
+extern void mytime_get_last( double *realtime, double *usertime, double *systime );
 
 #ifdef __cplusplus
 }

@@ -94,7 +94,7 @@ int main( int argc, char *argv[] )
   
   fprintf(stdout, "avr %g max %g\n", avr_dis, max_dis );
 
-  // octree 、ホス魘//    double xmax, xmin, ymax, ymin, zmax, zmin;
+  // octree //    double xmax, xmin, ymax, ymin, zmax, zmin;
 //    ppd_size( ppd, &xmax, &xmin, &ymax, &ymin, &zmax, &zmin );
 //    double txmax, txmin, tymax, tymin, tzmax, tzmin;
 //    ppd_size( xyz, &txmax, &txmin, &tymax, &tymin, &tzmax, &tzmin );
@@ -109,9 +109,9 @@ int main( int argc, char *argv[] )
 //    OTree *octree = init_otree( xmax, xmin, ymax, ymin, zmax, zmin );
 //    ppdface_to_ppdotree( ppd, octree );
 //    ppdvertex_to_ppdotree( xyz, octree );
-//    calc_point_to_face_distance( octree, ppd ); // ppd: face の方
+//    calc_point_to_face_distance( octree, ppd ); // ppd: face  case
   
-  // ppd の face を Octree に格納
+  // ppd  of  face  Octree  store in 
   
   
   free_ppd( ppd );

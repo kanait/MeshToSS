@@ -15,15 +15,15 @@
 #endif // _MSC_VER > 1000
 
 /////////////////////////////////////////////////////////////////////////////
-// CConvSubdiv ダイアログ
+// CConvSubdiv dialog
 
 class CConvSubdiv : public CDialog
 {
-// コンストラクション
+// Construction
 public:
-	CConvSubdiv(CWnd* pParent = NULL);   // 標準のコンストラクタ
+	CConvSubdiv(CWnd* pParent = NULL);   // standard constructor
 
-// ダイアログ データ
+// Dialog data
 	//{{AFX_DATA(CConvSubdiv)
 	enum { IDD = IDD_CONVERT_SUBDIV };
 	CEdit	m_simp_l2norm;
@@ -33,20 +33,20 @@ public:
 	//}}AFX_DATA
 
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CConvSubdiv)
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV サポート
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	virtual void PostNcDestroy();
 	//}}AFX_VIRTUAL
 
  public:
 	virtual BOOL Create( void );
 	
-// インプリメンテーション
+// Implementation
  protected:
-	// 生成されたメッセージ マップ関数
+	// Generated message map functions
 	//{{AFX_MSG(CConvSubdiv)
 	virtual void OnOK();
 	virtual void OnCancel();
@@ -62,6 +62,6 @@ public:
 };
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ は前行の直前に追加の宣言を挿入します。
+// Microsoft Visual C++ inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_CONVSUBDIV_H__1950D551_5A59_4AFB_A577_53F4E33DAF96__INCLUDED_)

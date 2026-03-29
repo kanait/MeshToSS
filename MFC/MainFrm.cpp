@@ -1,4 +1,4 @@
-﻿//
+//
 // MainFrm.cpp
 //
 // Copyright (c) 2000 IPA and Keio University SFC Research Institution
@@ -91,7 +91,7 @@ END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
-  ID_SEPARATOR,           // ステータス ライン インジケータ
+  ID_SEPARATOR,           // status line indicator
   ID_INDICATOR_KANA,
   ID_INDICATOR_CAPS,
   ID_INDICATOR_NUM,
@@ -99,11 +99,11 @@ static UINT indicators[] =
 };
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame クラスの構築/消滅
+// CMainFrame construction/destruction
 
 CMainFrame::CMainFrame()
 {
-  // TODO: この位置にメンバの初期化処理コードを追加してください。
+  // TODO: Add member initialization code here.
   swin = create_swin();
 }
 
@@ -125,15 +125,14 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
                                     sizeof(indicators)/sizeof(UINT)) )
     {
       TRACE0("Failed to create status bar\n");
-      return -1;      // 作成に失敗
+      return -1;      // create failed
     }
 
-  // TODO: もしツール チップスが必要ない場合、ここを削除してください。
+  // TODO: Remove this block if you do not need tooltips.
   //	m_wndToolBar.SetBarStyle(m_wndToolBar.GetBarStyle() |
   //		CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_DYNAMIC);
 
-  // TODO: ツール バーをドッキング可能にしない場合は以下の３行を削除
-  //       してください。
+  // TODO: Remove the following three lines if the toolbar should not be dockable.
   //	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
   //	EnableDocking( CBRS_ALIGN_ANY );
   //	DockControlBar( &m_wndToolBar );
@@ -143,14 +142,13 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
 BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
-  // TODO: この位置で CREATESTRUCT cs を修正して、Window クラスやスタイルを
-  //       修正してください。
+  // TODO: Modify CREATESTRUCT cs here to change window class or styles.
 
   // window size
   cs.cx = swin->width;
   cs.cy = swin->height;
 
-  // リサイズ不可
+  // not resizable
   //	cs.style &= ~WS_MAXIMIZEBOX;
   //	cs.style &= ~WS_THICKFRAME;
 
@@ -158,7 +156,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 }
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame クラスの診断
+// CMainFrame diagnostics
 
 #ifdef _DEBUG
 void CMainFrame::AssertValid() const
@@ -174,7 +172,7 @@ void CMainFrame::Dump(CDumpContext& dc) const
 #endif //_DEBUG
 
 /////////////////////////////////////////////////////////////////////////////
-// CMainFrame メッセージ ハンドラ
+// CMainFrame message handlers
 
 static TCHAR BASED_CODE szppdFilter[] = _T("PPD Files (*.ppd)|*.ppd|All Files (*.*)|*.*||");
 
@@ -183,10 +181,10 @@ static TCHAR BASED_CODE szppdFilter[] = _T("PPD Files (*.ppd)|*.ppd|All Files (*
 //
 void CMainFrame::OnFileOpen() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
-  // 第一引数は OPEN のとき TRUE
-  // 第二、三引数はファイルの種類
+  // First argument TRUE for Open
+  // Second and third: file type filters
   CFileDialog filedlg( TRUE, NULL, NULL,
                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
                        szppdFilter, NULL );
@@ -195,7 +193,7 @@ void CMainFrame::OnFileOpen()
     //		CWaitCursor wait;
     CString filename;
     filename = filedlg.GetPathName();
-    //filenameに選択したファイルのフルパスが入る
+    // filename receives the selected full path
 
     TCHAR *lp;
     lp = filename.GetBuffer( BUFSIZ );
@@ -231,7 +229,7 @@ void CMainFrame::OnFileOpen()
 
     // for setting subdivision boundary flag
     set_subdiv_boundary( ppd );
-    // gamma の決定
+    // pick gamma
     //      swin->screenatr.sp_gamma = GAMMA * ppd->scale;
     
     InvalidateRect( NULL, FALSE );
@@ -244,7 +242,7 @@ void CMainFrame::OnFileOpen()
 //
 void CMainFrame::OnFileSaveSrc()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.current_ppd == (Sppd *) NULL ) return;
 
   CFileDialog filedlg( FALSE, NULL, NULL,
@@ -256,7 +254,7 @@ void CMainFrame::OnFileSaveSrc()
   //		CWaitCursor wait;
   CString filename;
   filename = filedlg.GetPathName();
-  //filenameに選択したファイルのフルパスが入る
+  // filename receives the selected full path
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
 
@@ -272,7 +270,7 @@ void CMainFrame::OnFileSavePpdPoly()
 {
   if ( swin->screenatr.view_ppd == NULL ) return;
   
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   CFileDialog filedlg( FALSE, NULL, NULL,
                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
                        szppdFilter, NULL );
@@ -282,7 +280,7 @@ void CMainFrame::OnFileSavePpdPoly()
   //		CWaitCursor wait;
   CString filename;
   filename = filedlg.GetPathName();
-  //filenameに選択したファイルのフルパスが入る
+  // filename receives the selected full path
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
 
@@ -299,7 +297,7 @@ static TCHAR BASED_CODE szwrlFilter[] = _T("VRML Files (*.wrl)|*.wrl|All Files (
 
 void CMainFrame::OnFileOpenVrml()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
   if ( swin->screenatr.current_ppd != NULL ) {
     AfxMessageBox( _T("A file has already opened."));
@@ -312,7 +310,7 @@ void CMainFrame::OnFileOpenVrml()
 
   if( filedlg.DoModal() != IDOK ) return;
 
-  // filename に選択したファイルのフルパスが入る
+  // filename receives the selected full path
   CString filename = filedlg.GetPathName();
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
@@ -357,7 +355,7 @@ void CMainFrame::OnFileOpenVrml()
 
 void CMainFrame::OnFileOpenEvrmlPoly() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
   if ( swin->screenatr.current_ppd != NULL ) {
     AfxMessageBox( _T("A file has already opened."));
@@ -370,7 +368,7 @@ void CMainFrame::OnFileOpenEvrmlPoly()
 
   if( filedlg.DoModal() != IDOK ) return;
 
-  // filename に選択したファイルのフルパスが入る
+  // filename receives the selected full path
   CString filename = filedlg.GetPathName();
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
@@ -421,8 +419,8 @@ void CMainFrame::OnFileOpenEvrmlPoly()
 
 void CMainFrame::OnFileOpenEvrmlSs() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
+  // TODO: Add command handler code here
 
   if ( swin->screenatr.current_ppd != NULL ) {
     AfxMessageBox( _T("A file has already opened."));
@@ -435,7 +433,7 @@ void CMainFrame::OnFileOpenEvrmlSs()
 
   if( filedlg.DoModal() != IDOK ) return;
 
-  // filename に選択したファイルのフルパスが入る
+  // filename receives the selected full path
   CString filename = filedlg.GetPathName();
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
@@ -485,7 +483,7 @@ void CMainFrame::OnFileOpenEvrmlSs()
 
 void CMainFrame::OnFileSaveVrmlSub()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.current_ppd == NULL ) return;
   
   CFileDialog filedlg( FALSE, NULL, NULL,
@@ -495,7 +493,7 @@ void CMainFrame::OnFileSaveVrmlSub()
   if( filedlg.DoModal() != IDOK ) return;
 
   //	CWaitCursor wait;
-  //filenameに選択したファイルのフルパスが入る
+  // filename receives the selected full path
   CString filename;
   filename = filedlg.GetPathName();
 
@@ -511,10 +509,10 @@ void CMainFrame::OnFileSaveVrmlSub()
 
 void CMainFrame::OnFileSaveVrmlPoly()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.view_ppd == NULL ) return;
   
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   CFileDialog filedlg( FALSE, NULL, NULL,
                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
                        szwrlFilter, NULL );
@@ -524,7 +522,7 @@ void CMainFrame::OnFileSaveVrmlPoly()
   //	CWaitCursor wait;
   CString filename;
   filename = filedlg.GetPathName();
-  //filenameに選択したファイルのフルパスが入る
+  // filename receives the selected full path
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
 
@@ -548,7 +546,7 @@ void ConvertCS2CHAR(char pchStr[], CString csStr)
 	size_t wLen = 0;
 	errno_t err = 0;
 
-	// ロケール指定
+	// locale
 	setlocale(LC_ALL, "japanese");
 	
 	err = wcstombs_s(&wLen, pchStr, BUFSIZ, ptcStr, _TRUNCATE);
@@ -564,10 +562,10 @@ static TCHAR BASED_CODE szsmfFilter[] = _T("SMF Files (*.smf)|*.smf|All Files (*
 //
 void CMainFrame::OnFileOpenSmf() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
-  // 第一引数は OPEN のとき TRUE
-  // 第二、三引数はファイルの種類
+  // First argument TRUE for Open
+  // Second and third: file type filters
   CFileDialog filedlg( TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
                        szsmfFilter, NULL );
 
@@ -575,7 +573,7 @@ void CMainFrame::OnFileOpenSmf()
     //		CWaitCursor wait;
     CString filename;
     filename = filedlg.GetPathName();
-    //filenameに選択したファイルのフルパスが入る
+    // filename receives the selected full path
 
     TCHAR *lp;
     lp = filename.GetBuffer( BUFSIZ );
@@ -620,7 +618,7 @@ void CMainFrame::OnFileOpenSmf()
 //
 void CMainFrame::OnFileSaveSmf() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.current_ppd == (Sppd *) NULL ) return;
   
   CFileDialog filedlg( FALSE, NULL, NULL,
@@ -632,7 +630,7 @@ void CMainFrame::OnFileSaveSmf()
   //	CWaitCursor wait;
   CString filename;
   filename = filedlg.GetPathName();
-  //filenameに選択したファイルのフルパスが入る
+  // filename receives the selected full path
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
 
@@ -646,7 +644,7 @@ void CMainFrame::OnFileSaveSmf()
 
 void CMainFrame::OnFileSaveSmfPoly()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.view_ppd == (Sppd *) NULL ) return;
   
   CFileDialog filedlg( FALSE, NULL, NULL,
@@ -658,7 +656,7 @@ void CMainFrame::OnFileSaveSmfPoly()
   //	CWaitCursor wait;
   CString filename;
   filename = filedlg.GetPathName();
-  //filenameに選択したファイルのフルパスが入る
+  // filename receives the selected full path
 
   TCHAR *lp = filename.GetBuffer(BUFSIZ);
 
@@ -677,7 +675,7 @@ static TCHAR BASED_CODE szvwFilter[] = _T("VW Files (*.vw)|*.vw||");
 //
 void CMainFrame::OnFileOpenVw() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   CFileDialog filedlg( TRUE, NULL, NULL,
                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
                        szvwFilter, NULL );
@@ -686,7 +684,7 @@ void CMainFrame::OnFileOpenVw()
     // CWaitCursor wait;
     CString filename;
     filename = filedlg.GetPathName();
-    //filenameに選択したファイルのフルパスが入る
+    // filename receives the selected full path
 
     TCHAR *lp;
     lp = filename.GetBuffer( BUFSIZ );
@@ -707,7 +705,7 @@ void CMainFrame::OnFileOpenVw()
 //
 void CMainFrame::OnFileSaveVw()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   CFileDialog filedlg( TRUE, NULL, NULL,
                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, 
                        szvwFilter, NULL );
@@ -715,7 +713,7 @@ void CMainFrame::OnFileSaveVw()
   if( filedlg.DoModal() == IDOK) {
     CString filename;
     filename = filedlg.GetPathName();
-    //filenameに選択したファイルのフルパスが入る
+    // filename receives the selected full path
 
     TCHAR *lp;
     lp = filename.GetBuffer( BUFSIZ );
@@ -739,7 +737,7 @@ void CMainFrame::OnFileSaveVw()
 ////////////////////////////////////////////////////////////////////////
 void CMainFrame::OnUpdateMenuScreenShading(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.shading == FALSE ) {
     //swin->dis3d.shading = FALSE;
     pCmdUI->SetCheck( 0 );
@@ -751,7 +749,7 @@ void CMainFrame::OnUpdateMenuScreenShading(CCmdUI* pCmdUI)
 
 void CMainFrame::OnUpdateMenuScreenWireframe( CCmdUI* pCmdUI ) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.wire == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -761,7 +759,7 @@ void CMainFrame::OnUpdateMenuScreenWireframe( CCmdUI* pCmdUI )
 
 void CMainFrame::OnUpdateMenuScreenHidden(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.hidden == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -772,7 +770,7 @@ void CMainFrame::OnUpdateMenuScreenHidden(CCmdUI* pCmdUI)
 #if 0
 void CMainFrame::OnUpdateMenuScreenEdgeid(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.edgeid == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -784,7 +782,7 @@ void CMainFrame::OnUpdateMenuScreenEdgeid(CCmdUI* pCmdUI)
 #if 0
 void CMainFrame::OnUpdateMenuScreenCoaxis(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.coaxis == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -796,8 +794,8 @@ void CMainFrame::OnUpdateMenuScreenCoaxis(CCmdUI* pCmdUI)
 #if 0
 void CMainFrame::OnUpdateMenuScreenVert(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.vertex == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -807,7 +805,7 @@ void CMainFrame::OnUpdateMenuScreenVert(CCmdUI* pCmdUI)
 
 void CMainFrame::OnUpdateMenuScreenVertid(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.vertexid == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -818,7 +816,7 @@ void CMainFrame::OnUpdateMenuScreenVertid(CCmdUI* pCmdUI)
 
 void CMainFrame::OnUpdateMenuScreenSubbown(CCmdUI* pCmdUI)
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.subdiv_boundary == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -828,7 +826,7 @@ void CMainFrame::OnUpdateMenuScreenSubbown(CCmdUI* pCmdUI)
 
 void CMainFrame::OnMenuScreenShading() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.shading == TRUE ) 
     swin->dis3d.shading = FALSE;
   else 
@@ -839,7 +837,7 @@ void CMainFrame::OnMenuScreenShading()
 
 void CMainFrame::OnMenuScreenWireframe()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.wire == TRUE ) 
     swin->dis3d.wire = FALSE;
   else 
@@ -850,8 +848,8 @@ void CMainFrame::OnMenuScreenWireframe()
 
 void CMainFrame::OnMenuScreenHidden() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
+  // TODO: Add command handler code here
   if ( swin->dis3d.hidden == TRUE ) 
     swin->dis3d.hidden = FALSE;
   else 
@@ -863,7 +861,7 @@ void CMainFrame::OnMenuScreenHidden()
 #if 0
 void CMainFrame::OnMenuScreenEdgeid() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.edgeid == TRUE ) 
     swin->dis3d.edgeid = FALSE;
   else 
@@ -876,7 +874,7 @@ void CMainFrame::OnMenuScreenEdgeid()
 #if 0
 void CMainFrame::OnMenuScreenCoaxis() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.coaxis == TRUE ) 
     swin->dis3d.coaxis = FALSE;
   else 
@@ -889,7 +887,7 @@ void CMainFrame::OnMenuScreenCoaxis()
 #if 0
 void CMainFrame::OnMenuScreenVert() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.vertex == TRUE ) 
     swin->dis3d.vertex = FALSE;
   else 
@@ -900,7 +898,7 @@ void CMainFrame::OnMenuScreenVert()
 
 void CMainFrame::OnMenuScreenVertid() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.vertexid == TRUE ) 
     swin->dis3d.vertexid = FALSE;
   else 
@@ -912,7 +910,7 @@ void CMainFrame::OnMenuScreenVertid()
 
 void CMainFrame::OnMenuScreenSubbown() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.subdiv_boundary == TRUE ) 
     swin->dis3d.subdiv_boundary = FALSE;
   else 
@@ -923,8 +921,8 @@ void CMainFrame::OnMenuScreenSubbown()
 
 void CMainFrame::OnMenuScreenOrgppd() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
+  // TODO: Add command handler code here
   if ( swin->dis3d.org_ppd == TRUE )
     {
       swin->dis3d.org_ppd = FALSE;
@@ -945,7 +943,7 @@ void CMainFrame::OnMenuScreenOrgppd()
 #if 0
 void CMainFrame::OnUpdateMenuScreenEnhanced(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.smooth == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -955,7 +953,7 @@ void CMainFrame::OnUpdateMenuScreenEnhanced(CCmdUI* pCmdUI)
 
 void CMainFrame::OnMenuScreenEnhanced() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.enhanced == TRUE ) 
     swin->dis3d.enhanced = FALSE;
   else 
@@ -970,7 +968,7 @@ void CMainFrame::OnMenuScreenEnhanced()
 ////////////////////////////////////////////////////////////////////////
 void CMainFrame::OnMenuScreenSmooth() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.smooth == TRUE ) {
     swin->dis3d.smooth = FALSE;
     
@@ -985,7 +983,7 @@ void CMainFrame::OnMenuScreenSmooth()
 
 void CMainFrame::OnUpdateMenuScreenSmooth(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.smooth == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1004,7 +1002,7 @@ void CMainFrame::drawwindow()
 
 void CMainFrame::OnMenuScreenRadius() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
   CSRDialog* srd = new CSRDialog;
   ASSERT_VALID( srd );
@@ -1016,7 +1014,7 @@ void CMainFrame::OnMenuScreenRadius()
 
 void CMainFrame::OnViewBackgroundColor()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
   ScreenAtr *screen = &(swin->screenatr);
   CColorDialog dlg;
@@ -1046,7 +1044,7 @@ CMaterialDialog *md = NULL;
 
 void CMainFrame::OnViewMaterial()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.current_ppd == NULL ) {
     AfxMessageBox( _T("ppd is not found."));
     return;
@@ -1071,7 +1069,7 @@ CMeshInfoDialog *midlg;
 //
 void CMainFrame::OnMeshInfo()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
 
   if ( swin->screenatr.current_ppd == NULL ) {
     AfxMessageBox( _T("ppd is not found."));
@@ -1091,7 +1089,7 @@ void CMainFrame::OnMeshInfo()
 ////////////////////////////////////////////////////////////////////////
 void CMainFrame::OnViewGradient()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.gradient == TRUE ) 
     swin->dis3d.gradient = FALSE;
   else 
@@ -1102,7 +1100,7 @@ void CMainFrame::OnViewGradient()
 
 void CMainFrame::OnUpdateViewGradient(CCmdUI* pCmdUI)
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.gradient == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1112,7 +1110,7 @@ void CMainFrame::OnUpdateViewGradient(CCmdUI* pCmdUI)
 
 void CMainFrame::OnUpdateMenuScreenOrgppd(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.org_ppd == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1127,7 +1125,7 @@ void CMainFrame::OnUpdateMenuScreenOrgppd(CCmdUI* pCmdUI)
 
 void CMainFrame::OnMenuScreenLight0() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.light0 == TRUE ) 
     swin->dis3d.light0 = FALSE;
   else 
@@ -1138,7 +1136,7 @@ void CMainFrame::OnMenuScreenLight0()
 
 void CMainFrame::OnUpdateMenuScreenLight0(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.light0 == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1148,7 +1146,7 @@ void CMainFrame::OnUpdateMenuScreenLight0(CCmdUI* pCmdUI)
 
 void CMainFrame::OnMenuScreenLight1() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.light1 == TRUE ) 
     swin->dis3d.light1 = FALSE;
   else 
@@ -1159,7 +1157,7 @@ void CMainFrame::OnMenuScreenLight1()
 
 void CMainFrame::OnUpdateMenuScreenLight1(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.light1 == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1169,7 +1167,7 @@ void CMainFrame::OnUpdateMenuScreenLight1(CCmdUI* pCmdUI)
 
 void CMainFrame::OnMenuScreenLight2() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.light2 == TRUE ) 
     swin->dis3d.light2 = FALSE;
   else 
@@ -1181,7 +1179,7 @@ void CMainFrame::OnMenuScreenLight2()
 
 void CMainFrame::OnUpdateMenuScreenLight2(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.light2 == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1191,7 +1189,7 @@ void CMainFrame::OnUpdateMenuScreenLight2(CCmdUI* pCmdUI)
 
 void CMainFrame::OnMenuScreenLight3() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->dis3d.light3 == TRUE ) 
     swin->dis3d.light3 = FALSE;
   else 
@@ -1202,7 +1200,7 @@ void CMainFrame::OnMenuScreenLight3()
 
 void CMainFrame::OnUpdateMenuScreenLight3(CCmdUI* pCmdUI) 
 {
-  // TODO: この位置に command update UI ハンドラ用のコードを追加してください
+  // TODO: Add command update UI handler code here.
   if ( swin->dis3d.light3 == FALSE ) {
     pCmdUI->SetCheck( 0 );
   } else {
@@ -1215,7 +1213,7 @@ void CMainFrame::OnUpdateMenuScreenLight3(CCmdUI* pCmdUI)
 //
 void CMainFrame::OnMenuEditSubdivUp() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.view_ppd == NULL ) return;
 
   Sppd* ppd = swin->screenatr.view_ppd;
@@ -1238,7 +1236,7 @@ void CMainFrame::OnMenuEditSubdivUp()
 
 void CMainFrame::OnMenuEditSubdivDown() 
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.view_ppd == NULL ) return;
 
   Sppd* ppd = swin->screenatr.view_ppd;
@@ -1252,7 +1250,7 @@ void CMainFrame::OnMenuEditSubdivDown()
       return;
     }
 #endif
-  // level 3 以上はいかないように設定
+  // do not go beyond subdivision level 3
   if ( ppd->sub_level >= 3 ) return;
   
   Sppd* child;
@@ -1273,7 +1271,7 @@ CConvSubdiv *csdlg;
 
 void CMainFrame::OnMenuEditConv()
 {
-  // TODO: この位置にコマンド ハンドラ用のコードを追加してください
+  // TODO: Add command handler code here
   if ( swin->screenatr.current_ppd == NULL ) {
     AfxMessageBox( _T("vrml is not open."));
     return;

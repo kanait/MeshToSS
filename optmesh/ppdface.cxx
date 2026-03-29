@@ -350,7 +350,7 @@ void ppdface_barycentric_coordinate( Spfc *fc, double a1, double a2, double a3,
 }
 
 //
-// fc 、ホテ讀ヌ。、v1, v2 ーハウー、ホトコナタ
+// fc v1, v2 
 //
 Spvt *ppdface_another_vertex( Spfc *fc, Spvt *v1, Spvt *v2 )
 {

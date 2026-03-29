@@ -18,11 +18,11 @@
 	#error include 'stdafx.h' before including this file for PCH
 #endif
 
-#include "resource.h"       // メイン シンボル
+#include "resource.h"       // main symbols
 
 /////////////////////////////////////////////////////////////////////////////
 // CMeshToSSApp:
-// このクラスの動作の定義に関しては OpenGL.cpp ファイルを参照してください。
+// See OpenGL.cpp for the behavior of this class.
 //
 
 class CMeshToSSApp : public CWinApp
@@ -30,14 +30,14 @@ class CMeshToSSApp : public CWinApp
 public:
 	CMeshToSSApp();
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CMeshToSSApp)
 	public:
 	virtual BOOL InitInstance();
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 
 	//{{AFX_MSG(CMeshToSSApp)
 	afx_msg void OnAppAbout();
@@ -50,6 +50,6 @@ public:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_OPENGL_H__11D0ECD4_2844_11D2_AB51_00E029217E15__INCLUDED_)

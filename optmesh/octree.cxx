@@ -475,7 +475,7 @@ OTree *init_otree( double xmax, double xmin,
 //  }
 
 //
-// vertex 、マ。、point 、ヒツミ、ケ、OPoint 、緲僂靴討い//
+// vertex point OPoint //
 void ppdvertex_to_ppdotree( Sppd *ppd, OTree *octree )
 {
   display("create vertex -> octree link: ...\n");
@@ -485,7 +485,7 @@ void ppdvertex_to_ppdotree( Sppd *ppd, OTree *octree )
   //
   int i = 0; Spvt *vt;
   for ( i = 0, vt = ppd->spvt; vt != NULL; vt = vt->nxt, ++i ) {
-    // vt がどこのセルに入るかを決める
+    // vt decide which cell contains
     OTree *ot = octree;
     while ( ot->level < octree->maxotlevel ) {
       ORange or_;
@@ -496,7 +496,7 @@ void ppdvertex_to_ppdotree( Sppd *ppd, OTree *octree )
       }
       ot = ot->child[num];
     }
-    // ot に vt を入れる
+    // ot  to  vt insert 
     (void) insert_otree_point( vt, ot );
   }
 
@@ -535,7 +535,7 @@ void decide_oface_child( OTree *ot, Spfc *fc )
 					   top->on++, &(newor) );
       
     }
-    // ちょっとでも cube にひっかかっていれば，子供を探索する
+    // even slightly  cube if it hits the cube, search children
     if ( t_c_intersection( fc, ot->child[i] ) == INSIDE ) {
       decide_oface_child( ot->child[i], fc );
     }
@@ -633,7 +633,7 @@ double point_face_distance( Spvt *vt, Spfc *fc )
   double B = MULTI * V3Dot(&pv2, &v1v2);
   //display("X %g Z %g Y %g W %g \n", X, Z, Y, W );
   
-  // 垂線の足を求める
+  // foot of perpendicular
   double den = X * W - Z * Y;
   //display("den %g\n", den );
   if ( fabs(den) < SMDZEROEPS ) return 9999.9;

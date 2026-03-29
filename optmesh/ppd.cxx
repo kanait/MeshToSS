@@ -384,7 +384,7 @@ void ppd_make_edges( Sppd* ppd )
 }
 
 //
-// サーウムキチイス
+// 
 //
 void ppd_triangulation( Sppd* ppd )
 {
@@ -407,7 +407,7 @@ void ppd_triangulation( Sppd* ppd )
 }
 
 //
-// フフ、エ、ネ、ホサーウムキチイス
+// 
 //
 void ppdface_triangulation( Spfc* fc, Sppd* ppd )
 {

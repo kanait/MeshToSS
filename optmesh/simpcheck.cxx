@@ -49,7 +49,7 @@ void optcheck( Sppd *ppd )
 {
   if ( ppd == (Sppd *) NULL ) return;
 
-  // $B!&%#!&%F!&%/!"%[%+%e%&%r!"b$D$+$I$&$(B  fprintf(stdout, "CHECK 1: edge boundary check...\n");
+  //   fprintf(stdout, "CHECK 1: edge boundary check...\n");
   boundary_check( ppd );
   fprintf(stdout, "\nCHECK 2: vertex neighborhood check...\n");
   vertex_neighborhood_check( ppd );
@@ -148,7 +148,7 @@ void vertex_neighborhood_check( Sppd *ppd )
 	e = ppdvertex_next_edge( e, vt );
       } while ( (e != ppdvertex_first_edge( vt )) && (e != NULL) );
 
-      // vt->sphe $B$N%j%s%/$r%"%C%W%G!<%H(B
+      // vt->sphe update halfedge links
       newvt->sphe = vt->sphe;
       vt->sphe = create_vertex_halfedge_link( vt, ppd );
       

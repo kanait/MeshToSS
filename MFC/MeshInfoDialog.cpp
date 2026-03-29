@@ -25,7 +25,7 @@ static char THIS_FILE[] = __FILE__;
 CMeshInfoDialog *midlg = NULL;
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshInfoDialog ダイアログ
+// CMeshInfoDialog dialog
 
 
 CMeshInfoDialog::CMeshInfoDialog(CWnd* pParent /*=NULL*/)
@@ -51,11 +51,11 @@ BEGIN_MESSAGE_MAP(CMeshInfoDialog, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CMeshInfoDialog メッセージ ハンドラ
+// CMeshInfoDialog message handlers
 
 BOOL CMeshInfoDialog::Create( void )
 {
-  // TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
+  // TODO: Add specialized code here and/or call the base class.
   return CDialog::Create( CMeshInfoDialog::IDD );
 }
 
@@ -63,7 +63,7 @@ BOOL CMeshInfoDialog::OnInitDialog()
 {
   CDialog::OnInitDialog();
 	
-  // TODO: この位置に初期化の補足処理を追加してください
+  // TODO: Add extra initialization here
 
   Sppd *ppd = swin->screenatr.current_ppd;
   CString string;
@@ -74,13 +74,13 @@ BOOL CMeshInfoDialog::OnInitDialog()
   
 
   return TRUE;
-  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
-  // 例外: OCX プロパティ ページの戻り値は FALSE となります
+  // Return TRUE unless you set the focus to a control
+  // NOTE: OCX property pages should return FALSE.
 }
 
 void CMeshInfoDialog::PostNcDestroy() 
 {
-  // TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
+  // TODO: Add specialized code here and/or call the base class.
 	
   //CDialog::PostNcDestroy();
 
@@ -90,7 +90,7 @@ void CMeshInfoDialog::PostNcDestroy()
 
 void CMeshInfoDialog::OnOK() 
 {
-  // TODO: この位置にその他の検証用のコードを追加してください
+  // TODO: Add validation code here.
 	
   //CDialog::OnOK();
   DestroyWindow();

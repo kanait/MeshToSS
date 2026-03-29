@@ -40,20 +40,20 @@ static char THIS_FILE[] = __FILE__;
 //
 void simpmesh( Sppd *ppd, int npoint )
 {
-  // 初期化
+  // Initialize
   initialize_simpmesh( ppd );
 
   time_start();
   if ( params.qemmode == MODE_VQEM ) {
-    // 各頂点に対する quadric error metric の計算
+    // Per-vertex quadric error metric computation
     ppd_calc_vqem( ppd );
   } else {
-    // 各エッジに対する quadric error metric の計算
+    // Per-edge quadric error metric computation
     ppd_calc_eqem( ppd );
   }
 
 #if 0
-  // 前処理 (必要ならば)
+  // Optional pre-pass (if needed)
   if ( params.pre_optimize == TRUE ) {
     ppdslpopt( ppd );
   }
@@ -84,12 +84,12 @@ void simpmesh( Sppd *ppd, int npoint )
 #endif  
   //qem2submatrix_test( ppd );
   
-  // エッジをヒープに格納
+  // insert edges into priority queue
   ppd->lodpqh = ppdedge_to_lodpqheap( ppd );
 
 //  #if 0
 //    display("bb\n");
-  // 簡略化の実行
+  // run simplification
   optlod( ppd, npoint );
   
   time_stop();
@@ -120,24 +120,24 @@ void simpmesh( Sppd *ppd, int npoint )
 }
 
 //
-// 簡略化（平均自乗誤差による）
+// simplification (L2 error)
 // 
 void simpmesh_l2norm( Sppd *ppd, double l2norm )
 {
-  // 初期化
+  // Initialize
   initialize_simpmesh( ppd );
 
   time_start();
   if ( params.qemmode == MODE_VQEM ) {
-    // 各頂点に対する quadric error metric の計算
+    // Per-vertex quadric error metric computation
     ppd_calc_vqem( ppd );
   } else {
-    // 各エッジに対する quadric error metric の計算
+    // Per-edge quadric error metric computation
     ppd_calc_eqem( ppd );
   }
 
 #if 0
-  // 前処理 (必要ならば)
+  // Optional pre-pass (if needed)
   if ( params.pre_optimize == TRUE ) {
     ppdslpopt( ppd );
   }
@@ -145,12 +145,12 @@ void simpmesh_l2norm( Sppd *ppd, double l2norm )
   
   //qem2submatrix_test( ppd );
   
-  // エッジをヒープに格納
+  // insert edges into priority queue
   ppd->lodpqh = ppdedge_to_lodpqheap( ppd );
 
 //  #if 0
 //    display("bb\n");
-  // 簡略化の実行
+  // run simplification
   optlod_l2norm( ppd, l2norm );
   
   time_stop();
@@ -161,7 +161,7 @@ void simpmesh_l2norm( Sppd *ppd, double l2norm )
 }
 
 //
-// 簡略化の初期化
+// simplification setup
 //
 void initialize_simpmesh( Sppd *ppd )
 {
@@ -172,11 +172,11 @@ void initialize_simpmesh( Sppd *ppd )
 }
 
 // 
-// 各頂点に対する QEM (Quadric Error Metric) の計算
+// Per-vertex QEM (quadric error metric) accumulation
 //
 void ppd_calc_vqem( Sppd *ppd )
 {
-  // d の計算
+  // Per-face plane offset d
   int i;
   Spfc   *fc;
   Vec *vec;
@@ -192,7 +192,7 @@ void ppd_calc_vqem( Sppd *ppd )
     //area[i] = 1.0;
   }
 
-  // QEM Matrix の計算
+  // Accumulate QEM matrix
   Spvt *vt;
   for ( vt = ppd->spvt; vt != NULL; vt = vt->nxt ) {
 
@@ -200,11 +200,11 @@ void ppd_calc_vqem( Sppd *ppd )
     double sum_area = 0.0;
     if ( he == NULL ) continue;
     initialize_matrix4( (double *) vt->mat );
-    // 頂点近傍の face の探索
+    // Walk incident faces around the vertex
     do { 
       fc = he->bpfc;
       i = fc->no;
-      // QEM Matrix への値の格納
+      // Accumulate face contribution into QEM matrix
       vt->mat[0]  += ( fc->nrm.x * fc->nrm.x * area[i] / 3.0);
       vt->mat[1]  += ( fc->nrm.y * fc->nrm.y * area[i] / 3.0);
       vt->mat[2]  += ( fc->nrm.z * fc->nrm.z * area[i] / 3.0);
@@ -234,12 +234,12 @@ void ppd_calc_vqem( Sppd *ppd )
   free( d );
   free( area );
 
-  // boundary edge へのペナルティ
+  // Boundary-edge penalty
   for ( Sped *ed = ppd->sped; ed != NULL; ed = ed->nxt ) {
     
     if ( ed->isBoundary == FALSE ) continue;
 
-    // エッジを通り，隣接面に垂直な面の定義
+    // plane through edge, orthogonal to adjacent face
     // (rfnrm.x) x + (rfnrm.y) y + (rfnrm.z) z + rfd = 0
     fc = (ed->lhe != NULL ) ? ed->lhe->bpfc : ed->rhe->bpfc;
 
@@ -279,12 +279,12 @@ void ppd_calc_vqem( Sppd *ppd )
 }
 
 // 
-// 各エッジに対する QEM (Quadric Error Metric) の計算
+// Per-edge QEM (quadric error metric) accumulation
 //
 void ppd_calc_eqem( Sppd *ppd )
 {
   //
-  // 各面に対する法線, d, 面積の計算
+  // Per face: unit normal, plane offset d, area
   //
   Spfc *fc;
   Vec *vec;
@@ -295,29 +295,29 @@ void ppd_calc_eqem( Sppd *ppd )
   for ( i = 0, fc = ppd->spfc; fc != NULL; fc = fc->nxt, ++i ) {
     calc_fnorm( fc );
     vec = &( fc->sphe->vt->vec );
-    // d の計算
+    // Per-face plane offset d
     d[i] = -( fc->nrm.x * vec->x + fc->nrm.y * vec->y + fc->nrm.z * vec->z );
-    // 面積の計算
+    // face area
     //area[i] = calc_farea( fc ) * calc_farea( fc );
     area[i] = calc_farea( fc ) * 50000.0;
     //area[i] = 1.0;
   }
 
-  // 各頂点の QEM の初期化
+  // Initialize per-vertex QEM
   for ( Spvt *vt = ppd->spvt; vt != NULL; vt = vt->nxt ) {
     initialize_matrix4( (double *) vt->mat );
   }
   
   //
-  // 各エッジに対する QEM Matrix の計算
+  // Per-edge QEM matrix accumulation
   //
   for ( Sped *ed = ppd->sped; ed != NULL; ed = ed->nxt ) {
 
-    // edge QEM の初期化
+    // Initialize edge QEM
     initialize_matrix4( (double *) ed->mat );
     double sum_area = 0.0;
 
-    // エッジに隣接した面の探索
+    // faces incident to edge
     for ( int j = 0; j < 2; ++j ) {
 
       if ( j ) {
@@ -329,7 +329,7 @@ void ppd_calc_eqem( Sppd *ppd )
       }
       if ( fc == NULL ) continue;
       
-      // QEM Matrix への値の格納
+      // Accumulate face contribution into QEM matrix
       i = fc->no;
       ed->mat[0] += ( fc->nrm.x * fc->nrm.x * area[i] / 3.0);
       ed->mat[1] += ( fc->nrm.y * fc->nrm.y * area[i] / 3.0);
@@ -351,12 +351,12 @@ void ppd_calc_eqem( Sppd *ppd )
 //      ed->mat[8] /= sum_area; ed->mat[9] /= sum_area;
 
     //
-    // boundary edge へのペナルティ
+    // Boundary-edge penalty
     //
     
     if ( ed->isBoundary == FALSE ) continue;
 
-    // エッジを通り，隣接面に垂直な面の定義
+    // plane through edge, orthogonal to adjacent face
     // (rfnrm.x) x + (rfnrm.y) y + (rfnrm.z) z + rfd = 0
     fc = (ed->lhe != NULL ) ? ed->lhe->bpfc : ed->rhe->bpfc;
     Vec sub, rfnrm;
@@ -366,7 +366,7 @@ void ppd_calc_eqem( Sppd *ppd )
     double rfd = -( rfnrm.x * vec->x + rfnrm.y * vec->y + rfnrm.z * vec->z );
     double penalty = params.discon_penalty * 
       V3DistanceBetween2Points( &(ed->sv->vec), &(ed->ev->vec) );
-    // QEM Matrix への値の格納
+    // Accumulate boundary penalty into QEM matrix
     ed->mat[0] += ( rfnrm.x * rfnrm.x * penalty);
     ed->mat[1] += ( rfnrm.y * rfnrm.y * penalty);
     ed->mat[2] += ( rfnrm.z * rfnrm.z * penalty);
@@ -386,8 +386,8 @@ void ppd_calc_eqem( Sppd *ppd )
 }
 
 //
-// edge collapse が起こったときの QEM の値を評価値とするヒープを生成
-// この関数の中で QEM による関数値を最小にするような最適な頂点を求める．
+// edge collapse when edge collapse occurs,  QEM build heap keyed by collapse error
+// inside this function,  QEM find the vertex that minimizes the QEM cost.
 //
 LODPQHeap *ppdedge_to_lodpqheap( Sppd *ppd )
 {
@@ -402,7 +402,7 @@ LODPQHeap *ppdedge_to_lodpqheap( Sppd *ppd )
 //  	    ed->ev->no, ed->ev->isBoundary );
     
     //
-    // ここで edge collapse が legal move かどうかの判定をする
+    // Here:  edge collapse  legal move determine whether
     //
     if ( isLegalMove( ed, TRUE ) == FALSE ) {
       continue;
@@ -490,9 +490,9 @@ void optlod_l2norm( Sppd *ppd, double l2norm )
 }
 
 //
-// - edge collapse が legal move かどうか
-// - 生成後の形状
-// をチェック
+// - edge collapse  legal move whether
+// - resulting shape
+// check 
 //
 BOOL isLegalMove( Sped *ed, BOOL isEvalQEM )
 {
@@ -516,7 +516,7 @@ BOOL isLegalMove( Sped *ed, BOOL isEvalQEM )
   if ( isEvalQEM == TRUE ) {
     if ( params.qemmode == MODE_VQEM ) {
       //
-      // sv と ev が持つ QEM の和を計算
+      // sv  and  ev  carries  QEM compute sum of 
       //
       double mat[10];
       add_matrix4( (double *) ed->sv->mat, (double *) ed->ev->mat,
@@ -558,12 +558,12 @@ void eval_vqem( Sped *ed, double *mat )
   case EVAL_SLP:
 
     //
-    // Subdivision Limit Point のとき
+    // Subdivision Limit Point  when 
     //
     //
-    // 頂点が保持しているのは，Original QEM 用マトリクスのみ
-    // (オリジナルの QEM マトリクスはあらかじめ ppd_calcqem で計算される)
-    // 細分割極限点用のマトリクスをこの場で計算する
+    // vertex stores Original QEM original QEM matrix only
+    // (original  QEM matrix precomputed in  ppd_calcqem  computed there)
+    // compute limit-point matrix here
     //
     double qeminfmat[11];
     make_qeminfmatrix( ed, (double *) mat, (double *) qeminfmat );
@@ -574,7 +574,7 @@ void eval_vqem( Sped *ed, double *mat )
   case EVAL_VERTEX:
       
     //
-    // 簡略化のとき
+    // during simplification
     //
     optimize_vector( ed, (double *) mat );
       
@@ -582,7 +582,7 @@ void eval_vqem( Sped *ed, double *mat )
       
   case EVAL_2SUB:
 
-    // 二回細分割点用マトリクスをこの場で計算
+    // compute two-subdivision matrix here
     double qem2submat[10];
     make_vqem2submatrix( ed, (double *) mat, params.gamma, (double *) qem2submat );
     optimize_2subvector( ed, (double *) qem2submat );
@@ -639,16 +639,24 @@ BOOL collapse_condition( Star *star )
   Spvt *ppdev = star->starev->vt;
 
   //
-  // check condition 1.
-  // {i, j} の両方に隣接するすべての頂点 {k} に対し
-  // ({i, k} \in K, {j,k} \in K)，{i,j,k} は K 上の面である
+  // Condition 1: for every vertex k adjacent to both endpoints i and j,
+  // ({i,k},{j,k} in the link) triangle (i,j,k) must be a face of the star.
   int n_vk = 0;
-  Starvt **vk = (Starvt **) malloc( star->vn * sizeof(Starvt *) );
+  /* Avoid malloc/free per edge try (optlod inner loop): star->vn is usually small. */
+  enum { kVkStackCap = 256 };
+  Starvt *vk_stack[kVkStackCap];
+  Starvt **vk = vk_stack;
+  if ( star->vn > kVkStackCap ) {
+    vk = (Starvt **) malloc( (size_t) star->vn * sizeof(Starvt *) );
+    if ( vk == NULL ) {
+      return FALSE;
+    }
+  }
 
   Starvt *starv;
   for ( starv = star->spvt; starv != (Starvt *) NULL; starv = starv->nxt ) {
 
-    // ppdv の隣接エッジが ppdsv と ppdev の両方を含むかどうかをチェック
+    // Count how many of {sv,ev} are neighbors of ppdv
     int cnt = 0;
     Spvt *ppdv = starv->vt;
     Sped *e = ppdvertex_first_edge( ppdv );
@@ -660,31 +668,32 @@ BOOL collapse_condition( Star *star )
       e = ppdvertex_next_edge( e, ppdv );
     } while ( (e != ppdvertex_first_edge( ppdv )) && (e != NULL) );
 
-    // 両方を含む場合
+    // Adjacent to both endpoints
     if ( cnt == 2 ) {
       vk[n_vk] = starv; ++n_vk;
     }
   }
 
-  // 面{sv, ev, vk} が star の中にあるかどうかをチェック
+  // Face {sv, ev, vk} must exist in the star
   for ( int i = 0; i < n_vk; ++i ) {
     if ( find_starface( star, star->starsv, star->starev, vk[i] ) == NULL ) {
-      free(vk);
+      if ( vk != vk_stack ) {
+        free( vk );
+      }
       return FALSE;
     }
   }
 
-  free(vk);
+  if ( vk != vk_stack ) {
+    free( vk );
+  }
 
-  // check condition 2.
-  // もし{i},{j} が両方境界頂点ならば，{i,j} は境界稜線である
+  // Condition 2: collapsing a boundary vertex requires a boundary edge
   if ( (ppdsv->isBoundary == TRUE) || (ppdev->isBoundary == TRUE) ) {
     if ( ppde->isBoundary == FALSE ) return FALSE;
   }
 
-  // check condition 3.
-  // もし {i},{j} が両方とも境界頂点でないとき，K は少なくとも 4 つの頂点を持つ
-  // また {i},{j} のどちらかが境界頂点のとき，K はすくなくとも 3 つの頂点を持つ
+  // Condition 3: minimum star size (interior vs boundary case)
   if ( (ppdsv->isBoundary != TRUE) && (ppdev->isBoundary != TRUE) ) {
     //if (star->vn < 4) return FALSE;
     if (star->vn < 5) return FALSE;
@@ -733,7 +742,7 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
   if ( e->rhe != NULL ) f[1] = e->rhe->bpfc;
   else f[1] = NULL;
   
-  // まず隣接情報を獲得する
+  // first gather adjacency
   // i = 0: left, i = 1: right
   int  i;
   Spvt *vk[2];
@@ -764,7 +773,7 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
       fj[i] = NULL;
     }
 
-    // matrix update (ei の mat と ej の mat を和算する)
+    // matrix update (ei  of  mat  and  ej  of  mat add matrices )
     if ( params.qemmode == MODE_EQEM ) {
       if ( (ei[i] != NULL) && (ej[i] != NULL) )
 	add_matrix4( (double *) ei[i]->mat, (double *) ej[i]->mat,
@@ -776,14 +785,14 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
   // matrix update 
   if ( params.qemmode == MODE_VQEM ) {
 
-    // vj の mat を vi に加える
+    // vj  of  mat  vi  add to 
     add_matrix4( (double *) vi->mat, (double *) vj->mat, (double *) vi->mat );
     
   } else { // MODE_EQEM
 
-    // vj の mat を vi に加える
+    // vj  of  mat  vi  add to 
     add_matrix4( (double *) vi->mat, (double *) vj->mat, (double *) vi->mat );
-    // e の mat を vi に加える
+    // e  of  mat  vi  add to 
     add_matrix4( (double *) vi->mat, (double *) e->mat, (double *) vi->mat );
     
   }
@@ -791,33 +800,33 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
   //
   // topological operations
   //
-  // 1. vi->sphe, vk[i]->sphe をいったん切り離す
-  // 2. vj の近傍面の he->vt，近傍エッジの ed->sv or ed->ev を
-  //    vj から vi にする
-  // 3. 取得した隣接情報 (lhe, rhe や mate など) をアップデート
-  // 4. vi->sphe, vk[i]->sphe を再接続する
+  // 1. vi->sphe, vk[i]->sphe unlink 
+  // 2. vj adjacent face  he->vt, incident-edge  ed->sv or ed->ev 
+  //    vj  from  vi  assign to 
+  // 3. gathered adjacency (lhe, rhe  and  mate , etc.) update 
+  // 4. vi->sphe, vk[i]->sphe reconnect 
 
-  // 1. vi->sphe, vk[i]->sphe をいったん切り離す
-  // 一度ここで切り離す
+  // 1. vi->sphe, vk[i]->sphe unlink 
+  // unlink once here
   vi->sphe = NULL;
   for ( i = 0; i < side; ++i ) {
     if ( f[i] == NULL ) continue;
     vk[i]->sphe = NULL;
   }
   
-  // 2. vj の近傍面のhe->vt，近傍エッジの ed->sv or ed->ev を vj から vi にする
+  // 2. vj adjacent face he->vt, incident-edge  ed->sv or ed->ev  vj  from  vi  assign to 
   change_ppdvertexlinks( vj, vi );
   
-  // 3. 取得した隣接情報 (lhe, rhe や mate など) をアップデート
+  // 3. gathered adjacency (lhe, rhe  and  mate , etc.) update 
   for ( i = 0; i < side; ++i ) {
     
     if ( f[i] == NULL ) continue;
     
-    // hej の ed を ej から ei にする
+    // hej  of  ed  ej  from  ei  assign to 
     //if ( hei[i] != NULL ) hei[i]->ed = ei[i];
     if ( hej[i] != NULL ) hej[i]->ed = ei[i];
       
-    // ei の lhe or rhe を hej に変える
+    // ei  of  lhe or rhe  hej  retarget to 
     if ( ei[i]->lhe == hei[i] ) {
       ei[i]->rhe = hej[i];
     }
@@ -825,28 +834,28 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
       ei[i]->lhe = hej[i];
     }
     
-    // fi - fj の mate を作る
+    // fi - fj  of  mate create 
     if ( hei[i] != NULL ) hei[i]->mate = hej[i];
     if ( hej[i] != NULL ) hej[i]->mate = hei[i];
     
-    // 境界エッジの情報を付加
+    // attach boundary-edge info
     if ( fj[i] == NULL ) {
       ei[i]->isBoundary = TRUE;
     }
 
   }    
   
-  // 境界頂点の情報を付加
+  // attach boundary-vertex info
   if ( vj->isBoundary == TRUE ) {
     vi->isBoundary = TRUE;
   }
 
-  // 4. vi->sphe , vk[i]->sphe をリアレンジする
+  // 4. vi->sphe , vk[i]->sphe relink 
   for ( i = 0; i < side; ++i ) {
 
     if ( f[i] == NULL ) continue;
     
-    // fi と fj のどちらかは必ず存在する
+    // fi  and  fj at least one of the two exists
     if ( fi[i] != NULL ) {
       if ( vk[i]->sphe == NULL ) 
 	vk[i]->sphe = decide_ppdvertex_sphe( vk[i], fi[i] );
@@ -866,7 +875,7 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
   
   reattach_ppdvertex_sphe( vi );
   
-  // 消去
+  // delete
   for ( i = 0; i < side; ++i ) {
     if ( f[i] == NULL ) continue;
     free_ppdface( f[i], ppd );
@@ -878,7 +887,7 @@ Sped *edge_collapse( Sped *e, Sppd *ppd )
   free_ppdedge( e, ppd );
 
   //
-  // 近傍のエッジに対するヒープのアップデート
+  // update heap for incident edges
   //
   adjust_lodpqheap( vi, ppd->lodpqh );
 
@@ -933,7 +942,7 @@ void change_ppdvertexlinks( Spvt *ev, Spvt *sv )
 {
   if ( ev == NULL ) return;
 
-  // ev の近傍エッジの頂点を sv にする
+  // ev neighbor vertices on  sv  assign to 
   Sped *ed = ppdvertex_first_edge( ev );
   do {
     if ( ed->sv == ev ) ed->sv = sv;
@@ -941,7 +950,7 @@ void change_ppdvertexlinks( Spvt *ev, Spvt *sv )
     ed = ppdvertex_next_edge( ed, ev );
   } while ( (ed != ppdvertex_first_edge( ev )) && (ed != NULL) );
   
-  // ev の近傍面の頂点を sv にする
+  // ev vertices on adjacent faces,  sv  assign to 
   Sphe *he = ev->sphe;
   do {
     //if ( he->vt == sv ) break;
@@ -952,7 +961,7 @@ void change_ppdvertexlinks( Spvt *ev, Spvt *sv )
 }
 
 //
-// edge collapse のエッジの周辺のエッジのヒープをアップデート
+// edge collapse update LOD heap for edges around this edge
 //
 void adjust_lodpqheap( Spvt *vt, LODPQHeap *lodpqh )
 {
@@ -963,7 +972,7 @@ void adjust_lodpqheap( Spvt *vt, LODPQHeap *lodpqh )
     if ( isLegalMove( ed, TRUE ) == TRUE ) {
 
 //        display("ed error %g\n", ed->error );
-      // queue の調整
+      // queue rebalance
       if ( ed->pqc == NULL ) (void) insert_lodpqcont( ed->error, lodpqh, ed );
       else (void) adjust_lodpqcont( ed->pqc->id, lodpqh );
       
@@ -985,7 +994,7 @@ void qem2submatrix_test( Sppd *ppd )
     
     display("ed %d\n", ed->no );
     //
-    // ここで edge collapse が legal move かどうかの判定をする
+    // Here:  edge collapse  legal move determine whether
     //
     if ( isLegalMove( ed, TRUE ) == FALSE ) {
       display("legal false.\n");
@@ -994,13 +1003,13 @@ void qem2submatrix_test( Sppd *ppd )
     display("legal true.\n");
     
     //
-    // sv と ev が持つ QEM の和を計算
+    // sv  and  ev  carries  QEM compute sum of 
     //
     double mat[10];
     add_matrix4( (double *) ed->sv->mat, (double *) ed->ev->mat,
 		 (double *) mat );
 
-    // 二回細分割点用マトリクスをこの場で計算
+    // compute two-subdivision matrix here
     display("ed %d sv %d %g %g %g ev %d %g %g %g\n",
 	    ed->no,
 	    ed->sv->no,

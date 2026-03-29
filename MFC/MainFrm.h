@@ -41,28 +41,28 @@ public:
 	
 class CMainFrame : public CFrameWnd
 {
-protected: // シリアライズ機能のみから作成します。
+protected: // Create from serialization only.
 	CMainFrame();
 	DECLARE_DYNCREATE(CMainFrame)
 
-// アトリビュート
+// Attributes
 public:
 
 //	CMySplitterWnd m_wndSplitter;
 //	CSplitterWnd m_wndSplitter;
 
-// オペレーション
+// Operations
 public:
 	void drawwindow( void );
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CMainFrame)
 	public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 public:
 	virtual ~CMainFrame();
 #ifdef _DEBUG
@@ -72,14 +72,14 @@ public:
 
 	BOOL CreateStyleBar();
 
-protected:  // コントロール バー用メンバ
+protected:  // control-bar members
 	CStatusBar  m_wndStatusBar;
 	CToolBar    m_wndToolBar;
 // temp
 //	CToolBar    m_wndEditBar;
 	CStyleBar   m_wndStyleBar;
 
-// 生成されたメッセージ マップ関数
+// Generated message map functions
 protected:
 	//{{AFX_MSG(CMainFrame)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -159,6 +159,6 @@ protected:
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_MAINFRM_H__11D0ECD8_2844_11D2_AB51_00E029217E15__INCLUDED_)

@@ -456,7 +456,7 @@ Sppd *open_ppd( char *fname )
 	  ev = he->nxt->vt;
 	  
 	  // vertex -> halfedge
-	  // $B!"!V!"%M!"%L%+%e%&%r%H%3%J%?!"%[!"%1!"%k!"%K!"%[!&%^!#%7!&%f!&%#!&%F!&%/!"JC1$K%"%/%;%9$G$-$k$h$&$(B	  // $B:FG[Ns$9$k(B
+	  // 	  // reorder
 	  if ( sv->sphe == (Sphe *) NULL ) {
 	    sv->sphe = he;
 	  }

@@ -6,9 +6,9 @@
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 //
-// stdafx.cpp : 標準インクルードファイルを含むソース ファイル
-// OpenGL.pch : 生成されるプリコンパイル済ヘッダー
-// stdafx.obj : 生成されるプリコンパイル済タイプ情報
+// stdafx.cpp : source file including standard includes
+// OpenGL.pch : precompiled header
+// stdafx.obj : precompiled type information
 
 #include "stdafx.h"
 

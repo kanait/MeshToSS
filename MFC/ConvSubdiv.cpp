@@ -26,7 +26,7 @@ static char THIS_FILE[] = __FILE__;
 extern CConvSubdiv *csdlg;
 
 /////////////////////////////////////////////////////////////////////////////
-// CConvSubdiv ダイアログ
+// CConvSubdiv dialog
 
 
 CConvSubdiv::CConvSubdiv(CWnd* pParent /*=NULL*/)
@@ -60,11 +60,11 @@ BEGIN_MESSAGE_MAP(CConvSubdiv, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CConvSubdiv メッセージ ハンドラ
+// CConvSubdiv message handlers
 
 BOOL CConvSubdiv::Create( void )
 {
-  // TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
+  // TODO: Add specialized code here and/or call the base class.
   return CDialog::Create( CConvSubdiv::IDD );
 }
 
@@ -72,7 +72,7 @@ BOOL CConvSubdiv::OnInitDialog()
 {
   CDialog::OnInitDialog();
 	
-  // TODO: この位置に初期化の補足処理を追加してください
+  // TODO: Add extra initialization here
 
   // conv type 
   swin->conv_type = CONV_NONE;
@@ -95,13 +95,13 @@ BOOL CConvSubdiv::OnInitDialog()
   m_simp_l2norm.SetWindowText( string );
   
   return TRUE;
-  // コントロールにフォーカスを設定しないとき、戻り値は TRUE となります
-  // 例外: OCX プロパティ ページの戻り値は FALSE となります
+  // Return TRUE unless you set the focus to a control
+  // NOTE: OCX property pages should return FALSE.
 }
 
 void CConvSubdiv::PostNcDestroy() 
 {
-  // TODO: この位置に固有の処理を追加するか、または基本クラスを呼び出してください
+  // TODO: Add specialized code here and/or call the base class.
 	
   //CDialog::PostNcDestroy();
 
@@ -118,7 +118,7 @@ void CConvSubdiv::OnOK()
 {
   if ( swin->conv_type != CONV_NUMV ) return;
   
-  // TODO: この位置にその他の検証用のコードを追加してください
+  // TODO: Add validation code here.
   //CDialog::OnOK();
   CString string;
   m_simp_nvertex.GetWindowText( string );
@@ -143,7 +143,7 @@ void CConvSubdiv::OnOK()
   
   Sppd* ppd = swin->screenatr.current_ppd;
 
-  // コピー
+  // copy
   swin->screenatr.org_ppd = copy_ppd( ppd );
   copy_material( &(swin->screenatr.org_ppd->matl), 0, (float *) mtlall );
   
@@ -162,7 +162,7 @@ void CConvSubdiv::OnCancel()
 {
   if ( swin->conv_type != CONV_NUMV ) return;
   
-  // TODO: この位置に特別な後処理を追加してください。
+  // TODO: Add special cleanup code here.
   //CDialog::OnCancel();
   CString string;
   string.Format((LPCTSTR)"");
@@ -171,14 +171,14 @@ void CConvSubdiv::OnCancel()
 
 void CConvSubdiv::OnClose() 
 {
-  // TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
+  // TODO: Add control notification handler code here.
   DestroyWindow();
 }
 
 void CConvSubdiv::OnL2NormOk() 
 {
   if ( swin->conv_type != CONV_DIS ) return;
-  // TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
+  // TODO: Add control notification handler code here.
   CString string;
   m_simp_l2norm.GetWindowText( string );
   LPTSTR lpszbuffer= string.GetBuffer( BUFSIZ );
@@ -197,7 +197,7 @@ void CConvSubdiv::OnL2NormOk()
   
   Sppd* ppd = swin->screenatr.current_ppd;
 
-  // コピー
+  // copy
   swin->screenatr.org_ppd = copy_ppd( ppd );
   copy_material( &(swin->screenatr.org_ppd->matl), 0, (float *) mtlall );
   
@@ -217,7 +217,7 @@ void CConvSubdiv::OnL2NormOk()
 void CConvSubdiv::OnL2NormCancel() 
 {
   if ( swin->conv_type != CONV_DIS ) return;
-  // TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
+  // TODO: Add control notification handler code here.
   CString string;
   string.Format((LPCTSTR)"");
   m_simp_l2norm.SetWindowText( string );
@@ -225,16 +225,16 @@ void CConvSubdiv::OnL2NormCancel()
 
 void CConvSubdiv::OnConvReset()
 {
-  // TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
+  // TODO: Add control notification handler code here.
   if ( swin->screenatr.org_ppd == NULL ) return;
 
-  // org_ppd を current_ppd にする
+  // use org_ppd as current_ppd
   free_ppd( swin->screenatr.current_ppd );
   swin->screenatr.current_ppd = swin->screenatr.org_ppd;
   swin->screenatr.view_ppd = swin->screenatr.org_ppd;
   swin->screenatr.org_ppd = NULL;
 
-  // テキストフォームのリセット
+  // reset text fields
   CString string;
   string.Format( _T("%d"), swin->screenatr.current_ppd->vn );
   m_cur_nvertex.SetWindowText( string );
@@ -249,12 +249,12 @@ void CConvSubdiv::OnConvReset()
 
 void CConvSubdiv::OnRadioDis()
 {
-  // TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
+  // TODO: Add control notification handler code here.
   swin->conv_type = CONV_DIS;
 }
 
 void CConvSubdiv::OnRadioNumvert()
 {
-  // TODO: この位置にコントロール通知ハンドラ用のコードを追加してください
+  // TODO: Add control notification handler code here.
   swin->conv_type = CONV_NUMV;
 }

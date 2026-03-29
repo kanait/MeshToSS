@@ -17,22 +17,22 @@
 
 class CMeshToSSView : public CView
 {
-protected: // シリアライズ機能のみから作成します。
+protected: // Create from serialization only.
 	CMeshToSSView();
 	DECLARE_DYNCREATE(CMeshToSSView)
 
-// アトリビュート
+// Attributes
 public:
 	CMeshToSSDoc* GetDocument();
 
-// オペレーション
+// Operations
 public:
 
-// オーバーライド
-	// ClassWizard は仮想関数のオーバーライドを生成します。
+// Overrides
+	// ClassWizard generates virtual function overrides.
 	//{{AFX_VIRTUAL(CMeshToSSView)
 	public:
-	virtual void OnDraw(CDC* pDC);  // このビューを描画する際にオーバーライドされます。
+	virtual void OnDraw(CDC* pDC);  // Override to draw this view.
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 	protected:
 	virtual BOOL OnPreparePrinting(CPrintInfo* pInfo);
@@ -40,7 +40,7 @@ public:
 	virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
 	//}}AFX_VIRTUAL
 
-// インプリメンテーション
+// Implementation
 public:
 	virtual ~CMeshToSSView();
 #ifdef _DEBUG
@@ -50,7 +50,7 @@ public:
 
 protected:
 
-// 生成されたメッセージ マップ関数
+// Generated message map functions
 protected:
 	//{{AFX_MSG(CMeshToSSView)
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -81,7 +81,7 @@ private:
 	BOOL moving, scaling, rotating;
 };
 
-#ifndef _DEBUG  // OpenGLView.cpp ファイルがデバッグ環境の時使用されます。
+#ifndef _DEBUG  // OpenGLView.cpp (debug build).
 inline CMeshToSSDoc* CMeshToSSView::GetDocument()
    { return (CMeshToSSDoc*)m_pDocument; }
 #endif
@@ -104,6 +104,6 @@ inline CMeshToSSDoc* CMeshToSSView::GetDocument()
 /////////////////////////////////////////////////////////////////////////////
 
 //{{AFX_INSERT_LOCATION}}
-// Microsoft Developer Studio は前行の直前に追加の宣言を挿入します。
+// Microsoft Developer Studio inserts additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_OPENGLVIEW_H__11D0ECDC_2844_11D2_AB51_00E029217E15__INCLUDED_)
