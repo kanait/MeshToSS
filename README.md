@@ -6,6 +6,8 @@ Takashi Kanai: "MeshToSS: Converting Subdivision Surfaces from Dense Meshes", Pr
 
 **Qt 6 (2026):** A cross-platform **Qt 6** GUI was **newly added in 2026**. It lives under `qt/` in this repository and is described in the [Qt 6 GUI](#qt-6-gui-macos-linux-windows) section below (requirements, and build instructions for macOS, Linux, and Windows).
 
+The original **command-line** tool **`meshtoss`** is built with **CMake** from `optmesh/`; see [Command-line tool (`meshtoss`)](#command-line-tool-meshtoss).
+
 ## Features
 
 * Reads polygonal mesh data
@@ -84,28 +86,51 @@ cmake --build build
 
 Run: `build\qt\mesh_to_ss_qt.exe`
 
+### Command-line tool (`meshtoss`)
+
+The **`meshtoss`** executable converts polygonal mesh data in **PPD** form (see the usage text printed when you run it without the required arguments). It is produced by the **same top-level CMake** build as the Qt GUI and links the `optmesh/` sources only (**no Qt** and **no OpenGL**).
+
+From the **repository root** (after installing a **C++17** compiler and **CMake 3.16+**):
+
+```sh
+cmake -B build
+cmake --build build -j$(nproc)
+```
+
+Typical output paths:
+
+| Generator | `meshtoss` location |
+|-----------|---------------------|
+| Unix **Makefile** or **Ninja** | `build/optmesh/meshtoss` |
+| Visual Studio (multi-config) | `build\optmesh\Release\meshtoss.exe` (or `Debug`) |
+
+To build **only** `meshtoss` and **skip** the Qt GUI (so **Qt is not required**):
+
+```sh
+cmake -B build -DMESHTOSS_BUILD_QT_GUI=OFF
+cmake --build build -j$(nproc)
+```
+
+**Windows** (Visual Studio generator), building everything including Qt:
+
+```bat
+cmake -B build -G "Visual Studio 17 2022" -A x64 -DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\msvc2022_64
+cmake --build build --config Release
+```
+
+Then run `build\optmesh\Release\meshtoss.exe` (and `build\qt\Release\mesh_to_ss_qt.exe` if the Qt GUI was enabled).
+
 ### Windows (MFC)
 
-Double-click MFC\MeshToSS.sln (A solution file for VS2015) and then "build the solution", and if successfully finished, you can find an executable in MFC\Release\MeshToSS.exe .
-
-### Unix (command-line version)
-
-Type the following commands:
-
-```
-./configure
-make
-```
-
-If sucessfully finished, you can find an executable in optmesh/meshtoss.
+The **MFC** project under `MFC/` is set up for **Visual Studio 2026**. **Only the x64 platform is supported** (Win32 / 32-bit configurations are not maintained). Open **`MFC\MeshToSS.sln`**, pick a configuration such as **Release** | **x64**, and **Build Solution**. When the build succeeds, the executable is typically `MFC\x64\Release\MeshToSS.exe` (exact path depends on your configuration names and output settings).
 
 ## Prerequisites
 
-This software uses MFC (Microsoft Foundation Class). Then, to build this software, VS2015 Professional or upper versions are required for Windows application.
+This software uses **MFC** (Microsoft Foundation Class). The **MFC** build targets **Visual Studio 2026** (Windows desktop development with C++ and **MFC** components installed) and **supports x64 only**.
 
 For the **Qt GUI**, install **Qt 6.2+** with the modules listed above and a C++17-capable compiler.
 
-For command-line version, there is no prerequities to build the software.
+For **`meshtoss`**, only **CMake 3.16+** and a **C++17** compiler are required (use **`-DMESHTOSS_BUILD_QT_GUI=OFF`** if you do not want to install Qt).
 
 ## Copyright Holders
 
