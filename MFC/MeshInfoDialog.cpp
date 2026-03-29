@@ -22,7 +22,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-extern CMeshInfoDialog *midlg;
+CMeshInfoDialog *midlg = NULL;
 
 /////////////////////////////////////////////////////////////////////////////
 // CMeshInfoDialog ダイアログ
@@ -67,7 +67,7 @@ BOOL CMeshInfoDialog::OnInitDialog()
 
   Sppd *ppd = swin->screenatr.current_ppd;
   CString string;
-  string.Format("ppd\n\nvertices:\t%d\nfaces:\t%d\nedges:\t%d\n",
+  string.Format(_T("ppd\n\nvertices:\t%d\nfaces:\t%d\nedges:\t%d\n"),
 		ppd->vn, ppd->fn, ppd->en); 
   m_mesh_info.FmtLines( TRUE );
   m_mesh_info.SetWindowText( string );

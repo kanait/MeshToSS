@@ -194,8 +194,5 @@
     <None Include="res\MeshToSS.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="res\OpenGL.rc2">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
 </Project>

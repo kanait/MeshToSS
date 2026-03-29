@@ -238,8 +238,6 @@ Sppd *open_smf( char *fname )
 	Spvt *ev = he->nxt->vt;
 	  
 	// vertex -> halfedge
-	// あとで境界頂点のすべてのハーフエッジを簡単にアクセスできるように
-	// 再配列する
 	if ( sv->sphe == NULL ) {
 	  sv->sphe = he;
 	}
