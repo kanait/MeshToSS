@@ -300,7 +300,7 @@ typedef struct _swin {
 
 } Swin;
 
-#ifdef _WINDOWS
+#if defined(_WINDOWS) || defined(MESHTOSS_QT_GUI)
 extern Swin *swin;
 #endif
 

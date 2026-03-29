@@ -7,6 +7,9 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#ifdef MESHTOSS_QT_GUI
+#include "meshtoss_gui_prefix.h"
+#else
 #include "stdafx.h"
 
 #ifdef _DEBUG
@@ -19,6 +22,7 @@ static char THIS_FILE[] = __FILE__;
 #include "gl\gl.h"
 #include "gl\glu.h"
 //#include "gl\glaux.h"
+#endif
 
 
 //#include <sys/stat.h>

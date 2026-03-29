@@ -7,6 +7,9 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#ifdef MESHTOSS_QT_GUI
+#include "meshtoss_gui_prefix.h"
+#else
 #include "stdafx.h"
 
 #ifdef _DEBUG
@@ -14,16 +17,20 @@
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
+#endif
 
 //#include "cinc.h"
 #include <math.h>
 #include <assert.h>
 
+#ifndef MESHTOSS_QT_GUI
 #include "gl\gl.h"
 #include "gl\glu.h"
+#endif
 //#include "gl\glaux.h"
 
 #include "../optmesh/smd.h"
+#include "../optmesh/ppd.h"
 #include "../optmesh/veclib.h"
 #include "../optmesh/matlib.h"
 #include "../optmesh/subdiv.h"
@@ -55,9 +62,6 @@ void init_gl3d( void )
   ::glEnable( GL_DEPTH_TEST );
   ::glDepthFunc( GL_LESS );
 
-  ::glEnable( GL_POLYGON_OFFSET_FILL );
-  ::glPolygonOffset( (float) 1.0, (float) 1e-6 );
-  
   //
   // texture map (for Floor)
   //
@@ -518,9 +522,57 @@ static void drawtile( Tile *tile, ScreenAtr *screen )
   draw_tile_tface_boundary( tile, screen );
 }
 #endif
+
+/* Scale polygon offset with bbox diagonal so large models separate fill vs lines in depth. */
+static GLfloat wireOverlayOffsetScale( Sppd *ppd )
+{
+  double maxx, minx, maxy, miny, maxz, minz;
+  ppd_size( ppd, &maxx, &minx, &maxy, &miny, &maxz, &minz );
+  const double dx = maxx - minx;
+  const double dy = maxy - miny;
+  const double dz = maxz - minz;
+  double diag = sqrt( dx * dx + dy * dy + dz * dz );
+  if ( diag < 1e-30 ) {
+    diag = 1.0;
+  }
+
+  double scale = diag * 8.0e-5;
+  if ( scale < 1.0 ) {
+    scale = 1.0;
+  }
+  if ( scale > 96.0 ) {
+    scale = 96.0;
+  }
+  return (GLfloat)scale;
+}
+
+static void drawShadingThenWireOverlay( Sppd *ppd, ScreenAtr *screen )
+{
+  const GLfloat s = wireOverlayOffsetScale( ppd );
+
+  ::glEnable( GL_POLYGON_OFFSET_FILL );
+  ::glPolygonOffset( s * 1.5f, s * 3.0f );
+  drawppd_shading( ppd, screen );
+  ::glDisable( GL_POLYGON_OFFSET_FILL );
+  ::glPolygonOffset( 0.0f, 0.0f );
+
+  GLint prevDepthFunc = GL_LESS;
+  ::glGetIntegerv( GL_DEPTH_FUNC, &prevDepthFunc );
+  ::glDepthFunc( GL_LEQUAL );
+
+  ::glEnable( GL_POLYGON_OFFSET_LINE );
+  ::glPolygonOffset( -s * 1.5f, -s * 3.0f );
+  drawppd_edge( ppd, screen, blackvec );
+  ::glDisable( GL_POLYGON_OFFSET_LINE );
+  ::glPolygonOffset( 0.0f, 0.0f );
+
+  ::glDepthFunc( (GLenum)prevDepthFunc );
+}
   
 static void drawppd( Sppd *ppd, ScreenAtr *screen )
 {
+  const int shadedOverFill = swin->dis3d.shading && !swin->dis3d.hidden;
+
   // vertex
   if ( swin->dis3d.vertex ) {
     drawppd_vertex( ppd, screen );
@@ -538,8 +590,7 @@ static void drawppd( Sppd *ppd, ScreenAtr *screen )
     }
   else if ( (swin->dis3d.wire) && (swin->dis3d.shading) )
     {
-      drawppd_shading( ppd, screen );
-      drawppd_edge( ppd, screen, blackvec );
+      drawShadingThenWireOverlay( ppd, screen );
     }
   else if ( !(swin->dis3d.wire) && (swin->dis3d.shading) )
     {
@@ -553,7 +604,20 @@ static void drawppd( Sppd *ppd, ScreenAtr *screen )
 //    if ( (swin->dis3d.subdiv_boundary) && (ppd->file_type != FILE_VRML) )
   if ( swin->dis3d.subdiv_boundary )
     {
-      drawppd_edge_subdiv_boundary( ppd, screen, redvec );
+      if ( shadedOverFill ) {
+        const GLfloat s = wireOverlayOffsetScale( ppd );
+        GLint prevDepthFunc = GL_LESS;
+        ::glGetIntegerv( GL_DEPTH_FUNC, &prevDepthFunc );
+        ::glDepthFunc( GL_LEQUAL );
+        ::glEnable( GL_POLYGON_OFFSET_LINE );
+        ::glPolygonOffset( -s * 1.5f, -s * 3.0f );
+        drawppd_edge_subdiv_boundary( ppd, screen, redvec );
+        ::glDisable( GL_POLYGON_OFFSET_LINE );
+        ::glPolygonOffset( 0.0f, 0.0f );
+        ::glDepthFunc( (GLenum)prevDepthFunc );
+      } else {
+        drawppd_edge_subdiv_boundary( ppd, screen, redvec );
+      }
     }
 
   // edge id

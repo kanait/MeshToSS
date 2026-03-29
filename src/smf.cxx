@@ -1,4 +1,4 @@
-﻿//
+//
 // smf.cxx
 //
 // Copyright (c) 2000 IPA and Keio University SFC Research Institution
@@ -7,12 +7,16 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#ifdef MESHTOSS_QT_GUI
+#include "meshtoss_gui_prefix.h"
+#else
 #include "StdAfx.h"
 
 #if defined(_DEBUG) && defined(_WINDOWS)
 #define new DEBUG_NEW
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
+#endif
 #endif
 
 #ifdef WIN32
@@ -111,11 +115,17 @@ void write_smf( char *fname, Sppd *ppd )
 Sppd *open_smf( char *fname )
 {
   FILE *fp;
-  errno_t error;
-  if(error = fopen_s(&fp, fname, "r") != 0) {
-  // file variables
+#if defined(_WIN32) && defined(_MSC_VER)
+  errno_t err;
+  if ((err = fopen_s(&fp, fname, "r")) != 0) {
     return NULL;
   }
+#else
+  fp = fopen(fname, "r");
+  if (fp == NULL) {
+    return NULL;
+  }
+#endif
 
   // 読み込み 1 回目
   //

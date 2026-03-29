@@ -7,7 +7,11 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#ifdef MESHTOSS_QT_GUI
+#include "meshtoss_gui_prefix.h"
+#else
 #include "stdafx.h"
+#endif
 
 //  #ifdef _DEBUG
 //  #define new DEBUG_NEW
@@ -18,8 +22,10 @@
 #include <cmath>
 using namespace std;
 
+#ifndef MESHTOSS_QT_GUI
 #include "gl\gl.h"
 #include "gl\glu.h"
+#endif
 
 #include "../optmesh/smd.h"
 #include "../optmesh/veclib.h"

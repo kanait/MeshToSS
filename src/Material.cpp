@@ -7,6 +7,11 @@
 // http://opensource.org/licenses/mit-license.php
 //
 
+#ifdef MESHTOSS_QT_GUI
+#include "meshtoss_gui_prefix.h"
+#include "../optmesh/smd.h"
+#include "mtl.h"
+#else
 #include "stdafx.h"
 
 #ifdef _DEBUG
@@ -55,6 +60,8 @@ void CMaterial::Binding( void )
   ::glMaterialfv( GL_FRONT, GL_EMISSION, (GLfloat *) emission );
   ::glMaterialfv( GL_FRONT, GL_SHININESS, (GLfloat *) shininess );
 }
+
+#endif // !MESHTOSS_QT_GUI
 
 void material_binding( Material *material )
 {
