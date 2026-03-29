@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -13,10 +13,16 @@
       <UniqueIdentifier>{431e4ea3-eddd-4c0e-aafb-ecebae62ad10}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
+    <Filter Include="Source Files\MFC">
+      <UniqueIdentifier>{a1b2c3d4-e5f6-7890-abcd-ef1234567890}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MFC">
+      <UniqueIdentifier>{b2c3d4e5-f6a7-8901-bcde-f12345678901}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\ConvSubdiv.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ConvSubdiv.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="..\src\draw.cpp">
       <Filter>Source Files</Filter>
@@ -27,29 +33,32 @@
     <ClCompile Include="..\src\glppd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MainFrm.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MaterialDialog.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MaterialDialog.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MeshToSS.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MeshInfoDialog.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MeshToSSDoc.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MeshToSS.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\MeshToSSView.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MeshToSSDoc.cpp">
+      <Filter>Source Files\MFC</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshToSSView.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="..\src\pick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\QuitDialog.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="QuitDialog.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="..\src\screen.cxx">
       <Filter>Source Files</Filter>
@@ -60,11 +69,11 @@
     <ClCompile Include="..\src\smf.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\SRDialog.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="SRDialog.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\StdAfx.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files\MFC</Filter>
     </ClCompile>
     <ClCompile Include="..\src\swin.cpp">
       <Filter>Source Files</Filter>
@@ -80,16 +89,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\src\MeshToSS.rc">
-      <Filter>Source Files</Filter>
+    <ResourceCompile Include="MeshToSS.rc">
+      <Filter>Source Files\MFC</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ConvSubdiv.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ConvSubdiv.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="..\src\draw.h">
       <Filter>Header Files</Filter>
@@ -103,23 +112,26 @@
     <ClInclude Include="..\src\light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MainFrm.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MaterialDialog.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MaterialDialog.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MeshToSS.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MeshInfoDialog.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MeshToSSDoc.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MeshToSS.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\MeshToSSView.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MeshToSSDoc.h">
+      <Filter>Header Files\MFC</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshToSSView.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mtl.h">
       <Filter>Header Files</Filter>
@@ -127,11 +139,11 @@
     <ClInclude Include="..\src\pick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\QuitDialog.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="QuitDialog.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="..\src\screen.h">
       <Filter>Header Files</Filter>
@@ -142,11 +154,11 @@
     <ClInclude Include="..\src\smf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\SRDialog.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SRDialog.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\StdAfx.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files\MFC</Filter>
     </ClInclude>
     <ClInclude Include="..\src\swin.h">
       <Filter>Header Files</Filter>
@@ -168,30 +180,21 @@
     <Image Include="res\MeshToSSDoc.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="..\src\res\OpenGL.ico">
+    <Image Include="res\OpenGL.ico">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="src\res\OpenGL.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="src\res\OpenGLDoc.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\src\res\OpenGLDoc.ico">
+    <Image Include="res\OpenGLDoc.ico">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="src\res\Toolbar.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="..\src\res\Toolbar.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\MeshToSS.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\OpenGL.rc2">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

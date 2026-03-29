@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -90,8 +90,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;..\optmesh;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -132,6 +131,7 @@
       <TypeLibraryName>.\Release/MeshToSS.tlb</TypeLibraryName>
     </Midl>
     <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_AFXDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0411</Culture>
     </ResourceCompile>
@@ -139,8 +139,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;..\optmesh;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>
       </StringPooling>
@@ -180,6 +179,7 @@
       <TypeLibraryName>.\Release/MeshToSS.tlb</TypeLibraryName>
     </Midl>
     <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_AFXDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0411</Culture>
     </ResourceCompile>
@@ -187,7 +187,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\libvrml97\libvrml97core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;..\optmesh;..\libvrml97\libvrml97core\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_DFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -221,6 +221,7 @@
       <TypeLibraryName>.\Debug/MeshToSS.tlb</TypeLibraryName>
     </Midl>
     <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_AFXDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0411</Culture>
     </ResourceCompile>
@@ -228,8 +229,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;..\optmesh;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;_DFILE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -262,78 +262,72 @@
       <TypeLibraryName>.\Debug/MeshToSS.tlb</TypeLibraryName>
     </Midl>
     <ResourceCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir);..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_AFXDLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0411</Culture>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\bitmap.cpp" />
-    <ClCompile Include="..\src\ConvSubdiv.cpp" />
+    <ClCompile Include="ConvSubdiv.cpp" />
     <ClCompile Include="..\src\draw.cpp" />
     <ClCompile Include="..\src\edit.cpp" />
     <ClCompile Include="..\src\glppd.cpp" />
-    <ClCompile Include="..\src\MainFrm.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="..\src\Material.cpp" />
-    <ClCompile Include="..\src\MaterialDialog.cpp" />
-    <ClCompile Include="..\src\MeshToSS.cpp" />
-    <ClCompile Include="..\src\MeshToSSDoc.cpp" />
-    <ClCompile Include="..\src\MeshToSSView.cpp" />
+    <ClCompile Include="MaterialDialog.cpp" />
+    <ClCompile Include="MeshInfoDialog.cpp" />
+    <ClCompile Include="MeshToSS.cpp" />
+    <ClCompile Include="MeshToSSDoc.cpp" />
+    <ClCompile Include="MeshToSSView.cpp" />
     <ClCompile Include="..\src\pick.cpp" />
-    <ClCompile Include="..\src\QuitDialog.cpp" />
+    <ClCompile Include="QuitDialog.cpp" />
     <ClCompile Include="..\src\screen.cxx" />
     <ClCompile Include="..\src\sellist.cxx" />
     <ClCompile Include="..\src\smf.cxx" />
-    <ClCompile Include="..\src\SRDialog.cpp" />
-    <ClCompile Include="..\src\StdAfx.cpp" />
+    <ClCompile Include="SRDialog.cpp" />
+    <ClCompile Include="StdAfx.cpp" />
     <ClCompile Include="..\src\swin.cpp" />
     <ClCompile Include="..\src\texture.cxx" />
     <ClCompile Include="..\src\vw.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\src\MeshToSS.rc">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">\home\kanai\MeshToSS-1.0.1\src</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">\home\kanai\MeshToSS-1.0.1\src</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">\home\kanai\MeshToSS-1.0.1\src</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">\home\kanai\MeshToSS-1.0.1\src</AdditionalIncludeDirectories>
-    </ResourceCompile>
+    <ResourceCompile Include="MeshToSS.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\bitmap.h" />
     <ClInclude Include="..\src\color.h" />
-    <ClInclude Include="..\src\ConvSubdiv.h" />
+    <ClInclude Include="ConvSubdiv.h" />
     <ClInclude Include="..\src\draw.h" />
     <ClInclude Include="..\src\edit.h" />
     <ClInclude Include="..\src\glppd.h" />
     <ClInclude Include="..\src\light.h" />
-    <ClInclude Include="..\src\MainFrm.h" />
+    <ClInclude Include="MainFrm.h" />
     <ClInclude Include="..\src\Material.h" />
-    <ClInclude Include="..\src\MaterialDialog.h" />
-    <ClInclude Include="..\src\MeshToSS.h" />
-    <ClInclude Include="..\src\MeshToSSDoc.h" />
-    <ClInclude Include="..\src\MeshToSSView.h" />
+    <ClInclude Include="MaterialDialog.h" />
+    <ClInclude Include="MeshInfoDialog.h" />
+    <ClInclude Include="MeshToSS.h" />
+    <ClInclude Include="MeshToSSDoc.h" />
+    <ClInclude Include="MeshToSSView.h" />
     <ClInclude Include="..\src\mtl.h" />
     <ClInclude Include="..\src\pick.h" />
-    <ClInclude Include="..\src\QuitDialog.h" />
-    <ClInclude Include="..\src\resource.h" />
+    <ClInclude Include="QuitDialog.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="..\src\screen.h" />
     <ClInclude Include="..\src\sellist.h" />
     <ClInclude Include="..\src\smf.h" />
-    <ClInclude Include="..\src\SRDialog.h" />
-    <ClInclude Include="..\src\StdAfx.h" />
+    <ClInclude Include="SRDialog.h" />
+    <ClInclude Include="StdAfx.h" />
     <ClInclude Include="..\src\swin.h" />
     <ClInclude Include="..\src\texture.h" />
     <ClInclude Include="..\src\vw.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\src\res\OpenGL.ico" />
-    <Image Include="..\src\res\OpenGLDoc.ico" />
-    <Image Include="..\src\res\Toolbar.bmp" />
+    <Image Include="res\OpenGL.ico" />
+    <Image Include="res\OpenGLDoc.ico" />
     <Image Include="res\MeshToSS.ico" />
     <Image Include="res\MeshToSSDoc.ico" />
     <Image Include="res\Toolbar.bmp" />
-    <Image Include="src\res\OpenGL.ico" />
-    <Image Include="src\res\OpenGLDoc.ico" />
-    <Image Include="src\res\Toolbar.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\MeshToSS.rc2" />
@@ -349,7 +343,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties RESOURCE_FILE="\home\kanai\work\MeshToSS\1.0.3\MeshToSS-1.0.3\src\MeshToSS.rc" />
+      <UserProperties RESOURCE_FILE="$(ProjectDir)MeshToSS.rc" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -1,24 +1,24 @@
 # Microsoft Developer Studio Project File - Name="MeshToSS" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** 編集しないでください **
+# ** ??W?????????????? **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
 CFG=MeshToSS - Win32 Debug
-!MESSAGE これは有効なﾒｲｸﾌｧｲﾙではありません。 このﾌﾟﾛｼﾞｪｸﾄをﾋﾞﾙﾄﾞするためには NMAKE を使用してください。
-!MESSAGE [ﾒｲｸﾌｧｲﾙのｴｸｽﾎﾟｰﾄ] ｺﾏﾝﾄﾞを使用して実行してください
+!MESSAGE ?????L??????????????????B ??????????????????????? NMAKE ???g?p????????????B
+!MESSAGE [???????????] ???????g?p??????s???????????
 !MESSAGE 
 !MESSAGE NMAKE /f "MeshToSS.mak".
 !MESSAGE 
-!MESSAGE NMAKE の実行時に構成を指定できます
-!MESSAGE ｺﾏﾝﾄﾞ ﾗｲﾝ上でﾏｸﾛの設定を定義します。例:
+!MESSAGE NMAKE ????s????\?????w???????
+!MESSAGE ????? ???????????`??????B??:
 !MESSAGE 
 !MESSAGE NMAKE /f "MeshToSS.mak" CFG="MeshToSS - Win32 Debug"
 !MESSAGE 
-!MESSAGE 選択可能なﾋﾞﾙﾄﾞ ﾓｰﾄﾞ:
+!MESSAGE ?I????\??????? ???:
 !MESSAGE 
-!MESSAGE "MeshToSS - Win32 Release" ("Win32 (x86) Application" 用)
-!MESSAGE "MeshToSS - Win32 Debug" ("Win32 (x86) Application" 用)
+!MESSAGE "MeshToSS - Win32 Release" ("Win32 (x86) Application" ?p)
+!MESSAGE "MeshToSS - Win32 Debug" ("Win32 (x86) Application" ?p)
 !MESSAGE 
 
 # Begin Project
@@ -43,12 +43,12 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /I "..\libvrml97\libvrml97core\src" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O2 /I "." /I "..\src" /I "..\optmesh" /I "..\libvrml97\libvrml97core\src" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /YX /FD /c
 # SUBTRACT CPP /X
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x411 /d "NDEBUG" /d "_AFXDLL"
-# ADD RSC /l 0x411 /d "NDEBUG" /d "_AFXDLL"
+# ADD RSC /l 0x411 /d "NDEBUG" /d "_AFXDLL" /i "." /i "..\src"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
@@ -71,12 +71,12 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\libvrml97\libvrml97core\src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "_DFILE" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "." /I "..\src" /I "..\optmesh" /I "..\libvrml97\libvrml97core\src" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "_DFILE" /FR /YX /FD /GZ /c
 # SUBTRACT CPP /X
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x411 /d "_DEBUG" /d "_AFXDLL"
-# ADD RSC /l 0x411 /d "_DEBUG" /d "_AFXDLL"
+# ADD RSC /l 0x411 /d "_DEBUG" /d "_AFXDLL" /i "." /i "..\src"
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
@@ -100,7 +100,7 @@ SOURCE=..\src\bitmap.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\ConvSubdiv.cpp
+SOURCE=.\ConvSubdiv.cpp
 # End Source File
 # Begin Source File
 
@@ -116,7 +116,7 @@ SOURCE=..\src\glppd.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MainFrm.cpp
+SOURCE=.\MainFrm.cpp
 # End Source File
 # Begin Source File
 
@@ -124,23 +124,27 @@ SOURCE=..\src\Material.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MaterialDialog.cpp
+SOURCE=.\MaterialDialog.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSS.cpp
+SOURCE=.\MeshInfoDialog.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSS.rc
+SOURCE=.\MeshToSS.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSSDoc.cpp
+SOURCE=.\MeshToSS.rc
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSSView.cpp
+SOURCE=.\MeshToSSDoc.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\MeshToSSView.cpp
 # End Source File
 # Begin Source File
 
@@ -148,7 +152,7 @@ SOURCE=..\src\pick.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\QuitDialog.cpp
+SOURCE=.\QuitDialog.cpp
 # End Source File
 # Begin Source File
 
@@ -164,11 +168,11 @@ SOURCE=..\src\smf.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\SRDialog.cpp
+SOURCE=.\SRDialog.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\StdAfx.cpp
+SOURCE=.\StdAfx.cpp
 # End Source File
 # Begin Source File
 
@@ -200,7 +204,7 @@ SOURCE=..\src\color.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\ConvSubdiv.h
+SOURCE=.\ConvSubdiv.h
 # End Source File
 # Begin Source File
 
@@ -220,7 +224,7 @@ SOURCE=..\src\light.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MainFrm.h
+SOURCE=.\MainFrm.h
 # End Source File
 # Begin Source File
 
@@ -228,19 +232,23 @@ SOURCE=..\src\Material.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MaterialDialog.h
+SOURCE=.\MaterialDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSS.h
+SOURCE=.\MeshInfoDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSSDoc.h
+SOURCE=.\MeshToSS.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\MeshToSSView.h
+SOURCE=.\MeshToSSDoc.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\MeshToSSView.h
 # End Source File
 # Begin Source File
 
@@ -252,11 +260,11 @@ SOURCE=..\src\pick.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\QuitDialog.h
+SOURCE=.\QuitDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\resource.h
+SOURCE=.\resource.h
 # End Source File
 # Begin Source File
 
@@ -272,11 +280,11 @@ SOURCE=..\src\smf.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\SRDialog.h
+SOURCE=.\SRDialog.h
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\StdAfx.h
+SOURCE=.\StdAfx.h
 # End Source File
 # Begin Source File
 
@@ -312,19 +320,11 @@ SOURCE=.\res\MeshToSSDoc.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\res\OpenGL.ico
+SOURCE=.\res\OpenGL.ico
 # End Source File
 # Begin Source File
 
-SOURCE=..\src\res\OpenGL.ico
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\res\OpenGLDoc.ico
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\res\OpenGLDoc.ico
+SOURCE=.\res\OpenGLDoc.ico
 # End Source File
 # Begin Source File
 
@@ -332,11 +332,7 @@ SOURCE=.\res\Toolbar.bmp
 # End Source File
 # Begin Source File
 
-SOURCE=.\src\res\Toolbar.bmp
-# End Source File
-# Begin Source File
-
-SOURCE=..\src\res\Toolbar.bmp
+SOURCE=.\res\OpenGL.rc2
 # End Source File
 # End Group
 # Begin Source File

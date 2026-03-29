@@ -22,7 +22,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\libvrml97\libvrml97core\src"
+				AdditionalIncludeDirectories=".\;..\src;..\optmesh;..\libvrml97\libvrml97core\src"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -63,6 +63,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories=".\;..\src"
 				PreprocessorDefinitions="_AFXDLL;NDEBUG"
 				Culture="1041"/>
 			<Tool
@@ -87,7 +88,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\libvrml97\libvrml97core\src"
+				AdditionalIncludeDirectories=".\;..\src;..\optmesh;..\libvrml97\libvrml97core\src"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_DFILE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -130,6 +131,7 @@
 				Name="VCPreLinkEventTool"/>
 			<Tool
 				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories=".\;..\src"
 				PreprocessorDefinitions="_AFXDLL;_DEBUG"
 				Culture="1041"/>
 			<Tool
@@ -154,7 +156,7 @@
 				RelativePath="..\src\bitmap.cpp">
 			</File>
 			<File
-				RelativePath="..\src\ConvSubdiv.cpp">
+				RelativePath=".\ConvSubdiv.cpp">
 			</File>
 			<File
 				RelativePath="..\src\draw.cpp">
@@ -166,43 +168,34 @@
 				RelativePath="..\src\glppd.cpp">
 			</File>
 			<File
-				RelativePath="..\src\MainFrm.cpp">
+				RelativePath=".\MainFrm.cpp">
 			</File>
 			<File
 				RelativePath="..\src\Material.cpp">
 			</File>
 			<File
-				RelativePath="..\src\MaterialDialog.cpp">
+				RelativePath=".\MaterialDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSS.cpp">
+				RelativePath=".\MeshInfoDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSS.rc">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCResourceCompilerTool"
-						AdditionalIncludeDirectories="\home\kanai\MeshToSS-1.0.1\src;$(NoInherit)"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCResourceCompilerTool"
-						AdditionalIncludeDirectories="\home\kanai\MeshToSS-1.0.1\src;$(NoInherit)"/>
-				</FileConfiguration>
+				RelativePath=".\MeshToSS.cpp">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSSDoc.cpp">
+				RelativePath=".\MeshToSS.rc">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSSView.cpp">
+				RelativePath=".\MeshToSSDoc.cpp">
+			</File>
+			<File
+				RelativePath=".\MeshToSSView.cpp">
 			</File>
 			<File
 				RelativePath="..\src\pick.cpp">
 			</File>
 			<File
-				RelativePath="..\src\QuitDialog.cpp">
+				RelativePath=".\QuitDialog.cpp">
 			</File>
 			<File
 				RelativePath="..\src\screen.cxx">
@@ -214,10 +207,10 @@
 				RelativePath="..\src\smf.cxx">
 			</File>
 			<File
-				RelativePath="..\src\SRDialog.cpp">
+				RelativePath=".\SRDialog.cpp">
 			</File>
 			<File
-				RelativePath="..\src\StdAfx.cpp">
+				RelativePath=".\StdAfx.cpp">
 			</File>
 			<File
 				RelativePath="..\src\swin.cpp">
@@ -242,7 +235,7 @@
 				RelativePath="..\src\color.h">
 			</File>
 			<File
-				RelativePath="..\src\ConvSubdiv.h">
+				RelativePath=".\ConvSubdiv.h">
 			</File>
 			<File
 				RelativePath="..\src\draw.h">
@@ -257,22 +250,25 @@
 				RelativePath="..\src\light.h">
 			</File>
 			<File
-				RelativePath="..\src\MainFrm.h">
+				RelativePath=".\MainFrm.h">
 			</File>
 			<File
 				RelativePath="..\src\Material.h">
 			</File>
 			<File
-				RelativePath="..\src\MaterialDialog.h">
+				RelativePath=".\MaterialDialog.h">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSS.h">
+				RelativePath=".\MeshInfoDialog.h">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSSDoc.h">
+				RelativePath=".\MeshToSS.h">
 			</File>
 			<File
-				RelativePath="..\src\MeshToSSView.h">
+				RelativePath=".\MeshToSSDoc.h">
+			</File>
+			<File
+				RelativePath=".\MeshToSSView.h">
 			</File>
 			<File
 				RelativePath="..\src\mtl.h">
@@ -281,10 +277,10 @@
 				RelativePath="..\src\pick.h">
 			</File>
 			<File
-				RelativePath="..\src\QuitDialog.h">
+				RelativePath=".\QuitDialog.h">
 			</File>
 			<File
-				RelativePath="..\src\resource.h">
+				RelativePath=".\resource.h">
 			</File>
 			<File
 				RelativePath="..\src\screen.h">
@@ -296,10 +292,10 @@
 				RelativePath="..\src\smf.h">
 			</File>
 			<File
-				RelativePath="..\src\SRDialog.h">
+				RelativePath=".\SRDialog.h">
 			</File>
 			<File
-				RelativePath="..\src\StdAfx.h">
+				RelativePath=".\StdAfx.h">
 			</File>
 			<File
 				RelativePath="..\src\swin.h">
@@ -327,25 +323,16 @@
 				RelativePath=".\res\MeshToSSDoc.ico">
 			</File>
 			<File
-				RelativePath="..\src\res\OpenGL.ico">
+				RelativePath=".\res\OpenGL.ico">
 			</File>
 			<File
-				RelativePath=".\src\res\OpenGL.ico">
-			</File>
-			<File
-				RelativePath=".\src\res\OpenGLDoc.ico">
-			</File>
-			<File
-				RelativePath="..\src\res\OpenGLDoc.ico">
+				RelativePath=".\res\OpenGLDoc.ico">
 			</File>
 			<File
 				RelativePath=".\res\Toolbar.bmp">
 			</File>
 			<File
-				RelativePath=".\src\res\Toolbar.bmp">
-			</File>
-			<File
-				RelativePath="..\src\res\Toolbar.bmp">
+				RelativePath=".\res\OpenGL.rc2">
 			</File>
 		</Filter>
 		<File
@@ -355,6 +342,6 @@
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="\home\kanai\work\MeshToSS\1.0.3\MeshToSS-1.0.3\src\MeshToSS.rc"/>
+			Value=".\MeshToSS.rc"/>
 	</Globals>
 </VisualStudioProject>
