@@ -4,7 +4,7 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MeshToSS", "MeshToSS.vcxproj", "{60B98282-748C-4AAA-B55D-56FD178C8D9A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "optmesh", "..\optmesh\optmesh.vcxproj", "{6E45EA87-FCDC-4CB4-9708-2E538A62B217}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "optmesh", "optmesh.vcxproj", "{6E45EA87-FCDC-4CB4-9708-2E538A62B217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

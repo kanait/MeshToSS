@@ -1,24 +1,24 @@
 # Microsoft Developer Studio Project File - Name="optmesh" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
-# ** 編集しないでください **
+# ** ??W?????????????? **
 
 # TARGTYPE "Win32 (x86) Static Library" 0x0104
 
 CFG=optmesh - Win32 Debug
-!MESSAGE これは有効なﾒｲｸﾌｧｲﾙではありません。 このﾌﾟﾛｼﾞｪｸﾄをﾋﾞﾙﾄﾞするためには NMAKE を使用してください。
-!MESSAGE [ﾒｲｸﾌｧｲﾙのｴｸｽﾎﾟｰﾄ] ｺﾏﾝﾄﾞを使用して実行してください
+!MESSAGE ?????L??????????????????B ??????????????????????? NMAKE ???g?p????????????B
+!MESSAGE [???????????] ???????g?p??????s???????????
 !MESSAGE 
 !MESSAGE NMAKE /f "optmesh.mak".
 !MESSAGE 
-!MESSAGE NMAKE の実行時に構成を指定できます
-!MESSAGE ｺﾏﾝﾄﾞ ﾗｲﾝ上でﾏｸﾛの設定を定義します。例:
+!MESSAGE NMAKE ????s????\?????w???????
+!MESSAGE ????? ???????????`??????B??:
 !MESSAGE 
 !MESSAGE NMAKE /f "optmesh.mak" CFG="optmesh - Win32 Debug"
 !MESSAGE 
-!MESSAGE 選択可能なﾋﾞﾙﾄﾞ ﾓｰﾄﾞ:
+!MESSAGE ?I????\??????? ???:
 !MESSAGE 
-!MESSAGE "optmesh - Win32 Release" ("Win32 (x86) Static Library" 用)
-!MESSAGE "optmesh - Win32 Debug" ("Win32 (x86) Static Library" 用)
+!MESSAGE "optmesh - Win32 Release" ("Win32 (x86) Static Library" ?p)
+!MESSAGE "optmesh - Win32 Debug" ("Win32 (x86) Static Library" ?p)
 !MESSAGE 
 
 # Begin Project
@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "_AFXDLL" /YX /FD /c
+# ADD CPP /nologo /MD /W3 /GX /O2 /I "..\optmesh" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "_AFXDLL" /YX /FD /c
 # ADD BASE RSC /l 0x411 /d "NDEBUG"
 # ADD RSC /l 0x411 /d "NDEBUG" /d "_AFXDLL"
 BSC32=bscmake.exe
@@ -64,7 +64,7 @@ LIB32=link.exe -lib
 # PROP Intermediate_Dir "Debug"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /YX /FD /GZ /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "_AFXDLL" /D "_DFILE" /FR /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "..\optmesh" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "_AFXDLL" /D "_DFILE" /FR /YX /FD /GZ /c
 # ADD BASE RSC /l 0x411 /d "_DEBUG"
 # ADD RSC /l 0x411 /d "_DEBUG" /d "_AFXDLL"
 BSC32=bscmake.exe
@@ -85,91 +85,91 @@ LIB32=link.exe -lib
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\file.cxx
+SOURCE=..\optmesh\file.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\linbcg.cxx
+SOURCE=..\optmesh\linbcg.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\lodprique.cxx
+SOURCE=..\optmesh\lodprique.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\matlib.cxx
+SOURCE=..\optmesh\matlib.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\meshtoss.cxx
+SOURCE=..\optmesh\meshtoss.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\mytime.cxx
+SOURCE=..\optmesh\mytime.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\oppd.cxx
+SOURCE=..\optmesh\oppd.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppd.cxx
+SOURCE=..\optmesh\ppd.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdedge.cxx
+SOURCE=..\optmesh\ppdedge.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdface.cxx
+SOURCE=..\optmesh\ppdface.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdlist.cxx
+SOURCE=..\optmesh\ppdlist.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdnormal.cxx
+SOURCE=..\optmesh\ppdnormal.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdpart.cxx
+SOURCE=..\optmesh\ppdpart.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdsolid.cxx
+SOURCE=..\optmesh\ppdsolid.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdvertex.cxx
+SOURCE=..\optmesh\ppdvertex.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\ps.cxx
+SOURCE=..\optmesh\ps.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\qem.cxx
+SOURCE=..\optmesh\qem.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\simpmesh.cxx
+SOURCE=..\optmesh\simpmesh.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\slpopt.cxx
+SOURCE=..\optmesh\slpopt.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\star.cxx
+SOURCE=..\optmesh\star.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\subdiv.cxx
+SOURCE=..\optmesh\subdiv.cxx
 # End Source File
 # Begin Source File
 
-SOURCE=.\veclib.cxx
+SOURCE=..\optmesh\veclib.cxx
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -177,95 +177,95 @@ SOURCE=.\veclib.cxx
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\file.h
+SOURCE=..\optmesh\file.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\linbcg.h
+SOURCE=..\optmesh\linbcg.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\lodprique.h
+SOURCE=..\optmesh\lodprique.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\matlib.h
+SOURCE=..\optmesh\matlib.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\mytime.h
+SOURCE=..\optmesh\mytime.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\oppd.h
+SOURCE=..\optmesh\oppd.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\params.h
+SOURCE=..\optmesh\params.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppd.h
+SOURCE=..\optmesh\ppd.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdedge.h
+SOURCE=..\optmesh\ppdedge.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdface.h
+SOURCE=..\optmesh\ppdface.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdlist.h
+SOURCE=..\optmesh\ppdlist.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdnormal.h
+SOURCE=..\optmesh\ppdnormal.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdpart.h
+SOURCE=..\optmesh\ppdpart.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdsolid.h
+SOURCE=..\optmesh\ppdsolid.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ppdvertex.h
+SOURCE=..\optmesh\ppdvertex.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\ps.h
+SOURCE=..\optmesh\ps.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\qem.h
+SOURCE=..\optmesh\qem.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\simpmesh.h
+SOURCE=..\optmesh\simpmesh.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\slpopt.h
+SOURCE=..\optmesh\slpopt.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\smd.h
+SOURCE=..\optmesh\smd.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\star.h
+SOURCE=..\optmesh\star.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\subdiv.h
+SOURCE=..\optmesh\subdiv.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\veclib.h
+SOURCE=..\optmesh\veclib.h
 # End Source File
 # End Group
 # End Target

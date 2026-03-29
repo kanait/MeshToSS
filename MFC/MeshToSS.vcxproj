@@ -333,7 +333,7 @@
     <None Include="res\MeshToSS.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\optmesh\optmesh.vcxproj">
+    <ProjectReference Include="optmesh.vcxproj">
       <Project>{6e45ea87-fcdc-4cb4-9708-2e538a62b217}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

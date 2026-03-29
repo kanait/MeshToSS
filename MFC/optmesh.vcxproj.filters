@@ -11,129 +11,129 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="file.cxx">
+    <ClCompile Include="..\optmesh\file.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="lodprique.cxx">
+    <ClCompile Include="..\optmesh\lodprique.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="matlib.cxx">
+    <ClCompile Include="..\optmesh\matlib.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="meshtoss.cxx">
+    <ClCompile Include="..\optmesh\meshtoss.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mytime.cxx">
+    <ClCompile Include="..\optmesh\mytime.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="oppd.cxx">
+    <ClCompile Include="..\optmesh\oppd.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppd.cxx">
+    <ClCompile Include="..\optmesh\ppd.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdedge.cxx">
+    <ClCompile Include="..\optmesh\ppdedge.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdface.cxx">
+    <ClCompile Include="..\optmesh\ppdface.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdlist.cxx">
+    <ClCompile Include="..\optmesh\ppdlist.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdnormal.cxx">
+    <ClCompile Include="..\optmesh\ppdnormal.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdpart.cxx">
+    <ClCompile Include="..\optmesh\ppdpart.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdsolid.cxx">
+    <ClCompile Include="..\optmesh\ppdsolid.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ppdvertex.cxx">
+    <ClCompile Include="..\optmesh\ppdvertex.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ps.cxx">
+    <ClCompile Include="..\optmesh\ps.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="qem.cxx">
+    <ClCompile Include="..\optmesh\qem.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="simpmesh.cxx">
+    <ClCompile Include="..\optmesh\simpmesh.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="star.cxx">
+    <ClCompile Include="..\optmesh\star.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="subdiv.cxx">
+    <ClCompile Include="..\optmesh\subdiv.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="veclib.cxx">
+    <ClCompile Include="..\optmesh\veclib.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="file.h">
+    <ClInclude Include="..\optmesh\file.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lodprique.h">
+    <ClInclude Include="..\optmesh\lodprique.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="matlib.h">
+    <ClInclude Include="..\optmesh\matlib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mytime.h">
+    <ClInclude Include="..\optmesh\mytime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="oppd.h">
+    <ClInclude Include="..\optmesh\oppd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="params.h">
+    <ClInclude Include="..\optmesh\params.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppd.h">
+    <ClInclude Include="..\optmesh\ppd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdedge.h">
+    <ClInclude Include="..\optmesh\ppdedge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdface.h">
+    <ClInclude Include="..\optmesh\ppdface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdlist.h">
+    <ClInclude Include="..\optmesh\ppdlist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdnormal.h">
+    <ClInclude Include="..\optmesh\ppdnormal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdpart.h">
+    <ClInclude Include="..\optmesh\ppdpart.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdsolid.h">
+    <ClInclude Include="..\optmesh\ppdsolid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ppdvertex.h">
+    <ClInclude Include="..\optmesh\ppdvertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ps.h">
+    <ClInclude Include="..\optmesh\ps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="qem.h">
+    <ClInclude Include="..\optmesh\qem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="simpmesh.h">
+    <ClInclude Include="..\optmesh\simpmesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="smd.h">
+    <ClInclude Include="..\optmesh\smd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="star.h">
+    <ClInclude Include="..\optmesh\star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="subdiv.h">
+    <ClInclude Include="..\optmesh\subdiv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="veclib.h">
+    <ClInclude Include="..\optmesh\veclib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

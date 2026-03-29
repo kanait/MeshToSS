@@ -911,7 +911,7 @@ int main(int argc, char *argv[])
 
   auto *hintLabel = new QLabel(
       QStringLiteral("Shift+drag: rotate | Shift+Ctrl+drag: pan | Ctrl+drag: zoom | Wheel: zoom | "
-                     "M/N: subdiv up/down"));
+                     "Ctrl+E: convert subdiv | M/N: subdiv up/down"));
   QFont hintFont = hintLabel->font();
   hintFont.setPointSize(hintFont.pointSize() > 0 ? hintFont.pointSize() - 1 : 10);
   hintLabel->setFont(hintFont);
@@ -1001,6 +1001,9 @@ int main(int argc, char *argv[])
 
   QMenu *editMenu = window.menuBar()->addMenu(QStringLiteral("Edit"));
   auto *convertAct = new QAction(QStringLiteral("Convert to subdivision surface…"), &window);
+  /* macOS: Qt::CTRL maps to Command, so the menu shows ⌘E (same as Open SMF). */
+  convertAct->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_E));
+  convertAct->setShortcutContext(Qt::ApplicationShortcut);
   QObject::connect(convertAct, &QAction::triggered, &window, [&window, view]() {
     showConvertSubdivDialog(&window, static_cast<QWidget *>(view));
   });
