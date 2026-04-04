@@ -909,12 +909,76 @@ void showConvertSubdivDialog(QWidget *parent, QWidget *glWidget)
 
 } // namespace
 
+/** Refined menu bar / popup menu / status bar chrome; palette-based for light & dark themes. */
+static void applyRefinedMenuChrome(QApplication &app)
+{
+  app.setStyleSheet(QStringLiteral(
+      R"(
+    QMenuBar {
+      background-color: palette(base);
+      border: none;
+      border-bottom: 1px solid palette(mid);
+      padding: 4px 8px 5px 8px;
+      spacing: 2px;
+    }
+    QMenuBar::item {
+      padding: 6px 14px;
+      margin: 0px 2px;
+      border-radius: 6px;
+      background: transparent;
+    }
+    QMenuBar::item:selected {
+      background-color: palette(alternate-base);
+    }
+    QMenuBar::item:pressed {
+      background-color: palette(midlight);
+    }
+    QMenu {
+      background-color: palette(base);
+      border: 1px solid palette(mid);
+      border-radius: 8px;
+      padding: 6px 4px;
+    }
+    QMenu::item {
+      padding: 7px 36px 7px 14px;
+      border-radius: 5px;
+      background: transparent;
+    }
+    QMenu::item:selected {
+      background-color: palette(highlight);
+      color: palette(highlighted-text);
+    }
+    QMenu::item:disabled {
+      color: palette(mid);
+    }
+    QMenu::separator {
+      height: 1px;
+      margin: 6px 12px;
+      background-color: palette(mid);
+    }
+    QMenu::indicator {
+      width: 18px;
+      height: 18px;
+      margin-left: 4px;
+    }
+    QStatusBar {
+      border-top: 1px solid palette(mid);
+      background-color: palette(window);
+      padding: 4px 10px;
+    }
+    QStatusBar::item {
+      border: none;
+    }
+  )"));
+}
+
 int main(int argc, char *argv[])
 {
   initFileDialogBaseDirEarly();
   QApplication app(argc, argv);
   QApplication::setApplicationName(QStringLiteral("MeshToSS"));
   QApplication::setOrganizationName(QStringLiteral("MeshToSS"));
+  applyRefinedMenuChrome(app);
 
   QSurfaceFormat fmt;
   fmt.setDepthBufferSize(24);
@@ -926,6 +990,14 @@ int main(int argc, char *argv[])
 #ifdef __APPLE__
   window.menuBar()->setNativeMenuBar(false);
 #endif
+  {
+    QFont menuf = window.menuBar()->font();
+    const qreal ps = menuf.pointSizeF();
+    if (ps > 0.0) {
+      menuf.setPointSizeF(qBound(11.0, ps + 0.5, 14.0));
+      window.menuBar()->setFont(menuf);
+    }
+  }
   auto *view = new MeshToSSGLView;
   window.setCentralWidget(view);
   window.resize(900, 650);
